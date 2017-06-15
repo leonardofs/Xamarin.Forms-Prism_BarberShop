@@ -2,26 +2,27 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            xmlns:local="clr-namespace:PrismBarbearia.Views"
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="PrismBarbearia.Views.MainPage">
     <TabbedPage.Children>
-        <ContentPage  Title="Sobre">
+        <NavigationPage  Title="Sobre">
             <x:Arguments>
                 <local:AboutPage />
             </x:Arguments>
-        </ContentPage>
+        </NavigationPage>
 
-        <ContentPage  Title="Contatos">
+        <NavigationPage  Title="Contatos">
             <x:Arguments>
                 <local:ContactPage />
             </x:Arguments>
-        </ContentPage>
+        </NavigationPage>
 
-        <ContentPage  Title="Agendar">
+        <NavigationPage Title="Agendar">
             <x:Arguments>
-                <local:ShedulesPage />
+                <local:SchedulesPage />
             </x:Arguments>
-        </ContentPage>
+        </NavigationPage>
        
     </TabbedPage.Children>
 </TabbedPage>
