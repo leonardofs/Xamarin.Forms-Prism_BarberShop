@@ -12,7 +12,7 @@ namespace PrismBarbearia.ViewModels
         public ContactPageViewModel(INavigationService navigationService) : base(navigationService)
         {
 
-            this.Title = "Contato";
+         
         }
     }
 }

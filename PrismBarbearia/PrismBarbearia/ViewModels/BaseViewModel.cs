@@ -16,12 +16,7 @@ namespace PrismBarbearia.ViewModels
             _navigationService = navigationService;
         }
 
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
-        }
+        
 
         private bool _isBusy;
         public bool IsBusy

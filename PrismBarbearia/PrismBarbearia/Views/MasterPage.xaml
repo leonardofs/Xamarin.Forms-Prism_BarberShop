@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="PrismBarbearia.Views.MasterPage">
-
+             x:Class="PrismBarbearia.Views.MasterPage"
+             Title="Menu">
+                
 
     <StackLayout>
         <Label Text="MasterPage"  />

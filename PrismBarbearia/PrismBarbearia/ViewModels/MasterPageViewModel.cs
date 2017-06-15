@@ -11,7 +11,7 @@ namespace PrismBarbearia.ViewModels
     {
         public MasterPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            this.Title = "Menu";
+
         }
     }
 }

@@ -12,7 +12,7 @@ namespace PrismBarbearia.ViewModels
 
         public AboutPageViewModel(INavigationService navigationService):base(navigationService)
         {
-            this.Title = "Sobre";
+         
         }
     }
 }

@@ -11,7 +11,7 @@ namespace PrismBarbearia.ViewModels
     {
         public MenuPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            this.Title = "8 Ball Barber Shop";
+           
         }
     }
 }
