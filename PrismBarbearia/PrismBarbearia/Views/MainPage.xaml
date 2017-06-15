@@ -8,4 +8,7 @@
   <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
     <Label Text="{Binding Title}" />
   </StackLayout>
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="Frederico" />
+    </StackLayout>
 </ContentPage>
