@@ -11,7 +11,7 @@ namespace PrismBarbearia.ViewModels
         public ContactPageViewModel()
         {
             //TODO 
-            //william
+            //TODO william
         }
     }
 }
