@@ -17,7 +17,7 @@ namespace PrismBarbearia
 
         protected override void RegisterTypes()
         {
-            Container.RegisterTypeForNavigation<NavigationPage>("Navigation");
+            //Container.RegisterTypeForNavigation<NavigationPage>("Navigation");
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<MenuPage>();
             Container.RegisterTypeForNavigation<MainPage>();

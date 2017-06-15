@@ -7,11 +7,13 @@ using System.Linq;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class MasterPageViewModel : BaseViewModel
+    public class MasterPageViewModel : BindableBase
     {
-        public MasterPageViewModel(INavigationService navigationService) : base(navigationService)
-        {
+        protected INavigationService _navigationService { get; }
 
+        public MasterPageViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
         }
     }
 }

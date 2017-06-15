@@ -7,11 +7,13 @@ using System.Linq;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class ContactPageViewModel : BaseViewModel
+    public class ContactPageViewModel : BindableBase
     {
-        public ContactPageViewModel(INavigationService navigationService) : base(navigationService)
-        {
+        protected INavigationService _navigationService { get; }
 
+        public ContactPageViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
          
         }
     }
