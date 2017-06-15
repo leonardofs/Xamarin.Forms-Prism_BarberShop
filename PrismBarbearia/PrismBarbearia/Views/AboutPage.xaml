@@ -6,7 +6,7 @@
              x:Class="PrismBarbearia.Views.AboutPage"
              x:Name="Sobre">
 
-    <ScrollView>
-        <!--TODO criar conteudo da Barbearia-->
+    <ScrollView Padding="0,20,0,0">
+        <Label Text="Pagina Sobre"/>
     </ScrollView>
 </ContentPage>

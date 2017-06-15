@@ -5,8 +5,23 @@
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="PrismBarbearia.Views.MainPage">
     <TabbedPage.Children>
-        <local:ViewA />
-        <local:ViewB />
-        <local:ViewC />
-    </TabbedPage.Children
+        <ContentPage  Title="Sobre">
+            <x:Arguments>
+                <local:AboutPage />
+            </x:Arguments>
+        </ContentPage>
+
+        <ContentPage  Title="Contatos">
+            <x:Arguments>
+                <local:ContactPage />
+            </x:Arguments>
+        </ContentPage>
+
+        <ContentPage  Title="Agendar">
+            <x:Arguments>
+                <local:ShedulesPage />
+            </x:Arguments>
+        </ContentPage>
+       
+    </TabbedPage.Children>
 </TabbedPage>

@@ -4,5 +4,10 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="PrismBarbearia.Views.SchedulesPage">
-  
+
+    <ScrollView Padding="0,20,0,0">
+
+        <Label Text="Agenda"/>
+
+    </ScrollView>
 </ContentPage>
