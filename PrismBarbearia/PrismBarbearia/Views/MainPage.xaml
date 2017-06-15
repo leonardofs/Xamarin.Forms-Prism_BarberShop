@@ -1,14 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="PrismBarbearia.Views.MainPage"
-             Title="MainPage">
-  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
-  </StackLayout>
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="Frederico" />
-    </StackLayout>
-</ContentPage>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            xmlns:local="clr-namespace:PrismBarbearia.Views"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            x:Class="PrismBarbearia.Views.MainPage">
+    <TabbedPage.Children>
+        <NavigationPage  Title="Sobre">
+            <x:Arguments>
+                <local:AboutPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage  Title="Contatos">
+            <x:Arguments>
+                <local:ContactPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Agendar">
+            <x:Arguments>
+                <local:SchedulesPage />
+            </x:Arguments>
+        </NavigationPage>
+       
+    </TabbedPage.Children>
+</TabbedPage>

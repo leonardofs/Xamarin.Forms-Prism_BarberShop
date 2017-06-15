@@ -12,13 +12,19 @@ namespace PrismBarbearia
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("NavigationPage/MainPage?title=Hello%20from%20Xamarin.Forms");
+            NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes()
         {
-            Container.RegisterTypeForNavigation<NavigationPage>();
+            
             Container.RegisterTypeForNavigation<MainPage>();
+
+            Container.RegisterTypeForNavigation<MenuPage>();
+            Container.RegisterTypeForNavigation<MainPage>();
+            Container.RegisterTypeForNavigation<AboutPage>();
+            Container.RegisterTypeForNavigation<ContactPage>();
+            Container.RegisterTypeForNavigation<SchedulesPage>();
         }
     }
 }

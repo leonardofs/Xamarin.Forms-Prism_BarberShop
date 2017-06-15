@@ -2,11 +2,12 @@
 
 namespace PrismBarbearia.Views
 {
-    public partial class MainPage : TabbedPage
+    public partial class AboutPage : ContentPage
     {
-        public MainPage()
+        public AboutPage()
         {
             InitializeComponent();
+            
         }
     }
 }

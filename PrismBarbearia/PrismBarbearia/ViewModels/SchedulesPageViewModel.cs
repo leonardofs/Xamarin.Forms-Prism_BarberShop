@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class MainPageViewModel : BindableBase
+    public class SchedulesPageViewModel : BindableBase
     {
-        public MainPageViewModel()
+        public SchedulesPageViewModel()
         {
 
         }

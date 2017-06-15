@@ -2,9 +2,9 @@
 
 namespace PrismBarbearia.Views
 {
-    public partial class MainPage : TabbedPage
+    public partial class SchedulesPage : ContentPage
     {
-        public MainPage()
+        public SchedulesPage()
         {
             InitializeComponent();
         }
