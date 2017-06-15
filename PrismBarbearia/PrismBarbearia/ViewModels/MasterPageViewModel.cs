@@ -6,12 +6,11 @@ using System.Linq;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class ContactPageViewModel : BindableBase
+    public class MasterPageViewModel : BindableBase
     {
-        public ContactPageViewModel()
+        public MasterPageViewModel()
         {
-           
-
+            
         }
     }
 }
