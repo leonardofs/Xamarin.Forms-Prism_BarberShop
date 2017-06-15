@@ -11,7 +11,7 @@ namespace PrismBarbearia.ViewModels
     { 
         public SchedulesPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            this.Title = "Agenda";
+            
         }
     }
 }

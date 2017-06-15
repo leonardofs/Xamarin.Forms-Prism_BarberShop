@@ -4,15 +4,16 @@
                   xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                   xmlns:local="clr-namespace:PrismBarbearia.Views"
                   prism:ViewModelLocator.AutowireViewModel="True"
-                  x:Class="PrismBarbearia.Views.MenuPage">
+                  x:Class="PrismBarbearia.Views.MenuPage"
+                  Title="Barbearia">
     <MasterDetailPage.Master>
-        <NavigationPage>
-            <local:MasterPage x:Name="Menu"/>
+        <NavigationPage Title="Menu"    Icon="hamburger.png">
+            <local:MasterPage/>
         </NavigationPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <TabbedPage>
-            <local:MainPage/> 
+            <local:MainPage/>
         </TabbedPage>
     </MasterDetailPage.Detail>
 </MasterDetailPage>

@@ -11,7 +11,7 @@
         <Label Text="Somos um grupo de alunos da UEMG - unidade de Divinópolis, do curso de Engenharia da Computação."/>
         <Label Text="Estamos no 7º período, em 2017, com previsão de formatura para 12/2018."/>
         <Label Text="Este aplicativo foi planejado para apresentação em um seminario da Materia de Engenharia de Software II."/>
-        <Label Text="Membros:"/>
+        <Label Text="Membros:" padding="10"/>
         
     </ScrollView>
   
