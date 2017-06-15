@@ -8,9 +8,6 @@ namespace PrismBarbearia.ViewModels
 {
     public class AboutPageViewModel : BindableBase
     {
-
-
-
         public AboutPageViewModel()
         {
             
