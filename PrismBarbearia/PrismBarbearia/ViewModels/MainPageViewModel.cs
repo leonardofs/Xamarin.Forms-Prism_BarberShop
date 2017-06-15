@@ -10,7 +10,7 @@ namespace PrismBarbearia.ViewModels
     {
         public MainPageViewModel()
         {
-
+            //TODO fred
         }
     }
 }
