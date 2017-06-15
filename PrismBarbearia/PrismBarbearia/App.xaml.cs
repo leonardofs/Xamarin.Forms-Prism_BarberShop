@@ -12,14 +12,13 @@ namespace PrismBarbearia
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("MenuPage/MainPage");
+            NavigationService.NavigateAsync("MenuPage/MasterPage/MainPage");
         }
 
         protected override void RegisterTypes()
         {
-            
+            Container.RegisterTypeForNavigation<NavigationPage>("Navigation");
             Container.RegisterTypeForNavigation<MainPage>();
-
             Container.RegisterTypeForNavigation<MenuPage>();
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<AboutPage>();

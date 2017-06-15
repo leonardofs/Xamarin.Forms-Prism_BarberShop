@@ -1,14 +1,15 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class ContactPageViewModel : BindableBase
+    public class ContactPageViewModel : BaseViewModel
     {
-        public ContactPageViewModel()
+        public ContactPageViewModel(INavigationService navigationService):base(navigationService)
         {
            
 
