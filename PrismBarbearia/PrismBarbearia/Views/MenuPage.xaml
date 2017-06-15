@@ -5,8 +5,8 @@
                   xmlns:local="clr-namespace:PrismBarbearia.Views"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="PrismBarbearia.Views.MenuPage">
-    <!--<MasterDetailPage.Master>
-        <NavigationPage Title="Required Foo" Icon="hamburger.png">
+    <MasterDetailPage.Master>
+        <NavigationPage>
             <local:MasterPage x:Name="Menu"/>
         </NavigationPage>
     </MasterDetailPage.Master>
@@ -14,5 +14,5 @@
         <TabbedPage>
             <local:MainPage/> 
         </TabbedPage>
-    </MasterDetailPage.Detail>-->
+    </MasterDetailPage.Detail>
 </MasterDetailPage>

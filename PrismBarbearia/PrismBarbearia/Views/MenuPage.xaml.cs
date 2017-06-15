@@ -7,9 +7,6 @@ namespace PrismBarbearia.Views
         public MenuPage()
         {
             InitializeComponent();
-            this.Master = new MasterPage();
-            this.Detail = new NavigationPage(new MainPage());
-            
         }
     }
 }
