@@ -13,7 +13,7 @@ namespace PrismBarbearia.ViewModels
 
         public AboutPageViewModel()
         {
-
+            
         }
     }
 }
