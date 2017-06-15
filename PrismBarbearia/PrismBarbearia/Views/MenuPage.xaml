@@ -7,7 +7,7 @@
                   x:Class="PrismBarbearia.Views.MenuPage">
     <MasterDetailPage.Master>
         <NavigationPage>
-            <local:MainPage x:Name="Menu"/>
+            <local:MasterPage x:Name="Menu"/>
         </NavigationPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
