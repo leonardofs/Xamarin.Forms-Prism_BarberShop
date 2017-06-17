@@ -5,7 +5,10 @@
             xmlns:local="clr-namespace:PrismBarbearia.Views"
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="PrismBarbearia.Views.MainPage">
+    
+    
     <TabbedPage.Children>
+        
         <NavigationPage  Title="Sobre">
             <x:Arguments>
                 <local:AboutPage />
@@ -25,4 +28,5 @@
         </NavigationPage>
        
     </TabbedPage.Children>
+    
 </TabbedPage>
