@@ -4,6 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="PrismBarbearia.Views.AboutPage"
+             Title="{Binding Title}"
              x:Name="Sobre">
 
 

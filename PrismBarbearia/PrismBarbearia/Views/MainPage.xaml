@@ -8,25 +8,13 @@
     
     
     <TabbedPage.Children>
-        
-        <NavigationPage  Title="Sobre">
-            <x:Arguments>
-                <local:AboutPage />
-            </x:Arguments>
-        </NavigationPage>
+          
+        <local:AboutPage />
 
-        <NavigationPage  Title="Contatos">
-            <x:Arguments>
-                <local:ContactPage />
-            </x:Arguments>
-        </NavigationPage>
+        <local:ContactPage />
 
-        <NavigationPage Title="Agendar">
-            <x:Arguments>
-                <local:SchedulesPage />
-            </x:Arguments>
-        </NavigationPage>
-       
+        <local:SchedulesPage />
+
     </TabbedPage.Children>
     
 </TabbedPage>

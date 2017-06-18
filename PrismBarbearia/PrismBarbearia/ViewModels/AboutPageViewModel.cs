@@ -7,13 +7,14 @@ using System.Linq;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class AboutPageViewModel : BindableBase
+    public class AboutPageViewModel : BaseViewModel
     {
-        protected INavigationService _navigationService { get; }
+        
 
         public AboutPageViewModel(INavigationService navigationService)
+            : base(navigationService)
         {
-            _navigationService = navigationService;
+            Title = "Sobre Nós";
         }
     }
 }

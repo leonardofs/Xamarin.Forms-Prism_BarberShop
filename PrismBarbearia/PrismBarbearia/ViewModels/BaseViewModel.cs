@@ -1,13 +1,10 @@
-﻿using Prism.Commands;
+﻿using System;
 using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class BaseViewModel : BindableBase , INavigationAware
+    public class BaseViewModel : BindableBase, INavigationAware
     {
         protected INavigationService _navigationService { get; }
 
@@ -16,7 +13,12 @@ namespace PrismBarbearia.ViewModels
             _navigationService = navigationService;
         }
 
-        
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
 
         private bool _isBusy;
         public bool IsBusy

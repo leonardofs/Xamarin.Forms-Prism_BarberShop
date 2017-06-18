@@ -9,9 +9,11 @@ namespace PrismBarbearia.ViewModels
 {
     public class SchedulesPageViewModel : BaseViewModel
     { 
-        public SchedulesPageViewModel(INavigationService navigationService) : base(navigationService)
+        public SchedulesPageViewModel(INavigationService navigationService)
+            : base(navigationService)
         {
-            
+            Title = "Agendar";
+
         }
     }
 }

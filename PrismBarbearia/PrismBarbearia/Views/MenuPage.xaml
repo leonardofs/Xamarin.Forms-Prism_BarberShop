@@ -17,8 +17,8 @@
         </ContentPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <TabbedPage>
+        
             <local:MainPage/>
-        </TabbedPage>
+        
     </MasterDetailPage.Detail>
 </MasterDetailPage>
