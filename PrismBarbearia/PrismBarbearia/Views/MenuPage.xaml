@@ -5,9 +5,10 @@
                   xmlns:local="clr-namespace:PrismBarbearia.Views"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="PrismBarbearia.Views.MenuPage"
-                  Title="Barbearia">
+                  Title="Barbearia 8-Ball">
+    
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu"    Icon="hamburger.png">
+        <ContentPage Title="Menu" Icon="hamburger.png" Padding=" 0,20,0,0" BackgroundColor="#1B5E20" Style="">
             <StackLayout>
 
                 <Label Text="Menu 1"/>

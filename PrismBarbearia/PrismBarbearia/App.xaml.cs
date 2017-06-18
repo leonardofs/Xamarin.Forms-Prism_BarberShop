@@ -9,6 +9,8 @@ namespace PrismBarbearia
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
             InitializeComponent();
+            
+
         }
 
         protected override void OnInitialized()
@@ -16,6 +18,7 @@ namespace PrismBarbearia
            
 
             NavigationService.NavigateAsync("Navigation/MenuPage/MainPage");
+
         }
 
         protected override void RegisterTypes()

@@ -3,5 +3,25 @@
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                         xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
                         x:Class="PrismBarbearia.App">
+  
+    <Application.Resources>
+	    <ResourceDictionary>
+        
+        <Style TargetType="NavigationPage">
+          <Setter Property="BarBackgroundColor" Value="#1B5E20"/>
+          <Setter Property="BarTextColor" Value="White"/>
+        </Style>
+        
+        
+        
+        
+        <!--PALETA DE CORES PARA SEREM USADAS NO APP-->
+			  <Color x:Key="StatusBarColor">#1B5E20</Color>
+        <Color x:Key="PrimaryColor">#43A047</Color>
+        <Color x:Key="BackgroundColor">#381C784</Color>
+        <Color x:Key="SecondaryColor">#FFA726</Color>      
+			  <Color x:Key="textColor">White</Color>
+       </ResourceDictionary>
+     </Application.Resources>
 
 </prism:PrismApplication>

@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using Android.Graphics;
 
 namespace PrismBarbearia.Droid
 {
@@ -23,6 +24,8 @@ namespace PrismBarbearia.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
+            
+            //Window.SetStatusBarColor.(Android.Graphics.Color(27, 94, 32)); //here
         }
     }
 
