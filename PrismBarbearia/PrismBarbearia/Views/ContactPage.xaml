@@ -4,13 +4,13 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="PrismBarbearia.Views.ContactPage">
-    <ContentPage.Content>
+    
         
         <ScrollView Padding="0,20,0,0">
 
             <Label Text="Paginas Contato"/>
 
         </ScrollView>
-    </ContentPage.Content>
+    
        
 </ContentPage>

@@ -6,10 +6,10 @@
              x:Class="PrismBarbearia.Views.MasterPage">
 
 
-    <ContentPage.Content>
+   
         <StackLayout>
             <Label Text="MasterPage"  />
         </StackLayout>
-    </ContentPage.Content>
+  
    
 </ContentPage>

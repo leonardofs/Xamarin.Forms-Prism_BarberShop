@@ -7,9 +7,14 @@
                   x:Class="PrismBarbearia.Views.MenuPage"
                   Title="Barbearia">
     <MasterDetailPage.Master>
-        <NavigationPage Title="Menu"    Icon="hamburger.png">
-            <local:MasterPage/>
-        </NavigationPage>
+        <ContentPage Title="Menu"    Icon="hamburger.png">
+            <StackLayout>
+
+                <Label Text="Menu 1"/>
+                <Label Text="Menu 2"/>
+                
+            </StackLayout>
+        </ContentPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <TabbedPage>
