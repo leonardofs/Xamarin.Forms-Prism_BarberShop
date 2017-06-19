@@ -15,6 +15,7 @@ namespace PrismBarbearia.ViewModels
             : base(navigationService)
         {
             Title = "Sobre Nós";
+            //teste de push jm
         }
     }
 }
