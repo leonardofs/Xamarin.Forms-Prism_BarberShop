@@ -12,8 +12,10 @@
           <Setter Property="BarTextColor" Value="White"/>
         </Style>
         
-        
-        
+        <Style TargetType="TabbedPage">
+          <Setter Property="BarBackgroundColor" Value="#1B5E20"/>
+          <Setter Property="BarTextColor" Value="White"/>
+        </Style>
         
         <!--PALETA DE CORES PARA SEREM USADAS NO APP-->
 			  <Color x:Key="StatusBarColor">#1B5E20</Color>

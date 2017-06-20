@@ -8,11 +8,15 @@
                   Title="Barbearia 8-Ball">
     
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu" Icon="hamburger.png" Padding=" 0,20,0,0" BackgroundColor="#1B5E20" Style="">
+        <ContentPage Title="Menu" Icon="hamburger.png" Padding=" 0,20,0,0" BackgroundColor="#1B5E20">
             <StackLayout>
 
-                <Label Text="Menu 1"/>
-                <Label Text="Menu 2"/>
+                <Label Text="Menu 1" Margin="10,0,0,0" TextColor="White"/>
+                <Label Text="Menu 2" Margin="10,0,0,0" TextColor="White"/>
+                <Label Text="Menu 3" Margin="10,0,0,0" TextColor="White"/>
+                <Label Text="Menu 4" Margin="10,0,0,0" TextColor="White"/>
+                <Label Text="Menu 5" Margin="10,0,0,0" TextColor="White"/>
+                <Label Text="Menu 6" Margin="10,0,0,0" TextColor="White"/>
                 
             </StackLayout>
         </ContentPage>

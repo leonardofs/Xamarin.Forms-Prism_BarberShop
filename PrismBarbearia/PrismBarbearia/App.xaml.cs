@@ -17,8 +17,8 @@ namespace PrismBarbearia
         {
            
 
-            NavigationService.NavigateAsync("Navigation/MenuPage/MainPage");
-
+            NavigationService.NavigateAsync("/MenuPage/MainPage");
+           
         }
 
         protected override void RegisterTypes()

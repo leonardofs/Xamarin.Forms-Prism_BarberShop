@@ -6,9 +6,10 @@
              Title="{Binding Title}"
              x:Class="PrismBarbearia.Views.SchedulesPage">
 
-    <ScrollView Padding="0,20,0,0">
+    <StackLayout Padding="0,20,0,0" >
 
         <Label Text="Agenda"/>
-
-    </ScrollView>
+        <Button x:Name="Teste" Text="{Binding BtnTeste}" Command="{Binding CheckConnectionCommand}"/> 
+        <!--Command="{Biding CheckConnectionCommand}"/>-->
+    </StackLayout>
 </ContentPage>
