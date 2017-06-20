@@ -11,8 +11,7 @@ namespace PrismBarbearia.ViewModels
     {
         
 
-        public ContactPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public ContactPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "Onde Estamos";
          

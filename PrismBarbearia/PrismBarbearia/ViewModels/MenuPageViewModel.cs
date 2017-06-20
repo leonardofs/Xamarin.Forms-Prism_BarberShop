@@ -12,7 +12,7 @@ namespace PrismBarbearia.ViewModels
         protected INavigationService _navigationService { get; }
 
         public MenuPageViewModel(INavigationService navigationService)
-        {
+        {            
             _navigationService = navigationService;
         }
     }

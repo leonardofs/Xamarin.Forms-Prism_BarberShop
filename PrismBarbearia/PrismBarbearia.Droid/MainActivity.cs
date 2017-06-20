@@ -19,10 +19,10 @@ namespace PrismBarbearia.Droid
         {
             TabLayoutResource = Resource.Layout.tabs;
             ToolbarResource = Resource.Layout.toolbar;
-
-            base.OnCreate(bundle);
-
+            
+            base.OnCreate(bundle);            
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             LoadApplication(new App(new AndroidInitializer()));
             
             //Window.SetStatusBarColor.(Android.Graphics.Color(27, 94, 32)); //here
