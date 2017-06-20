@@ -7,11 +7,6 @@
              Title="{Binding Title}"
              x:Name="Sobre">
 
-
-
-   
-    
-   
     <ScrollView Padding="0,20,0,0" >
         
         <Label Text="Somos um grupo de alunos da UEMG - unidade de Divinópolis, do curso de Engenharia da Computação.

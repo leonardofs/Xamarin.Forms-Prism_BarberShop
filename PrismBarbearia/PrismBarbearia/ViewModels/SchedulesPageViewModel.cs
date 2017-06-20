@@ -19,42 +19,50 @@ namespace PrismBarbearia.ViewModels
 
         public DelegateCommand CheckConnectionCommand{ get; private set; }
 
-        private string btnTeste;
-        public string BtnTeste
+        private bool isConnected;
+        public bool IsConnected
         {
-            get { return btnTeste; }
-            set { SetProperty(ref btnTeste, value); }
+            get { return isConnected; }
+            set { SetProperty(ref isConnected, value); }
         }
 
+        private bool notConnected;
+        public bool NotConnected
+        {
+            get { return notConnected; }
+            set { SetProperty(ref notConnected, value); }
+        }
 
         public SchedulesPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
             : base(navigationService)
         {
             Title = "Agendar";
 
+
             //instanciando servico de alertas
             _pageDialogService = pageDialogService;
-            
+
             CheckConnectionCommand = new DelegateCommand(CheckConnection);
-            BtnTeste = "Testar conexão";
-          
+
+            IsConnected = CrossConnectivity.Current.IsConnected;
+            NotConnected = !IsConnected;  
+
         }
 
-
-        private  void CheckConnection()
+        private async void CheckConnection()
         {
            // Se desconectado
             if (!CrossConnectivity.Current.IsConnected)
             {
               //  Debug.Writeline("sem conexao");
-                // await _pageDialogService.DisplayAlertAsync("Sem rede","não é possivél realizar agendamentos sem conexão com a internet","OK");
-                BtnTeste="sem rede";
+                 await _pageDialogService.DisplayAlertAsync("Sem rede","não é possivél realizar agendamentos sem conexão com a internet","OK");
+                
                 //TODO  texto na tela informando que nao ha conexao, destivar botao de login
             }
             else //Se houver conexão
             {
-                //await _pageDialogService.DisplayAlertAsync("Com rede", "teste de rede ok", "OK");
-                BtnTeste = "com rede";
+                
+                
                 //TODO ativar botao de login e escrever texto pedindo login com rede social
             }
         }

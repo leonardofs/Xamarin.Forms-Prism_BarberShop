@@ -9,7 +9,9 @@
     <StackLayout Padding="0,20,0,0" >
 
         <Label Text="Agenda"/>
-        <Button x:Name="Teste" Text="{Binding BtnTeste}" Command="{Binding CheckConnectionCommand}"/> 
+        
+        <Label x:Name="lblSemConexao" Text="É nescessario estar conectado a internet para agendar seu atendimento" FontSize="Large" IsVisible="{Binding NotConnected}}"/>
+        <Button x:Name="btnLoginFacebook" IsVisible="{Binding IsConnected}" BackgroundColor="DarkBlue" TextColor="White" Command="{Binding LoginFacebookCommand}" Text="entrar com facebook"/>
         <!--Command="{Biding CheckConnectionCommand}"/>-->
     </StackLayout>
 </ContentPage>
