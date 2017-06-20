@@ -5,7 +5,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using PrismBarbearia.Droid;
 using Xamarin.Forms;
 using PrismBarbearia.Helpers;
-using PrismBarbearia.Services;
+using PrismBarbearia.Authentication;
 
 [assembly: Xamarin.Forms.Dependency(typeof(SocialAuthenticationAndroid))]
 namespace PrismBarbearia.Droid
