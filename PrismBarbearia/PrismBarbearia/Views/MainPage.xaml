@@ -4,7 +4,8 @@
             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
             xmlns:local="clr-namespace:PrismBarbearia.Views"
             prism:ViewModelLocator.AutowireViewModel="True"
-            x:Class="PrismBarbearia.Views.MainPage">
+            x:Class="PrismBarbearia.Views.MainPage"
+            Title="Barbearia 8-Ball">
     
     
     <TabbedPage.Children>
