@@ -8,9 +8,7 @@ namespace PrismBarbearia
     {
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
-            InitializeComponent();
-            
-
+            InitializeComponent();       
         }
 
         protected override void OnInitialized()
