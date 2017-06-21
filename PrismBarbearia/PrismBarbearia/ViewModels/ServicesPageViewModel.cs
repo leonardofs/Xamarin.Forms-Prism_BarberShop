@@ -10,15 +10,9 @@ namespace PrismBarbearia.ViewModels
 {
     public class ServicesPageViewModel : BaseViewModel
     {
-        public string Token { get; }
-        public string UserId { get; }
-
         public ServicesPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "Serviços";            
-            Token = Settings.AuthToken;
-            UserId = Settings.UserId;
+            //TODO lista de servicos
         }
-    }
-    
+    }    
 }

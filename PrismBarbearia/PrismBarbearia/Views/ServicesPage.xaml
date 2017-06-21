@@ -7,8 +7,7 @@
                 Title="{Binding Title}">
     
     <StackLayout>
-        <Label Text="{Binding Token}"/>
-        <Label Text="{Binding UserId}"/>
+        <Label Text="LISTA DE SERVIÇOS"/>
     </StackLayout>
     
 </ContentPage>

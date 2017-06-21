@@ -9,10 +9,8 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Menu" Icon="icon.png" Padding=" 0,20,0,0" BackgroundColor="#1B5E20">
             <StackLayout>
-
-                <Button x:Name="btnLoginFacebookMaster" Image="icon.png" HeightRequest="50" IsVisible="{Binding IsConnected}" BackgroundColor="DarkBlue" TextColor="White" Command="{Binding LoginFacebookCommand}" Text="Entrar com facebook"/>
-                
-                
+                <Button x:Name="btnLoginFacebookMaster" Image="facebook.png" IsVisible="{Binding IsConnected}" 
+                BackgroundColor="DarkBlue" TextColor="White" Command="{Binding LoginFacebookCommand}" Text="Entrar com facebook"/>
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

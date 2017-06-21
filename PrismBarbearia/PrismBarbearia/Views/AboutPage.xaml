@@ -7,13 +7,13 @@
              Title="{Binding Title}"
              x:Name="Sobre">
 
-    <ScrollView Padding="0,20,0,0" >
-        
-        <Label Text="Somos um grupo de alunos da UEMG - unidade de Divinópolis, do curso de Engenharia da Computação.
-        Estamos no 7º período, em 2017, com previsão de formatura para 12/2012.
-        Este aplicativo foi planejado para apresentação em um seminario da Materia de Engenharia de Software II.
-        Membros:" />
-        
+    <ScrollView>
+        <StackLayout Padding="0,30,0,0">
+            <Label Text="Somos um grupo de alunos da UEMG - unidade de Divinópolis, do curso de Engenharia da Computação."/>
+            <Label Text="Estamos no 7º período, em 2017, com previsão de formatura para 12/2012."/>
+            <Label Text="Este aplicativo foi planejado para apresentação em um seminário da Matéria de Engenharia de Software II."/>
+            <Label Text="Membros:" />
+        </StackLayout>
     </ScrollView>
   
 
