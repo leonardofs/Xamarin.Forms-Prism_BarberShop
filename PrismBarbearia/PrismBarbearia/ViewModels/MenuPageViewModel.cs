@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class MenuPageViewModel : BindableBase
+    public class MenuPageViewModel : BindableBase 
     {
         protected INavigationService _navigationService { get; }
 

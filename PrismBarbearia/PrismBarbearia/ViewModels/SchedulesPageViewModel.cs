@@ -82,10 +82,7 @@ namespace PrismBarbearia.ViewModels
             
             else
             {
-                Debug.WriteLine("testando 123");
-                //await PushAsync<ServicesPageViewModel>();
-                //await PushAsync<MainViewModel>();                
-                //RemovePageFromStack();
+               await _navigationService.NavigateAsync("ServicesPage");
             }
             IsBusy = false;
 

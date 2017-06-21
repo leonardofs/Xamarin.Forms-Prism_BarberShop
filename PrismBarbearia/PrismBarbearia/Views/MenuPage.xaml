@@ -7,15 +7,11 @@
                   x:Class="PrismBarbearia.Views.MenuPage">
     
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu" Icon="hamburger.png" Padding=" 0,20,0,0" BackgroundColor="#1B5E20">
+        <ContentPage Title="Menu" Icon="icon.png" Padding=" 0,20,0,0" BackgroundColor="#1B5E20">
             <StackLayout>
 
-                <Label Text="Menu 1" Margin="10,0,0,0" TextColor="White"/>
-                <Label Text="Menu 2" Margin="10,0,0,0" TextColor="White"/>
-                <Label Text="Menu 3" Margin="10,0,0,0" TextColor="White"/>
-                <Label Text="Menu 4" Margin="10,0,0,0" TextColor="White"/>
-                <Label Text="Menu 5" Margin="10,0,0,0" TextColor="White"/>
-                <Label Text="Menu 6" Margin="10,0,0,0" TextColor="White"/>
+                <Button x:Name="btnLoginFacebookMaster" Image="icon.png" HeightRequest="50" IsVisible="{Binding IsConnected}" BackgroundColor="DarkBlue" TextColor="White" Command="{Binding LoginFacebookCommand}" Text="Entrar com facebook"/>
+                
                 
             </StackLayout>
         </ContentPage>

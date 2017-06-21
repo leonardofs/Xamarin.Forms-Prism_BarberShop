@@ -11,7 +11,7 @@
         <Label Text="Agenda"/>
         
         <Label x:Name="lblSemConexao" Text="É nescessario estar conectado a internet para agendar seu atendimento" FontSize="Large" IsVisible="{Binding NotConnected}"/>
-        <Button x:Name="btnLoginFacebook" IsVisible="{Binding IsConnected}" BackgroundColor="DarkBlue" TextColor="White" Command="{Binding LoginFacebookCommand}" Text="entrar com facebook"/>
+        <Button x:Name="btnLoginFacebook" Image="icon.png" HeightRequest="50" IsVisible="{Binding IsConnected}" BackgroundColor="DarkBlue" TextColor="White" Command="{Binding LoginFacebookCommand}" Text="Entrar com facebook"/>
         <!--Command="{Biding CheckConnectionCommand}"/>-->
     </StackLayout>
 </ContentPage>
