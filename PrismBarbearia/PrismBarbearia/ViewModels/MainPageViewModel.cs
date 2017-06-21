@@ -8,8 +8,7 @@ using System.Linq;
 namespace PrismBarbearia.ViewModels
 {
     public class MainPageViewModel : BindableBase
-    {
-    
+    {    
         protected INavigationService _navigationService { get; }
 
         public MainPageViewModel(INavigationService navigationService) 

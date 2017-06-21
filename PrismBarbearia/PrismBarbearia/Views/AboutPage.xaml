@@ -6,15 +6,16 @@
              x:Class="PrismBarbearia.Views.AboutPage"
              Title="{Binding Title}"
              x:Name="Sobre">
-
+    <ContentPage.Content>       
+    
     <ScrollView>
-        <StackLayout Padding="0,30,0,0">
-            <Label Text="Somos um grupo de alunos da UEMG - unidade de Divinópolis, do curso de Engenharia da Computação."/>
-            <Label Text="Estamos no 7º período, em 2017, com previsão de formatura para 12/2012."/>
+        <StackLayout Padding="20">
+            <Label Text="Somos um grupo de alunos da UEMG - unidade de Divinópolis, do curso de Engenharia da Computação." />
+            <Label Text="Estamos no 7º período, em 2017, com previsão de formatura para 12/2018."/>
             <Label Text="Este aplicativo foi planejado para apresentação em um seminário da Matéria de Engenharia de Software II."/>
             <Label Text="Membros:" />
         </StackLayout>
     </ScrollView>
-  
 
+    </ContentPage.Content>
 </ContentPage>

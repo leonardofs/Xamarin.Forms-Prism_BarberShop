@@ -7,9 +7,9 @@
              x:Class="PrismBarbearia.Views.ContactPage">
     
         
-        <ScrollView Padding="0,20,0,0">
+        <ScrollView Padding="20">
 
-            <Label Text="Paginas Contato"/>
+        <Label Text="Pagina de Contato"/>
 
         </ScrollView>
     

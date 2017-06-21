@@ -8,14 +8,10 @@ using System.Linq;
 namespace PrismBarbearia.ViewModels
 {
     public class AboutPageViewModel : BaseViewModel
-    {
-        
-
-        public AboutPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+    {        
+        public AboutPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "Sobre Nós";
-            //teste de push jm
         }
     }
 }

@@ -6,7 +6,7 @@
                 x:Class="PrismBarbearia.Views.ServicesPage"
                 Title="{Binding Title}">
     
-    <StackLayout>
+    <StackLayout Padding="20">
         <Label Text="LISTA DE SERVIÇOS"/>
     </StackLayout>
     

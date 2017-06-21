@@ -6,13 +6,14 @@
              Title="{Binding Title}"
              x:Class="PrismBarbearia.Views.SchedulesPage">
 
-    <StackLayout Padding="0,20,0,0" >
+    <StackLayout Padding="20" >
 
         <Label Text="Agenda"/>
         
-        <Label x:Name="lblSemConexao" Text="É nescessario estar conectado a internet para agendar seu atendimento" FontSize="Large" IsVisible="{Binding NotConnected}"/>
+        <Label x:Name="lblSemConexao" Text="É nescessario estar conectado a internet para agendar seu atendimento" 
+               FontSize="Large" IsVisible="{Binding NotConnected}"/>
         <Button x:Name="btnLoginFacebookDetail" Image="facebook.png" IsVisible="{Binding IsConnected}" 
                 BackgroundColor="DarkBlue" TextColor="White" Command="{Binding LoginFacebookCommand}" Text="Entrar com facebook"/>
-        <!--Command="{Biding CheckConnectionCommand}"/>-->
+        <Button x:Name="btnVerificarConexao" Text="Verificar conexão" Command="{Binding CheckConnectionCommand}"/>
     </StackLayout>
 </ContentPage>

@@ -11,6 +11,8 @@ namespace PrismBarbearia.ViewModels
     {
         protected INavigationService _navigationService { get; }
 
+        public DelegateCommand LoginFacebookCommand { get; private set; }
+
         public MenuPageViewModel(INavigationService navigationService)
         {            
             _navigationService = navigationService;

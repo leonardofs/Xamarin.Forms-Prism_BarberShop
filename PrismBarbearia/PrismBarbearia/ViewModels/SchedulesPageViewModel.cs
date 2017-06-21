@@ -1,14 +1,7 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Plugin.Connectivity;
-using Plugin.Connectivity.Abstractions;
-using Xamarin.Forms;
 using Prism.Services;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using PrismBarbearia.Services;
 using PrismBarbearia.Helpers;
@@ -37,19 +30,19 @@ namespace PrismBarbearia.ViewModels
             get { return notConnected; }
             set { SetProperty(ref notConnected, value); }
         }
-        //////////////////                                                                       CONSTRUTOR ///////////////
+
+        //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public SchedulesPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
             : base(navigationService)
         {
             Title = "Agendar";
-
 
             //instanciando servico de alertas
             _pageDialogService = pageDialogService;
 
             CheckConnectionCommand = new DelegateCommand(CheckConnection);
             IsConnected = CrossConnectivity.Current.IsConnected;
-            NotConnected = !IsConnected;
+            NotConnected = !CrossConnectivity.Current.IsConnected;
 
             Settings.AuthToken = string.Empty;
             Settings.UserId = string.Empty;
@@ -62,16 +55,15 @@ namespace PrismBarbearia.ViewModels
            // Se desconectado
             if (!CrossConnectivity.Current.IsConnected)
             {
-              //  Debug.Writeline("sem conexao");
-                 await _pageDialogService.DisplayAlertAsync("Sem rede","não é possivél realizar agendamentos sem conexão com a internet","OK");
-                
-                //TODO  texto na tela informando que nao ha conexao, destivar botao de login
+                await _pageDialogService.DisplayAlertAsync("Sem rede","não é possível realizar agendamentos sem conexão com a internet","OK");              
+                NotConnected = true;
+                IsConnected = false;
             }
             else //Se houver conexão
             {
-                
-                
-                //TODO ativar botao de login e escrever texto pedindo login com rede social
+                await _pageDialogService.DisplayAlertAsync("Conectado", "Conectado a internet, já é possível realizar agendamentos", "OK");
+                NotConnected = false;
+                IsConnected = true;
             }
         }
 
@@ -88,7 +80,7 @@ namespace PrismBarbearia.ViewModels
 
         }
 
-        public Task<bool> LoginAsync()
+        private Task<bool> LoginAsync()
         {
             IsBusy = true;
 
@@ -99,4 +91,3 @@ namespace PrismBarbearia.ViewModels
         }
     }
 }
-

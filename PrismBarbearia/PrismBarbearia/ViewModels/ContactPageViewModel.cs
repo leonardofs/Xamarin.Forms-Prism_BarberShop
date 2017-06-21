@@ -8,9 +8,7 @@ using System.Linq;
 namespace PrismBarbearia.ViewModels
 {
     public class ContactPageViewModel : BaseViewModel
-    {
-        
-
+    {    
         public ContactPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "Onde Estamos";
