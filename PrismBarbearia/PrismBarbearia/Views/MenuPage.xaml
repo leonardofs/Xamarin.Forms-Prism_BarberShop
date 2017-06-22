@@ -11,13 +11,15 @@
             <StackLayout>
                 <Button x:Name="btnLoginFacebookMenu" Image="facebook.png" IsVisible="{Binding IsConnected}" 
                 BackgroundColor="DarkBlue" TextColor="White" Command="{Binding LoginFacebookCommand}" Text="Entrar com facebook"/>
+
+
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
     
     <MasterDetailPage.Detail>
-        
+
             <local:MainPage/>
-        
+
     </MasterDetailPage.Detail>
 </MasterDetailPage>

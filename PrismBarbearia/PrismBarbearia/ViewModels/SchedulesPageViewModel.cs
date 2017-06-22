@@ -74,7 +74,7 @@ namespace PrismBarbearia.ViewModels
             
             else
             {
-               await _navigationService.NavigateAsync("ServicesPage");
+               await _navigationService.NavigateAsync("/MenuPage/Navigation/ServicesPage");
             }
             IsBusy = false;
 
