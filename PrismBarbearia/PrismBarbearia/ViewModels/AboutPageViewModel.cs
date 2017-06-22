@@ -11,7 +11,7 @@ namespace PrismBarbearia.ViewModels
     {        
         public AboutPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "Sobre Nós";
+            Title = "A Barbearia";
         }
     }
 }
