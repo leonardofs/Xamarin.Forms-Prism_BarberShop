@@ -14,21 +14,21 @@ namespace PrismBarbearia.ViewModels
         IPageDialogService _pageDialogService;
         //servico do azure
         AzureService azureService;
-        public DelegateCommand CheckConnectionCommand{ get; private set; }
         public DelegateCommand LoginFacebookCommand { get; private set; }
+        public DelegateCommand LogOutFacebookCommand { get; private set; }
 
-        private bool isConnected;
-        public bool IsConnected
+        private bool isVisibleLogInButton;
+        public bool IsVisibleLogInButton
         {
-            get { return isConnected; }
-            set { SetProperty(ref isConnected, value); }
+            get { return isVisibleLogInButton; }
+            set { SetProperty(ref isVisibleLogInButton, value); }
         }
 
-        private bool notConnected;
-        public bool NotConnected
+        private bool isVisibleLogOutButton;
+        public bool IsVisibleLogOutButton
         {
-            get { return notConnected; }
-            set { SetProperty(ref notConnected, value); }
+            get { return isVisibleLogOutButton; }
+            set { SetProperty(ref isVisibleLogOutButton, value); }
         }
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
@@ -39,45 +39,48 @@ namespace PrismBarbearia.ViewModels
 
             //instanciando servico de alertas
             _pageDialogService = pageDialogService;
-
-            CheckConnectionCommand = new DelegateCommand(CheckConnection);
-            IsConnected = CrossConnectivity.Current.IsConnected;
-            NotConnected = !CrossConnectivity.Current.IsConnected;
+            IsVisibleLogInButton = CrossConnectivity.Current.IsConnected;
+            IsVisibleLogOutButton = false;
 
             Settings.AuthToken = string.Empty;
             Settings.UserId = string.Empty;
             azureService = Xamarin.Forms.DependencyService.Get<AzureService>();
             LoginFacebookCommand = new DelegateCommand(async () => await ExecuteLoginFacebookCommand());
-        }
-
-        private async void CheckConnection()
-        {
-           // Se desconectado
-            if (!CrossConnectivity.Current.IsConnected)
-            {
-                await _pageDialogService.DisplayAlertAsync("Sem rede","não é possível realizar agendamentos sem conexão com a internet","OK");              
-                NotConnected = true;
-                IsConnected = false;
-            }
-            else //Se houver conexão
-            {
-                await _pageDialogService.DisplayAlertAsync("Conectado", "Conectado a internet, já é possível realizar agendamentos", "OK");
-                NotConnected = false;
-                IsConnected = true;
-            }
+            LogOutFacebookCommand = new DelegateCommand(async () => await ExecuteLogOutFacebookCommand());
         }
 
         private async Task ExecuteLoginFacebookCommand()
         {
-            if (IsBusy || !(await LoginAsync()))
-                return;
-            
-            else
+            if (CrossConnectivity.Current.IsConnected)
             {
-               await _navigationService.NavigateAsync("/MenuPage/Navigation/ServicesPage");
-            }
-            IsBusy = false;
+                if (IsBusy || !(await LoginAsync()))
+                    return;
 
+                else
+                {
+                    await _navigationService.NavigateAsync("ServicesPage", null, false);
+                }
+                IsBusy = false;
+                IsVisibleLogInButton = false;
+                IsVisibleLogOutButton = true;
+            }
+            else //Se desconectado
+            {
+                await _pageDialogService.DisplayAlertAsync("Sem rede", "não é possível realizar agendamentos sem conexão com a internet", "OK");  
+            }
+        }
+
+        private async Task ExecuteLogOutFacebookCommand()
+        {
+            if (Settings.IsLoggedIn)
+            {
+                Settings.AuthToken = string.Empty;
+                Settings.UserId = string.Empty;
+                IsVisibleLogInButton = true;
+                IsVisibleLogOutButton = false;
+                //TODO voltar para página inicial para fazer login
+                //if (está na pagina de serviços) entao await _navigationService.GoBackAsync();
+            }
         }
 
         private Task<bool> LoginAsync()
