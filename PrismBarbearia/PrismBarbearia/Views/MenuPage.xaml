@@ -17,9 +17,9 @@
         </ContentPage>
     </MasterDetailPage.Master>
     
-    <MasterDetailPage.Detail>
+    <!--<MasterDetailPage.Detail>
 
             <local:MainPage/>
 
-    </MasterDetailPage.Detail>
+    </MasterDetailPage.Detail>-->
 </MasterDetailPage>
