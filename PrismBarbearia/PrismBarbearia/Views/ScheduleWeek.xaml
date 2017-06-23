@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PrismBarbearia.Views.ScheduleWeek"
+             xmlns:schedule="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms">
+
+    <ContentPage.Content>
+        
+        <schedule:SfSchedule x:Name="schedule" ScheduleView ="WorkWeekView" ViewHeaderHeight="50" TimeInterval="30" FirstDayOfWeek="2">
+
+            <schedule:SfSchedule.ViewHeaderStyle>
+                <!--Estilos da página-->
+                <schedule:ViewHeaderStyle
+                    BackgroundColor="DarkGreen"
+                    DayTextColor="#FFFFFF" 
+                    DateTextColor="#FFFFFF" 
+                    DayTextStyle="Arial,12" 
+                    DateTextStyle="Arial,12">
+                </schedule:ViewHeaderStyle>
+            </schedule:SfSchedule.ViewHeaderStyle>
+
+            <schedule:SfSchedule.WorkWeekViewSettings>
+                <!--setting working hours properties -->
+                <schedule:WorkWeekViewSettings                
+                        WorkStartHour="8" 
+                        WorkEndHour="20"                             
+                        TimeSlotColor="White"
+                        TimeSlotBorderColor="Gray" 
+                        TimeSlotBorderStrokeWidth="5"
+                        VerticalLineStrokeWidth="5" 
+                        VerticalLineColor="DarkGreen"                        
+                        NonWorkingHoursTimeSlotColor="Red"
+                        NonWorkingHoursTimeSlotBorderColor="DarkRed" >
+                
+                    <schedule:WorkWeekViewSettings.NonAccessibleBlocks>
+                        <!--<schedule:NonAccessibleBlock                                 
+                                StartTime="11" 
+			                    EndTime="13" 
+				                Text="ALMOÇO" 
+				                Color="Black" /> NAO FUNCIONOU NO ANDROID-->
+                    </schedule:WorkWeekViewSettings.NonAccessibleBlocks>
+
+                </schedule:WorkWeekViewSettings>
+
+            </schedule:SfSchedule.WorkWeekViewSettings>
+
+            <schedule:SfSchedule.SelectionView>
+                <Button BackgroundColor="#FF9800" Text="+NewEvent" TextColor="White"/>
+            </schedule:SfSchedule.SelectionView>
+
+        </schedule:SfSchedule>
+            
+    </ContentPage.Content>
+    
+</ContentPage>

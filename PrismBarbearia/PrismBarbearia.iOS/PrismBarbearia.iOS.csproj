@@ -182,6 +182,15 @@
     <Reference Include="Prism.Unity.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Unity.Forms.6.3.0\lib\Xamarin.iOS1.0\Prism.Unity.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfSchedule.iOS, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfSchedule.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSchedule.XForms, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfSchedule.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSchedule.XForms.iOS, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfSchedule.XForms.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />

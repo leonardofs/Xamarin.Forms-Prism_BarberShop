@@ -112,6 +112,15 @@
     <Reference Include="Prism.Unity.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Unity.Forms.6.3.0\lib\MonoAndroid1.0\Prism.Unity.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfSchedule.Android, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.2.0.43\lib\MonoAndroid10\Syncfusion.SfSchedule.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSchedule.XForms, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.2.0.43\lib\MonoAndroid10\Syncfusion.SfSchedule.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSchedule.XForms.Android, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.2.0.43\lib\MonoAndroid10\Syncfusion.SfSchedule.XForms.Android.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />

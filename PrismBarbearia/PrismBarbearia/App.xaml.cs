@@ -13,10 +13,7 @@ namespace PrismBarbearia
 
         protected override void OnInitialized()
         {
-           
-
             NavigationService.NavigateAsync("MenuPage/Navigation/MainPage");
-           
         }
 
         protected override void RegisterTypes()
@@ -29,6 +26,7 @@ namespace PrismBarbearia
             Container.RegisterTypeForNavigation<ContactPage>();
             Container.RegisterTypeForNavigation<SchedulesPage>();
             Container.RegisterTypeForNavigation<ServicesPage>();
+            Container.RegisterTypeForNavigation<ScheduleWeek>();
         }
     }
 }

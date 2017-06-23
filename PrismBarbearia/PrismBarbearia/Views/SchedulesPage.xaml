@@ -7,14 +7,6 @@
              x:Class="PrismBarbearia.Views.SchedulesPage">
 
     <StackLayout Padding="20" >
-
-        <Label Text="É preciso fazer LogIn para fazer agendamento"/>
-
-        <Button Text="Entrar com facebook" Image="facebook.png" IsVisible="{Binding IsVisibleLogInButton}" Command="{Binding LoginFacebookCommand}" 
-                BackgroundColor="DarkBlue" TextColor="White" />                
-
-        <Button Text="LogOut" IsVisible="{Binding IsVisibleLogOutButton}" Command="{Binding LogOutFacebookCommand}"
-                BackgroundColor="DarkRed" TextColor="White" />
-        
+        <Button Text="Cortar cabelo" Command="{Binding ScheduleWeekCommand}" BackgroundColor="DarkGreen" TextColor="White" />
     </StackLayout>
 </ContentPage>

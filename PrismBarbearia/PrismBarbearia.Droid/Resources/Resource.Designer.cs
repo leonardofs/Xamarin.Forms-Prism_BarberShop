@@ -28,6 +28,9 @@ namespace PrismBarbearia.Droid
 		{
 			global::PCLCrypto.Resource.String.ApplicationName = global::PrismBarbearia.Droid.Resource.String.ApplicationName;
 			global::PCLCrypto.Resource.String.Hello = global::PrismBarbearia.Droid.Resource.String.Hello;
+			global::Com.Syncfusion.Schedule.Resource.String.No_Appointments = global::PrismBarbearia.Droid.Resource.String.No_Appointments;
+			global::Com.Syncfusion.Schedule.Resource.String.all_day = global::PrismBarbearia.Droid.Resource.String.all_day;
+			global::Com.Syncfusion.Schedule.Resource.String.library_name = global::PrismBarbearia.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::PrismBarbearia.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -3615,11 +3618,14 @@ namespace PrismBarbearia.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0b003f
-			public const int ApplicationName = 2131427391;
+			// aapt resource value: 0x7f0b0042
+			public const int ApplicationName = 2131427394;
 			
-			// aapt resource value: 0x7f0b003e
-			public const int Hello = 2131427390;
+			// aapt resource value: 0x7f0b0041
+			public const int Hello = 2131427393;
+			
+			// aapt resource value: 0x7f0b003f
+			public const int No_Appointments = 2131427391;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int abc_action_bar_home_description = 2131427349;
@@ -3714,6 +3720,9 @@ namespace PrismBarbearia.Droid
 			// aapt resource value: 0x7f0b0027
 			public const int abc_toolbar_collapse_description = 2131427367;
 			
+			// aapt resource value: 0x7f0b0040
+			public const int all_day = 2131427392;
+			
 			// aapt resource value: 0x7f0b0036
 			public const int appbar_scrolling_view_behavior = 2131427382;
 			
@@ -3722,6 +3731,9 @@ namespace PrismBarbearia.Droid
 			
 			// aapt resource value: 0x7f0b0038
 			public const int character_counter_pattern = 2131427384;
+			
+			// aapt resource value: 0x7f0b003e
+			public const int library_name = 2131427390;
 			
 			// aapt resource value: 0x7f0b0000
 			public const int mr_button_content_description = 2131427328;

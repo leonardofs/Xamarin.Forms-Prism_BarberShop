@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Authentication\IAuthentication.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Models\BarberShopAppointment.cs" />
     <Compile Include="Models\Repositorio.cs" />
     <Compile Include="Models\Servicos.cs" />
     <Compile Include="Models\User.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MenuPageViewModel.cs" />
     <Compile Include="ViewModels\SchedulesPageViewModel.cs" />
+    <Compile Include="ViewModels\ScheduleWeekViewModel.cs" />
     <Compile Include="ViewModels\ServicesPageViewModel.cs" />
     <Compile Include="Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -68,6 +70,9 @@
     </Compile>
     <Compile Include="Views\SchedulesPage.xaml.cs">
       <DependentUpon>SchedulesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScheduleWeek.xaml.cs">
+      <DependentUpon>ScheduleWeek.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ServicesPage.xaml.cs">
       <DependentUpon>ServicesPage.xaml</DependentUpon>
@@ -130,6 +135,9 @@
     <Reference Include="Prism.Unity.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Unity.Forms.6.3.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Unity.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfSchedule.XForms, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfSchedule.15.2.0.43\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfSchedule.XForms.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
     </Reference>
@@ -179,6 +187,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ServicesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ScheduleWeek.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
