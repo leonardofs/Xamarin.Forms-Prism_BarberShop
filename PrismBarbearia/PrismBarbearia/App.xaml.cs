@@ -15,7 +15,7 @@ namespace PrismBarbearia
         {
            
 
-            NavigationService.NavigateAsync("MenuPage/Navigation/MainPage/");
+            NavigationService.NavigateAsync("MenuPage/Navigation/MainPage");
            
         }
 

@@ -8,12 +8,13 @@
 
     <StackLayout Padding="20" >
 
-        <Label Text="Agenda"/>
+        <Label Text="É preciso fazer LogIn para fazer agendamento"/>
+
+        <Button Text="Entrar com facebook" Image="facebook.png" IsVisible="{Binding IsVisibleLogInButton}" Command="{Binding LoginFacebookCommand}" 
+                BackgroundColor="DarkBlue" TextColor="White" />                
+
+        <Button Text="LogOut" IsVisible="{Binding IsVisibleLogOutButton}" Command="{Binding LogOutFacebookCommand}"
+                BackgroundColor="DarkRed" TextColor="White" />
         
-        <Label x:Name="lblSemConexao" Text="É nescessario estar conectado a internet para agendar seu atendimento" 
-               FontSize="Large" IsVisible="{Binding NotConnected}"/>
-        <Button x:Name="btnLoginFacebookDetail" Image="facebook.png" IsVisible="{Binding IsConnected}" 
-                BackgroundColor="DarkBlue" TextColor="White" Command="{Binding LoginFacebookCommand}" Text="Entrar com facebook"/>
-        <Button x:Name="btnVerificarConexao" Text="Verificar conexão" Command="{Binding CheckConnectionCommand}"/>
     </StackLayout>
 </ContentPage>
