@@ -39,7 +39,7 @@ namespace PrismBarbearia.ViewModels
 
             //instanciando servico de alertas
             _pageDialogService = pageDialogService;
-            IsVisibleLogInButton = CrossConnectivity.Current.IsConnected;
+            IsVisibleLogInButton = true;
             IsVisibleLogOutButton = false;
 
             Settings.AuthToken = string.Empty;
@@ -66,7 +66,7 @@ namespace PrismBarbearia.ViewModels
             }
             else //Se desconectado
             {
-                await _pageDialogService.DisplayAlertAsync("Sem rede", "não é possível realizar agendamentos sem conexão com a internet", "OK");
+                await _pageDialogService.DisplayAlertAsync("Sem rede", "não é possível fazer login sem conexão com a internet", "OK");
             }
         }
 
