@@ -10,7 +10,7 @@ namespace PrismBarbearia.Services
 {
     public class AzureService
     {
-        static readonly string AppUrl = "https://barbeariamobile.azurewebsites.net";
+        static readonly string AppUrl = "https://socialloginmaratonafred.azurewebsites.net";
 
         public MobileServiceClient Client { get; set; } = null;
         public static bool UseAuth { get; set; } = false;

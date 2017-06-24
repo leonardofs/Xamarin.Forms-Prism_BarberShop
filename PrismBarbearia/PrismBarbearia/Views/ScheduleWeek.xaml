@@ -14,8 +14,8 @@
                 <!--Estilos da página-->
                 <schedule:ViewHeaderStyle
                     BackgroundColor="DarkGreen"
-                    DayTextColor="#FFFFFF" 
-                    DateTextColor="#FFFFFF" 
+                    DayTextColor="White" 
+                    DateTextColor="White" 
                     DayTextStyle="Arial,12" 
                     DateTextStyle="Arial,12">
                 </schedule:ViewHeaderStyle>
@@ -46,8 +46,17 @@
 
             </schedule:SfSchedule.WorkWeekViewSettings>
 
+            <!--<schedule:SfSchedule.SelectionStyle>
+                <schedule:SelectionStyle 
+                   BackgroundColor="Blue" 
+                   BorderColor="Black" 
+                   BorderThickness="5" 
+                   BorderCornerRadius="5">
+                </schedule:SelectionStyle>
+            </schedule:SfSchedule.SelectionStyle> Customiza a seleção do horário sem botão -->
+
             <schedule:SfSchedule.SelectionView>
-                <Button BackgroundColor="#FF9800" Text="+NewEvent" TextColor="White"/>
+                <Button BackgroundColor="Green" Text="Novo" TextColor="White"/>
             </schedule:SfSchedule.SelectionView>
 
         </schedule:SfSchedule>
