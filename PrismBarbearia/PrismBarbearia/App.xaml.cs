@@ -26,7 +26,7 @@ namespace PrismBarbearia
             Container.RegisterTypeForNavigation<ContactPage>();
             Container.RegisterTypeForNavigation<SchedulesPage>();
             Container.RegisterTypeForNavigation<ServicesPage>();
-            Container.RegisterTypeForNavigation<ScheduleWeek>();
+            Container.RegisterTypeForNavigation<SchedulesWeekPage>();
         }
     }
 }
