@@ -8,7 +8,7 @@
 
     <ContentPage.Content>
 
-        <schedule:SfSchedule x:Name="schedule" ScheduleView ="WorkWeekView" ViewHeaderHeight="50" TimeInterval="30" FirstDayOfWeek="2" 
+        <schedule:SfSchedule x:Name="schedule" ScheduleView ="WorkWeekView" CellTapped="CellTapped"  ViewHeaderHeight="50" TimeInterval="30" FirstDayOfWeek="2" 
                              DataSource="{Binding EventsCollection}" >
 
             <schedule:SfSchedule.ViewHeaderStyle>
@@ -47,19 +47,20 @@
 
             </schedule:SfSchedule.WorkWeekViewSettings>
 
-            <!--<schedule:SfSchedule.SelectionStyle>
+            <schedule:SfSchedule.SelectionStyle>
                 <schedule:SelectionStyle 
                    BackgroundColor="Blue" 
                    BorderColor="Black" 
                    BorderThickness="5" 
                    BorderCornerRadius="5">
                 </schedule:SelectionStyle>
-            </schedule:SfSchedule.SelectionStyle> Customiza a seleção do horário sem botão -->
+            </schedule:SfSchedule.SelectionStyle>
 
-            <schedule:SfSchedule.SelectionView>
+            <!--<schedule:SfSchedule.SelectionView>
                 <Button BackgroundColor="Green" Text="Novo" TextColor="White"/>
-            </schedule:SfSchedule.SelectionView>
-
+            </schedule:SfSchedule.SelectionView> BOTÃO APARECE APENAS NO ANDROID -->
+            
+            <!--Define as variáveis do evento da ViewModel.cs-->
             <schedule:SfSchedule.AppointmentMapping>
                 <schedule:ScheduleAppointmentMapping
                     SubjectMapping="EventName" 
@@ -69,17 +70,17 @@
                 </schedule:ScheduleAppointmentMapping>
             </schedule:SfSchedule.AppointmentMapping>
 
-            
-                <!--<schedule:SfSchedule.AppointmentStyle>
-                    <schedule:AppointmentStyle BorderWidth="10" 
+
+            <schedule:SfSchedule.AppointmentStyle>
+                <schedule:AppointmentStyle BorderWidth="10" 
                 TextColor="White" 
                 BorderCornerRadius="10" 
                 TextSize="12"
-                BorderColor="DarkRed">
-                    </schedule:AppointmentStyle>
-                </schedule:SfSchedule.AppointmentStyle>-->
+                BorderColor="GreenYellow">
+                </schedule:AppointmentStyle>
+            </schedule:SfSchedule.AppointmentStyle>
 
-            </schedule:SfSchedule>
+        </schedule:SfSchedule>
 
     </ContentPage.Content>
     

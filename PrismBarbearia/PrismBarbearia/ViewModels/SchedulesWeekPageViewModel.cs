@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using PrismBarbearia.Models;
 using System;
 using PrismBarbearia.Views;
+using System.Diagnostics;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -23,7 +24,6 @@ namespace PrismBarbearia.ViewModels
         public SchedulesWeekPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             //-------------------------------------------------TESTES--------------------------------------------------//
-
             // Creating instance for custom appointment class
             BarberShopAppointment cortarCabelo = new BarberShopAppointment();
             BarberServices servico = new BarberServices();
@@ -56,12 +56,12 @@ namespace PrismBarbearia.ViewModels
             servico.Name = "pintar cabelo";
             pintarCabelo.EventName = servico.Name;
             pintarCabelo.Color = Color.Pink;
-            eventsCollection.Add(pintarCabelo);
+            eventsCollection.Add(pintarCabelo);         
         }
     }
 }
 
-/* private ScheduleAppointmentCollection scheduleAppointmentCollection;
+/* private ScheduleAppointmentCollection scheduleAppointmentCollection; GAMBIARRA PRA TER HORARIO DE ALMOCO NO ANDROID E COME PERFORMANCE '-'
        public ScheduleAppointmentCollection ScheduleAppointmentCollection
        {
            get { return scheduleAppointmentCollection; }
