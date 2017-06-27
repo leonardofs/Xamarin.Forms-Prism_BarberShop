@@ -8,7 +8,7 @@ using System.Net;
 
 namespace PrismBarbearia.Models
 {
-    class Repositorio
+    class Repository
     {
             /*
         public async Task<List<Servicos>> GetServicos()

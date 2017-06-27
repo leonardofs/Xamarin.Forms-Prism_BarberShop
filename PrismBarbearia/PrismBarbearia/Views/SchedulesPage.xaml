@@ -6,7 +6,7 @@
              Title="{Binding Title}"
              x:Class="PrismBarbearia.Views.SchedulesPage">
 
-    <StackLayout Padding="40" >
-        <Button Text="Cortar cabelo" Command="{Binding ScheduleWeekCommand}" TextColor="White" />
+    <StackLayout Padding="20" >
+        <Button Text="Cortar cabelo" Command="{Binding SchedulesWeekPageCommand}" BackgroundColor="DarkGreen" TextColor="White" />
     </StackLayout>
 </ContentPage>

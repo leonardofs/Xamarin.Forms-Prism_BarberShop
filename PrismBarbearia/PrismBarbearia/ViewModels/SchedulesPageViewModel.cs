@@ -13,7 +13,7 @@ namespace PrismBarbearia.ViewModels
         //servico de alertas
         IPageDialogService _pageDialogService;
 
-        public DelegateCommand ScheduleWeekCommand { get; private set; }
+        public DelegateCommand SchedulesWeekPageCommand { get; private set; }
         
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
@@ -24,14 +24,14 @@ namespace PrismBarbearia.ViewModels
 
             //instanciando servico de alertas
             _pageDialogService = pageDialogService;
-            ScheduleWeekCommand = new DelegateCommand(async () => await ExecuteScheduleWeekCommand());
+            SchedulesWeekPageCommand = new DelegateCommand(async () => await ExecuteSchedulesWeekPageCommand());
         }
 
-        private async Task ExecuteScheduleWeekCommand()
+        private async Task ExecuteSchedulesWeekPageCommand()
         {
             if (Settings.IsLoggedIn)
             {
-                    await _navigationService.NavigateAsync("ScheduleWeek", null, false);                
+                    await _navigationService.NavigateAsync("SchedulesWeekPage", null, false);                
             }
             else
             {
