@@ -8,7 +8,7 @@
 
     <ContentPage.Content>
 
-        <schedule:SfSchedule x:Name="schedule" ScheduleView ="WorkWeekView" CellTapped="CellTapped"  ViewHeaderHeight="50" TimeInterval="30" FirstDayOfWeek="2" 
+        <schedule:SfSchedule x:Name="schedule" ScheduleView ="WorkWeekView" CellTapped="schedule_CellTapped" ViewHeaderHeight="50" TimeInterval="30" FirstDayOfWeek="2" 
                              DataSource="{Binding EventsCollection}" >
 
             <schedule:SfSchedule.ViewHeaderStyle>

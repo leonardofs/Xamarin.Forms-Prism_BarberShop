@@ -2,7 +2,7 @@
 
 namespace PrismBarbearia.Models
 {
-    class User
+    public class User
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }

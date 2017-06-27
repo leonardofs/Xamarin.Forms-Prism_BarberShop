@@ -15,7 +15,11 @@
 
                 <Button Text="LogOut" IsVisible="{Binding IsVisibleLogOutButton}" Command="{Binding LogOutFacebookCommand}"
                 BackgroundColor="DarkRed" TextColor="White" />
-                
+
+                <Button Text="Editar conceito" IsVisible="{Binding IsVisibleAdminButtons}" BackgroundColor="Gray" TextColor="White"/>
+
+                <Button Text="Editar informações de contato" IsVisible="{Binding IsVisibleAdminButtons}" BackgroundColor="Gray" TextColor="White"/>
+
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

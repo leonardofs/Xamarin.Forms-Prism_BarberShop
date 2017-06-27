@@ -1,7 +1,5 @@
-﻿using PrismBarbearia.Models;
-using Syncfusion.SfSchedule.XForms;
+﻿using Syncfusion.SfSchedule.XForms;
 using System;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Xamarin.Forms;
 
@@ -18,11 +16,14 @@ namespace PrismBarbearia.Views
             workWeekLabelSettings.TimeLabelColor = Color.DarkGreen;
             workweekViewSettings.WorkWeekLabelSettings = workWeekLabelSettings;
             schedule.WorkWeekViewSettings = workweekViewSettings;
+            
+            schedule.CellTapped += schedule_CellTapped;
         }
-
-        public void CellTapped(object sender, DateTime dateTime/*, BarberShopAppointment pintarCabelo*/)
+        
+        public void schedule_CellTapped(object sender, CellTappedEventArgs args)
         {
-            Debug.WriteLine(dateTime);
-        }        
+            Debug.WriteLine(args.Datetime);
+        }      
+
     }
 }

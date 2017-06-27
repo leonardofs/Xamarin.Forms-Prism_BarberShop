@@ -7,6 +7,9 @@
              x:Class="PrismBarbearia.Views.SchedulesPage">
 
     <StackLayout Padding="20" >
-        <Button Text="Cortar cabelo" Command="{Binding SchedulesWeekPageCommand}" BackgroundColor="DarkGreen" TextColor="White" />
+        <Button Text="Ver agenda" Command="{Binding SchedulesWeekPageCommand}" BackgroundColor="DarkGreen" TextColor="White" IsVisible="{Binding IsVisibleAdminButtons}"/>
+
+        <Button Text="Cortar cabelo" BackgroundColor="DarkGreen" TextColor="White" IsVisible="{Binding IsVisibleUserButtons}"/>
+
     </StackLayout>
 </ContentPage>

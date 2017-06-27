@@ -6,7 +6,6 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using PrismBarbearia.Models;
 using System;
-using PrismBarbearia.Views;
 using System.Diagnostics;
 
 namespace PrismBarbearia.ViewModels
@@ -20,44 +19,53 @@ namespace PrismBarbearia.ViewModels
             set { SetProperty(ref eventsCollection, value); }
         }
 
+        public BarberServices servico;
+
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public SchedulesWeekPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            //-------------------------------------------------TESTES--------------------------------------------------//
-            // Creating instance for custom appointment class
-            BarberShopAppointment cortarCabelo = new BarberShopAppointment();
-            BarberServices servico = new BarberServices();
-            // Setting start time of an event
-            cortarCabelo.From = new DateTime(2017, 06, 28, 10, 0, 0);
-            // Setting end time of an event
-            cortarCabelo.To = cortarCabelo.From.AddHours(0.5);//30 minutos de duração
-            // Setting start time for an 
-            servico.Name = "cortar cabelo";
-            cortarCabelo.EventName = servico.Name;
-            // Setting color for an event
-            cortarCabelo.Color = Color.Green;
-            // Creating instance for collection of custom appointments
-            eventsCollection = new ObservableCollection<BarberShopAppointment>();
-            // Adding a custom appointment in CustomAppointmentCollection
-            eventsCollection.Add(cortarCabelo);
-            // Adding custom appointments in DataSource of SfSchedule       
+            //-------------------------------------------------TESTES--------------------------------------------------//                        
+            servico = new BarberServices();
+            EventsCollection = new ObservableCollection<BarberShopAppointment>();
 
-            BarberShopAppointment fazerBarba = new BarberShopAppointment();
-            fazerBarba.From = new DateTime(2017, 06, 29, 10, 0, 0);
-            fazerBarba.To = fazerBarba.From.AddHours(0.5);
-            servico.Name = "fazer barba";
-            fazerBarba.EventName = servico.Name;
-            fazerBarba.Color = Color.Blue;
-            eventsCollection.Add(fazerBarba);
+            cortarCabelo();
+            fazerBarba();
+            pintarCabelo();
+        }
 
+        public void pintarCabelo()
+        {
             BarberShopAppointment pintarCabelo = new BarberShopAppointment();
             pintarCabelo.From = new DateTime(2017, 06, 29, 11, 0, 0);
             pintarCabelo.To = pintarCabelo.From.AddHours(1);
             servico.Name = "pintar cabelo";
             pintarCabelo.EventName = servico.Name;
             pintarCabelo.Color = Color.Pink;
-            eventsCollection.Add(pintarCabelo);         
+            EventsCollection.Add(pintarCabelo);
         }
+
+        public void fazerBarba()
+        {
+            BarberShopAppointment fazerBarba = new BarberShopAppointment();
+            fazerBarba.From = new DateTime(2017, 06, 29, 10, 0, 0);
+            fazerBarba.To = fazerBarba.From.AddHours(0.5);
+            servico.Name = "fazer barba";
+            fazerBarba.EventName = servico.Name;
+            fazerBarba.Color = Color.Blue;
+            EventsCollection.Add(fazerBarba);
+        }
+
+        public void cortarCabelo()
+        {
+            BarberShopAppointment cortarCabelo = new BarberShopAppointment();
+            cortarCabelo.From = new DateTime(2017, 06, 28, 10, 0, 0);
+            cortarCabelo.To = cortarCabelo.From.AddHours(0.5);//30 minutos de duração
+            servico.Name = "cortar cabelo";
+            cortarCabelo.EventName = servico.Name;
+            cortarCabelo.Color = Color.Green;
+            EventsCollection.Add(cortarCabelo);
+        }
+
     }
 }
 

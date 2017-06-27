@@ -5,6 +5,7 @@ using Prism.Services;
 using System.Threading.Tasks;
 using PrismBarbearia.Services;
 using PrismBarbearia.Helpers;
+using System.Diagnostics;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -31,6 +32,20 @@ namespace PrismBarbearia.ViewModels
             set { SetProperty(ref isVisibleLogOutButton, value); }
         }
 
+        private bool isVisibleAdminButtons;
+        public bool IsVisibleAdminButtons
+        {
+            get { return isVisibleAdminButtons; }
+            set { SetProperty(ref isVisibleAdminButtons, value); }
+        }
+
+        private bool isVisibleUserButtons;
+        public bool IsVisibleUserButtons
+        {
+            get { return isVisibleUserButtons; }
+            set { SetProperty(ref isVisibleUserButtons, value); }
+        }
+        
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public MenuPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
             : base(navigationService)
@@ -39,11 +54,15 @@ namespace PrismBarbearia.ViewModels
 
             //instanciando servico de alertas
             _pageDialogService = pageDialogService;
-            IsVisibleLogInButton = true;
-            IsVisibleLogOutButton = false;
 
             Settings.AuthToken = string.Empty;
             Settings.UserId = string.Empty;
+
+            IsVisibleLogInButton = !Settings.IsLoggedIn;
+            IsVisibleLogOutButton = Settings.IsLoggedIn;
+            IsVisibleAdminButtons = Settings.IsAdmin;
+            IsVisibleUserButtons = !Settings.IsAdmin;
+
             azureService = Xamarin.Forms.DependencyService.Get<AzureService>();
             LoginFacebookCommand = new DelegateCommand(async () => await ExecuteLoginFacebookCommand());
             LogOutFacebookCommand = new DelegateCommand(async () => await ExecuteLogOutFacebookCommand());
@@ -63,11 +82,15 @@ namespace PrismBarbearia.ViewModels
                 IsBusy = false;
                 IsVisibleLogInButton = false;
                 IsVisibleLogOutButton = true;
+                if (Settings.IsAdmin)
+                    IsVisibleAdminButtons = true;
+                    IsVisibleUserButtons = false;
+
             }
             else //Se desconectado
             {
                 await _pageDialogService.DisplayAlertAsync("Sem rede", "não é possível fazer login sem conexão com a internet", "OK");
-            }
+            }            
         }
 
         private async Task ExecuteLogOutFacebookCommand()
@@ -78,6 +101,8 @@ namespace PrismBarbearia.ViewModels
                 Settings.UserId = string.Empty;
                 IsVisibleLogInButton = true;
                 IsVisibleLogOutButton = false;
+                IsVisibleAdminButtons = false;
+                IsVisibleUserButtons = true;
                 //TODO voltar para página inicial para fazer login
                 //if (está na pagina de serviços) entao await _navigationService.GoBackAsync();
             }

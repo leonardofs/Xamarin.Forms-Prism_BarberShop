@@ -27,5 +27,6 @@ namespace PrismBarbearia.Helpers
         }
 
         public static bool IsLoggedIn => !string.IsNullOrWhiteSpace(UserId);
+        public static bool IsAdmin => UserId == "sid:29640aeba7e2c9c56a0ca59a5b32e73b";
     }
 }

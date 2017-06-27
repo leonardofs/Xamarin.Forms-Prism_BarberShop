@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrismBarbearia.Models
 {
-    class BarberServices
+    public class BarberServices
     {
         public string Id { get; set; }
         public string Name { get; set; }
