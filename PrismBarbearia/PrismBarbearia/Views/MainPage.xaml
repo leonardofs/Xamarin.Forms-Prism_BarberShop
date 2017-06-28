@@ -5,7 +5,7 @@
             xmlns:local="clr-namespace:PrismBarbearia.Views"
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="PrismBarbearia.Views.MainPage"
-            Title="BARBEARIA 8-BALL"
+            Title="{Binding Title}"
             BarBackgroundColor="#43A047">
     
     

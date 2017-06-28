@@ -11,61 +11,36 @@ namespace PrismBarbearia.ViewModels
 {
     public class MenuPageViewModel : BaseViewModel 
     {
-        //servico de alertas
-        IPageDialogService _pageDialogService;
-        //servico do azure
-        AzureService azureService;
-        public DelegateCommand LoginFacebookCommand { get; private set; }
-        public DelegateCommand LogOutFacebookCommand { get; private set; }
+        protected AzureService azureService;
 
-        private bool isVisibleLogInButton;
-        public bool IsVisibleLogInButton
+        public DelegateCommand LoginFacebookCommand { get; set; }
+        public DelegateCommand LogOutFacebookCommand { get; set; }
+
+        private string privilegio;
+        public string Privilegio
         {
-            get { return isVisibleLogInButton; }
-            set { SetProperty(ref isVisibleLogInButton, value); }
+            get { return privilegio; }
+            set { SetProperty(ref privilegio, value); }
         }
 
-        private bool isVisibleLogOutButton;
-        public bool IsVisibleLogOutButton
-        {
-            get { return isVisibleLogOutButton; }
-            set { SetProperty(ref isVisibleLogOutButton, value); }
-        }
-
-        private bool isVisibleAdminButtons;
-        public bool IsVisibleAdminButtons
-        {
-            get { return isVisibleAdminButtons; }
-            set { SetProperty(ref isVisibleAdminButtons, value); }
-        }
-
-        private bool isVisibleUserButtons;
-        public bool IsVisibleUserButtons
-        {
-            get { return isVisibleUserButtons; }
-            set { SetProperty(ref isVisibleUserButtons, value); }
-        }
-        
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
-        public MenuPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
-            : base(navigationService)
+        public MenuPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            Title = "Agendar";
-
-            //instanciando servico de alertas
-            _pageDialogService = pageDialogService;
-
-            Settings.AuthToken = string.Empty;
-            Settings.UserId = string.Empty;
-
-            IsVisibleLogInButton = !Settings.IsLoggedIn;
-            IsVisibleLogOutButton = Settings.IsLoggedIn;
-            IsVisibleAdminButtons = Settings.IsAdmin;
-            IsVisibleUserButtons = !Settings.IsAdmin;
-
             azureService = Xamarin.Forms.DependencyService.Get<AzureService>();
+
             LoginFacebookCommand = new DelegateCommand(async () => await ExecuteLoginFacebookCommand());
             LogOutFacebookCommand = new DelegateCommand(async () => await ExecuteLogOutFacebookCommand());
+
+            Privilegio = "Deslogado";
+            
+            if (Settings.IsLoggedIn)
+            {
+                if (Settings.IsAdmin)
+                    Privilegio = "Barbeiro";
+                else
+                    Privilegio = "Cliente";
+            }
+            
         }
 
         private async Task ExecuteLoginFacebookCommand()
@@ -81,16 +56,26 @@ namespace PrismBarbearia.ViewModels
                 }
                 IsBusy = false;
                 IsVisibleLogInButton = false;
-                IsVisibleLogOutButton = true;
+                IsVisibleLogOutButton = true;               
+
                 if (Settings.IsAdmin)
+                {
                     IsVisibleAdminButtons = true;
                     IsVisibleUserButtons = false;
+                    Privilegio = "Barbeiro";
+                }
+                else
+                {
+                    IsVisibleAdminButtons = false;
+                    IsVisibleUserButtons = true;
+                    Privilegio = "Cliente";
+                }
 
             }
             else //Se desconectado
             {
                 await _pageDialogService.DisplayAlertAsync("Sem rede", "não é possível fazer login sem conexão com a internet", "OK");
-            }            
+            }
         }
 
         private async Task ExecuteLogOutFacebookCommand()
@@ -103,6 +88,7 @@ namespace PrismBarbearia.ViewModels
                 IsVisibleLogOutButton = false;
                 IsVisibleAdminButtons = false;
                 IsVisibleUserButtons = true;
+                Privilegio = "Deslogado";
                 //TODO voltar para página inicial para fazer login
                 //if (está na pagina de serviços) entao await _navigationService.GoBackAsync();
             }
@@ -117,5 +103,6 @@ namespace PrismBarbearia.ViewModels
 
             return azureService.LoginAsync();
         }
+
     }
 }

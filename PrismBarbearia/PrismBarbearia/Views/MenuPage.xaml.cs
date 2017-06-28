@@ -6,9 +6,7 @@ namespace PrismBarbearia.Views
     {
         public MenuPage()
         {
-            InitializeComponent();
-           
-
+            InitializeComponent();          
         }
     }
 }

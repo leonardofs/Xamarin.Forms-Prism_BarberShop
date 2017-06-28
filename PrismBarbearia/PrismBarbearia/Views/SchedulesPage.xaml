@@ -2,14 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             Title="{Binding Title}"
-             x:Class="PrismBarbearia.Views.SchedulesPage">
+             prism:ViewModelLocator.AutowireViewModel="True"             
+             x:Class="PrismBarbearia.Views.SchedulesPage"
+             Title="{Binding Title}">
 
     <StackLayout Padding="20" >
-        <Button Text="Ver agenda" Command="{Binding SchedulesWeekPageCommand}" BackgroundColor="DarkGreen" TextColor="White" IsVisible="{Binding IsVisibleAdminButtons}"/>
+        <Button Text="Ver agenda" Command="{Binding SchedulesWeekPageCommand}" BackgroundColor="DarkGreen" TextColor="White" 
+                IsVisible="{Binding IsVisibleAdminButtons}" />
 
-        <Button Text="Cortar cabelo" BackgroundColor="DarkGreen" TextColor="White" IsVisible="{Binding IsVisibleUserButtons}"/>
+        <Button Text="Cortar cabelo" BackgroundColor="DarkGreen" TextColor="White" 
+                IsVisible="{Binding IsVisibleUserButtons}"/>
 
     </StackLayout>
 </ContentPage>

@@ -1,19 +1,18 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class MainPageViewModel : BindableBase
+    public class MainPageViewModel : BaseViewModel
     {    
-        protected INavigationService _navigationService { get; }
-
-        public MainPageViewModel(INavigationService navigationService) 
+        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            _navigationService = navigationService;
+            Title = "BARBEARIA 8-BALL";
         }
     }
 }

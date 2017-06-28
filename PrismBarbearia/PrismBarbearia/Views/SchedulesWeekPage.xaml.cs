@@ -2,11 +2,14 @@
 using System;
 using System.Diagnostics;
 using Xamarin.Forms;
+using PrismBarbearia.ViewModels;
 
 namespace PrismBarbearia.Views
 {
     public partial class SchedulesWeekPage : ContentPage
     {
+        private SchedulesWeekPageViewModel ViewModel => BindingContext as SchedulesWeekPageViewModel;
+
         public SchedulesWeekPage()
         {
             InitializeComponent();
@@ -16,13 +19,12 @@ namespace PrismBarbearia.Views
             workWeekLabelSettings.TimeLabelColor = Color.DarkGreen;
             workweekViewSettings.WorkWeekLabelSettings = workWeekLabelSettings;
             schedule.WorkWeekViewSettings = workweekViewSettings;
-            
-            schedule.CellTapped += schedule_CellTapped;
         }
         
         public void schedule_CellTapped(object sender, CellTappedEventArgs args)
         {
-            Debug.WriteLine(args.Datetime);
+            //ViewModel.novoEventoPintarCabelo(args.Datetime);
+            ViewModel.cancelarEvento(args.Appointment);
         }      
 
     }

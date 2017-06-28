@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using PrismBarbearia.Models;
 using System;
 using System.Diagnostics;
+using Prism.Services;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -22,26 +23,31 @@ namespace PrismBarbearia.ViewModels
         public BarberServices servico;
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
-        public SchedulesWeekPageViewModel(INavigationService navigationService) : base(navigationService)
+        public SchedulesWeekPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
+            Title = "Agenda";
             //-------------------------------------------------TESTES--------------------------------------------------//                        
             servico = new BarberServices();
-            EventsCollection = new ObservableCollection<BarberShopAppointment>();
-
+            EventsCollection = new ObservableCollection<BarberShopAppointment>();         
+            
             cortarCabelo();
             fazerBarba();
-            pintarCabelo();
         }
 
-        public void pintarCabelo()
+        public void novoEventoPintarCabelo(DateTime dateTime)
         {
             BarberShopAppointment pintarCabelo = new BarberShopAppointment();
-            pintarCabelo.From = new DateTime(2017, 06, 29, 11, 0, 0);
+            pintarCabelo.From = dateTime;
             pintarCabelo.To = pintarCabelo.From.AddHours(1);
             servico.Name = "pintar cabelo";
             pintarCabelo.EventName = servico.Name;
             pintarCabelo.Color = Color.Pink;
             EventsCollection.Add(pintarCabelo);
+        }
+
+        public void cancelarEvento(object evento)
+        {            
+            EventsCollection.Remove(evento as BarberShopAppointment);
         }
 
         public void fazerBarba()
