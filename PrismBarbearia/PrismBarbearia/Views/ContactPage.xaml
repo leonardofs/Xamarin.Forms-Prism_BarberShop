@@ -5,13 +5,13 @@
              prism:ViewModelLocator.AutowireViewModel="True"             
              x:Class="PrismBarbearia.Views.ContactPage"
              Title="{Binding Title}">
-    
-        
-        <ScrollView Padding="20">
+
+
+    <ScrollView Padding="20">
 
         <Label Text="Pagina de Contato"/>
 
-        </ScrollView>
-    
-       
+    </ScrollView>
+
+
 </ContentPage>

@@ -1,13 +1,10 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using Syncfusion.SfSchedule.XForms;
+﻿using Prism.Navigation;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using PrismBarbearia.Models;
 using System;
-using System.Diagnostics;
 using Prism.Services;
+using System.Threading.Tasks;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -20,34 +17,37 @@ namespace PrismBarbearia.ViewModels
             set { SetProperty(ref eventsCollection, value); }
         }
 
-        public BarberServices servico;
+        public BarberService servico;
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public SchedulesWeekPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            Title = "Agenda";
+            Title = "AGENDA";
             //-------------------------------------------------TESTES--------------------------------------------------//                        
-            servico = new BarberServices();
-            EventsCollection = new ObservableCollection<BarberShopAppointment>();         
-            
+            servico = new BarberService();
+            EventsCollection = new ObservableCollection<BarberShopAppointment>();
+
             cortarCabelo();
             fazerBarba();
         }
 
-        public void novoEventoPintarCabelo(DateTime dateTime)
+        public async void novoEventoAsync(DateTime dateTime)
         {
-            BarberShopAppointment pintarCabelo = new BarberShopAppointment();
+            await _navigationService.NavigateAsync("ServicesPage", useModalNavigation: false);
+            /*BarberShopAppointment pintarCabelo = new BarberShopAppointment();
             pintarCabelo.From = dateTime;
             pintarCabelo.To = pintarCabelo.From.AddHours(1);
             servico.Name = "pintar cabelo";
             pintarCabelo.EventName = servico.Name;
             pintarCabelo.Color = Color.Pink;
-            EventsCollection.Add(pintarCabelo);
+            EventsCollection.Add(pintarCabelo);*/
         }
 
-        public void cancelarEvento(object evento)
-        {            
-            EventsCollection.Remove(evento as BarberShopAppointment);
+        public async Task cancelarEventoAsync(object evento)
+        {
+            bool r = await _pageDialogService.DisplayAlertAsync("Cancelar evento", "Deseja cancelar este evento?", "Sim", "Não");
+
+            if (r) EventsCollection.Remove(evento as BarberShopAppointment);
         }
 
         public void fazerBarba()

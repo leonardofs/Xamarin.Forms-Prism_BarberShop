@@ -2,16 +2,39 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:PrismBarbearia.Controls;assembly:PrismBarbearia"
              prism:ViewModelLocator.AutowireViewModel="True"             
              x:Class="PrismBarbearia.Views.SchedulesPage"
              Title="{Binding Title}">
 
-    <StackLayout Padding="20" >
-        <Button Text="Ver agenda" Command="{Binding SchedulesWeekPageCommand}" BackgroundColor="DarkGreen" TextColor="White" 
-                IsVisible="{Binding IsVisibleAdminButtons}" />
+    <StackLayout>
+        <AbsoluteLayout>
 
-        <Button Text="Cortar cabelo" BackgroundColor="DarkGreen" TextColor="White" 
-                IsVisible="{Binding IsVisibleUserButtons}"/>
+            <Button Margin="6,0,3,6" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"
+                    AbsoluteLayout.LayoutBounds="0,1,.5,.12" AbsoluteLayout.LayoutFlags="All" />
 
+            <Button Margin="3,0,6,6" Text="Agendar" TextColor="White" BackgroundColor="DarkGreen"
+                    AbsoluteLayout.LayoutBounds="1,1,.5,.12" AbsoluteLayout.LayoutFlags="All" />
+            <!--x, y, width, height-->
+
+
+            <controls:MyListView ItemsSource="{Binding BarberServicesList}" ItemTappedCommand="{Binding BarberServiceCommand}" 
+                             BackgroundColor="Red" AbsoluteLayout.LayoutBounds=".5,.1,1,.85" AbsoluteLayout.LayoutFlags="All">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <AbsoluteLayout Padding="4,2,4,2">
+                                <Label Text="{Binding Name}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" HorizontalTextAlignment="Center"
+                                           AbsoluteLayout.LayoutBounds="0,.5,.5,1" AbsoluteLayout.LayoutFlags="All" />
+
+                                <Label Text="{Binding Price}" TextColor="White" BackgroundColor="#43A047" Font="Large" HorizontalTextAlignment="Center"
+                                           AbsoluteLayout.LayoutBounds="1,.5,.5,1" AbsoluteLayout.LayoutFlags="All" />
+                            </AbsoluteLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </controls:MyListView>
+
+        </AbsoluteLayout>
     </StackLayout>
 </ContentPage>

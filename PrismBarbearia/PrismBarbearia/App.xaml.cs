@@ -1,6 +1,6 @@
 ﻿using Prism.Unity;
-using PrismBarbearia.Views;
 using Xamarin.Forms;
+using PrismBarbearia.Views;
 
 namespace PrismBarbearia
 {
@@ -8,7 +8,7 @@ namespace PrismBarbearia
     {
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
-            InitializeComponent();       
+            InitializeComponent();
         }
 
         protected override void OnInitialized()
@@ -18,7 +18,7 @@ namespace PrismBarbearia
 
         protected override void RegisterTypes()
         {
-            Container.RegisterTypeForNavigation<NavigationPage>("Navigation");
+            Container.RegisterTypeForNavigation<Navigation>();
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<MenuPage>();
             Container.RegisterTypeForNavigation<MainPage>();
@@ -27,6 +27,7 @@ namespace PrismBarbearia
             Container.RegisterTypeForNavigation<SchedulesPage>();
             Container.RegisterTypeForNavigation<ServicesPage>();
             Container.RegisterTypeForNavigation<SchedulesWeekPage>();
+            Container.RegisterTypeForNavigation<Navigation>();
         }
     }
 }

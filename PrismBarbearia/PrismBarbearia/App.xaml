@@ -2,53 +2,65 @@
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                         xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+                        xmlns:local="clr-namespace:PrismBarbearia"
                         x:Class="PrismBarbearia.App">
-  
-    <Application.Resources>
-      
-	    <ResourceDictionary>
-        
-        <!-- PALETA DE CORES -->
-        
-        <Color x:Key="StatusBarColor">#1B5E20</Color>
-        <Color x:Key="PrimaryColor">#43A047</Color>
-        <Color x:Key="BackgroundColor">#381C784</Color>
-        <Color x:Key="SecondaryColor">#FFA726</Color>
 
-        <!-- ESTILOS -->
-        
-        <Style x:Key="TitleLabel" TargetType="Label">
-          <Setter Property="TextColor" Value="Black" />
-          <Setter Property="FontSize" Value="10" />
-          <Setter Property="FontFamily" Value="Calibri" />
-          <Setter Property="FontAttributes" Value="Bold" />
-        </Style>
-        
-        <Style x:Key="Label1" TargetType="Label">
-          <Setter Property="TextColor" Value="Black" />
-          <Setter Property="FontSize" Value="10" />
-          <Setter Property="FontFamily" Value="Calibri" />
-        </Style>
-        
-        <Style  x:Key="LoginButton" TargetType="Button">
-          <Setter Property="BackgroundColor" Value="DarkBlue" />
-          <Setter Property="TextColor" Value="White" />
-          <Setter Property="Image" Value="facebook.png"/>
-        </Style>
-        
-        <Style x:Key="NavigationPage" TargetType="NavigationPage">
-          <Setter Property="BarBackgroundColor" Value="{StaticResource StatusBarColor}"/>
-          <Setter Property="BarTextColor" Value="White"/>
-        </Style>
-        
-        <Style x:Key="TabbedPage" TargetType="TabbedPage">
-          <Setter Property="BarBackgroundColor" Value="{StaticResource StatusBarColor}"/>
-          <Setter Property="BarTextColor" Value="White"/>
-        </Style>
-        
+  <Application.Resources>
 
-       </ResourceDictionary>
-      
-     </Application.Resources>
+    <ResourceDictionary>
+
+      <!-- PALETA DE CORES -->
+
+      <Color x:Key="StatusBarColor">#1B5E20</Color>
+      <Color x:Key="PrimaryColor">#43A047</Color>
+      <Color x:Key="BackgroundColor">#381C784</Color>
+      <Color x:Key="SecondaryColor">#FFA726</Color>
+
+      <!-- ESTILOS -->
+
+      <Style x:Key="ButtonGradient" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Blue">
+          <!--<Setter.Value>
+              <LinearGradientBrush>
+                <GradientStop Color="Blue" Offset="0"/>
+                <GradientStop Color="DarkBlue" Offset="1"/>
+              </LinearGradientBrush>
+            </Setter.Value>-->
+        </Setter>
+      </Style>
+
+      <Style x:Key="TitleLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="FontFamily" Value="Calibri" />
+        <Setter Property="FontAttributes" Value="Bold" />
+      </Style>
+
+      <Style x:Key="Label1" TargetType="Label">
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="FontFamily" Value="Calibri" />
+      </Style>
+
+      <Style  x:Key="LoginButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="DarkBlue" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="Image" Value="facebook.png"/>
+      </Style>
+
+      <Style x:Key="NavigationPage" TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource StatusBarColor}"/>
+        <Setter Property="BarTextColor" Value="White"/>
+      </Style>
+
+      <Style x:Key="TabbedPage" TargetType="TabbedPage">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource StatusBarColor}"/>
+        <Setter Property="BarTextColor" Value="White"/>
+      </Style>
+
+
+    </ResourceDictionary>
+
+  </Application.Resources>
 
 </prism:PrismApplication>

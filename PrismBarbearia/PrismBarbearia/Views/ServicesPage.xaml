@@ -2,12 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                xmlns:controls="clr-namespace:PrismBarbearia.Controls;assembly:PrismBarbearia"
                 prism:ViewModelLocator.AutowireViewModel="True"
                 x:Class="PrismBarbearia.Views.ServicesPage"
                 Title="{Binding Title}">
-    
-    <StackLayout Padding="20">
-        <Label Text="LISTA DE SERVIÇOS"/>
-    </StackLayout>
-    
+
+
+    <AbsoluteLayout>
+        <!--x, y, width, height-->
+
+        <Button Margin="6,0,3,6" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"
+                    AbsoluteLayout.LayoutBounds="0,1,.5,.1" AbsoluteLayout.LayoutFlags="All" />
+
+        <Button Margin="3,0,6,6" Text="Agendar" TextColor="White" BackgroundColor="DarkGreen"
+                    AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" />
+
+        <controls:MyListView ItemsSource="{Binding BarberServicesList}" ItemTappedCommand="{Binding BarberServiceCommand}" 
+                             BackgroundColor="Red" AbsoluteLayout.LayoutBounds=".5,.1,1,.85" AbsoluteLayout.LayoutFlags="All">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </controls:MyListView>
+
+    </AbsoluteLayout>
+
 </ContentPage>

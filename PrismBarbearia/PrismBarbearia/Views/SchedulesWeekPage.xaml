@@ -9,7 +9,7 @@
 
     <ContentPage.Content>
 
-        <schedule:SfSchedule x:Name="schedule" ScheduleView ="WorkWeekView" CellTapped="schedule_CellTapped" ViewHeaderHeight="50" TimeInterval="30" FirstDayOfWeek="2" 
+        <schedule:SfSchedule x:Name="schedule" ScheduleView ="WorkWeekView" CellTapped="CellTappedAsync" ViewHeaderHeight="50" TimeInterval="30" FirstDayOfWeek="2" 
                              DataSource="{Binding EventsCollection}" >
 
             <schedule:SfSchedule.ViewHeaderStyle>
@@ -35,7 +35,7 @@
                         VerticalLineColor="DarkGreen"                        
                         NonWorkingHoursTimeSlotColor="Red"
                         NonWorkingHoursTimeSlotBorderColor="DarkRed" >
-                
+
                     <schedule:WorkWeekViewSettings.NonAccessibleBlocks>
                         <!--<schedule:NonAccessibleBlock                                 
                                 StartTime="11" 
@@ -60,7 +60,7 @@
             <!--<schedule:SfSchedule.SelectionView>
                 <Button BackgroundColor="Green" Text="Novo" TextColor="White"/>
             </schedule:SfSchedule.SelectionView> BOTÃO APARECE APENAS NO ANDROID -->
-            
+
             <!--Define as variáveis do evento da ViewModel.cs-->
             <schedule:SfSchedule.AppointmentMapping>
                 <schedule:ScheduleAppointmentMapping
@@ -84,5 +84,5 @@
         </schedule:SfSchedule>
 
     </ContentPage.Content>
-    
+
 </ContentPage>

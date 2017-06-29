@@ -7,10 +7,9 @@
             x:Class="PrismBarbearia.Views.MainPage"
             Title="{Binding Title}"
             BarBackgroundColor="#43A047">
-    
-    
+
     <TabbedPage.Children>
-          
+
         <local:AboutPage />
 
         <local:ContactPage />
@@ -18,5 +17,5 @@
         <local:SchedulesPage />
 
     </TabbedPage.Children>
-    
+
 </TabbedPage>

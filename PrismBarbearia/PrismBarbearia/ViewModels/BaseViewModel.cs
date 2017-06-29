@@ -32,54 +32,15 @@ namespace PrismBarbearia.ViewModels
             get { return !IsBusy; }
         }
 
-        private bool isVisibleLogInButton;
-        public bool IsVisibleLogInButton
-        {
-            get { return isVisibleLogInButton; }
-            set { SetProperty(ref isVisibleLogInButton, value); }
-        }
-
-        private bool isVisibleLogOutButton;
-        public bool IsVisibleLogOutButton
-        {
-            get { return isVisibleLogOutButton; }
-            set { SetProperty(ref isVisibleLogOutButton, value); }
-        }
-
-        private bool isVisibleAdminButtons;
-        public bool IsVisibleAdminButtons
-        {
-            get { return isVisibleAdminButtons; }
-            set { SetProperty(ref isVisibleAdminButtons, value); }
-        }
-
-        private bool isVisibleUserButtons;
-        public bool IsVisibleUserButtons
-        {
-            get { return isVisibleUserButtons; }
-            set { SetProperty(ref isVisibleUserButtons, value); }
-        }
-
         protected INavigationService _navigationService { get; }
-        protected IPageDialogService _pageDialogService { get; }        
+        protected IPageDialogService _pageDialogService { get; }
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public BaseViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
         {
             _navigationService = navigationService;
             _pageDialogService = pageDialogService;
-
-            if (!CrossConnectivity.Current.IsConnected)
-            {
-                Settings.AuthToken = string.Empty;
-                Settings.UserId = string.Empty;
-            }
-
-            IsVisibleAdminButtons = Settings.IsAdmin;
-            IsVisibleUserButtons = !Settings.IsAdmin;
-            IsVisibleLogInButton = !Settings.IsLoggedIn;
-            IsVisibleLogOutButton = Settings.IsLoggedIn;            
-        }        
+        }
 
         public virtual void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -92,6 +53,6 @@ namespace PrismBarbearia.ViewModels
         public virtual void OnNavigatingTo(NavigationParameters parameters)
         {
         }
-        
+
     }
 }

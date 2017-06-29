@@ -1,36 +1,30 @@
-﻿using Prism.Commands;
-using Prism.Navigation;
-using Plugin.Connectivity;
+﻿using Prism.Navigation;
 using Prism.Services;
-using System.Threading.Tasks;
-using PrismBarbearia.Services;
-using PrismBarbearia.Helpers;
+using PrismBarbearia.Models;
+using System.Collections.ObjectModel;
 
 namespace PrismBarbearia.ViewModels
 {
     public class SchedulesPageViewModel : BaseViewModel
     {
-
-        public DelegateCommand SchedulesWeekPageCommand { get; private set; }        
+        public ObservableCollection<BarberService> BarberServicesList { get; }
+        public BarberService cortarCabelo;
+        public BarberService fazerBarba;
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public SchedulesPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            Title = "Agendar";
+            Title = "AGENDAR";
 
-            SchedulesWeekPageCommand = new DelegateCommand(async () => await ExecuteSchedulesWeekPageCommand());
-        }
+            cortarCabelo = new BarberService();
+            cortarCabelo.Name = "Cortar cabelo";
+            cortarCabelo.Price = "20,00";
 
-        private async Task ExecuteSchedulesWeekPageCommand()
-        {            
-            if (Settings.IsLoggedIn)
-            {
-                await _navigationService.NavigateAsync("SchedulesWeekPage", null, false);
-            }
-            else
-            {
-                await _pageDialogService.DisplayAlertAsync("Fazer login", "não é possível realizar agendamentos sem antes ter feito login", "OK");
-            }
+            fazerBarba = new BarberService();
+            fazerBarba.Name = "Fazer barba";
+            fazerBarba.Price = "10,00";
+
+            BarberServicesList = new ObservableCollection<BarberService> { cortarCabelo, fazerBarba };
         }
 
     }

@@ -5,17 +5,27 @@
                   xmlns:local="clr-namespace:PrismBarbearia.Views"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="PrismBarbearia.Views.MenuPage">
-    
+
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu" Padding="20" BackgroundColor="#1B5E20">
+        <ContentPage Title="MENU" Padding="20" BackgroundColor="#1B5E20">
             <StackLayout>
                 <Label Text="{Binding Privilegio}" TextColor="White" HorizontalOptions="Center"/>
 
-                <Button Text="Entrar com facebook" Image="facebook.png" IsVisible="{Binding IsVisibleLogInButton}" Command="{Binding LoginFacebookCommand}" 
-                BackgroundColor="DarkBlue" TextColor="White" />
+                <Button Text="Entrar com facebook" IsVisible="{Binding IsVisibleLogInButton}" Command="{Binding LoginFacebookCommand}" 
+                        BackgroundColor="DarkBlue" TextColor="White" HeightRequest="75">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource" Android="facebook.png" WinPhone="Assets/facebook.png" iOS="Resources/facebook.png"/>
+                    </Button.Image>
+                </Button>
 
                 <Button Text="LogOut" IsVisible="{Binding IsVisibleLogOutButton}" Command="{Binding LogOutFacebookCommand}"
                 BackgroundColor="DarkRed" TextColor="White" />
+
+                <Button Text="Agenda" Command="{Binding SchedulesWeekPageCommand}" BackgroundColor="Green" TextColor="White" 
+                        IsVisible="{Binding IsVisibleAdminButtons}"/>
+
+                <Button Text="Página inicial" Command="{Binding MainPageCommand}" BackgroundColor="Green" TextColor="White" 
+                        IsVisible="{Binding IsVisibleMainPageButton}"/>
 
                 <Button Text="Editar conceito" IsVisible="{Binding IsVisibleAdminButtons}" BackgroundColor="Gray" TextColor="White"/>
 
@@ -24,10 +34,10 @@
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
-    
-    <!--<MasterDetailPage.Detail>
 
-            <local:MainPage/>
+    <MasterDetailPage.Detail>
 
-    </MasterDetailPage.Detail>-->
+        <local:MainPage/>
+
+    </MasterDetailPage.Detail>
 </MasterDetailPage>

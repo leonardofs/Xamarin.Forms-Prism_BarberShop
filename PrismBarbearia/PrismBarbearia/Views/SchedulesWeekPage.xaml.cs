@@ -1,8 +1,7 @@
 ﻿using Syncfusion.SfSchedule.XForms;
-using System;
-using System.Diagnostics;
 using Xamarin.Forms;
 using PrismBarbearia.ViewModels;
+using System.Diagnostics;
 
 namespace PrismBarbearia.Views
 {
@@ -20,12 +19,20 @@ namespace PrismBarbearia.Views
             workweekViewSettings.WorkWeekLabelSettings = workWeekLabelSettings;
             schedule.WorkWeekViewSettings = workweekViewSettings;
         }
-        
-        public void schedule_CellTapped(object sender, CellTappedEventArgs args)
+
+        private async void CellTappedAsync(object sender, CellTappedEventArgs args)
         {
-            //ViewModel.novoEventoPintarCabelo(args.Datetime);
-            ViewModel.cancelarEvento(args.Appointment);
-        }      
+            if (args.Appointment == null)
+            {
+                ViewModel.novoEventoAsync(args.Datetime);
+                Debug.WriteLine(args.Datetime);
+            }
+            else
+            {
+                await ViewModel.cancelarEventoAsync(args.Appointment);
+            }
+
+        }
 
     }
 }
