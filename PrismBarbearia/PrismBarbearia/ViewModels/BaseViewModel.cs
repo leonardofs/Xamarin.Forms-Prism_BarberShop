@@ -10,7 +10,7 @@ using PrismBarbearia.Services;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class BaseViewModel : BindableBase, INavigationAware
+    public class BaseViewModel : BindableBase
     {
 
         private string _title;

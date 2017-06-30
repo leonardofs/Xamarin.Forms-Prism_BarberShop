@@ -2,9 +2,9 @@
 
 namespace PrismBarbearia.Views
 {
-    public partial class Navigation : NavigationPage
+    public partial class MyNavigationPage : NavigationPage
     {
-        public Navigation()
+        public MyNavigationPage()
         {
             InitializeComponent();
         }

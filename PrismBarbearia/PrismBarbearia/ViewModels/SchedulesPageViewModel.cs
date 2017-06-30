@@ -10,6 +10,7 @@ namespace PrismBarbearia.ViewModels
         public ObservableCollection<BarberService> BarberServicesList { get; }
         public BarberService cortarCabelo;
         public BarberService fazerBarba;
+        public BarberService pintarCabelo;
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public SchedulesPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
@@ -24,7 +25,11 @@ namespace PrismBarbearia.ViewModels
             fazerBarba.Name = "Fazer barba";
             fazerBarba.Price = "10,00";
 
-            BarberServicesList = new ObservableCollection<BarberService> { cortarCabelo, fazerBarba };
+            pintarCabelo = new BarberService();
+            pintarCabelo.Name = "Pintar cabelo";
+            pintarCabelo.Price = "30,00";
+
+            BarberServicesList = new ObservableCollection<BarberService> { cortarCabelo, fazerBarba, pintarCabelo };
         }
 
     }

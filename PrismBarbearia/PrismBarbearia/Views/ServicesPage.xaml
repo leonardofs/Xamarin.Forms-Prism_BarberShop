@@ -18,7 +18,7 @@
                     AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" />
 
         <controls:MyListView ItemsSource="{Binding BarberServicesList}" ItemTappedCommand="{Binding BarberServiceCommand}" 
-                             BackgroundColor="Red" AbsoluteLayout.LayoutBounds=".5,.1,1,.85" AbsoluteLayout.LayoutFlags="All">
+                             AbsoluteLayout.LayoutBounds=".5,.1,1,.85" AbsoluteLayout.LayoutFlags="All">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

@@ -145,14 +145,14 @@ namespace PrismBarbearia.ViewModels
 
         private async Task ExecuteSchedulesWeekPageCommand()
         {
-            await _navigationService.NavigateAsync("Navigation/SchedulesWeekPage", useModalNavigation:false);
+            await _navigationService.NavigateAsync("MyNavigationPage/SchedulesWeekPage", useModalNavigation: false);
             IsVisibleAdminButtons = !Settings.IsAdmin;
             IsVisibleMainPageButton = true;
         }
 
         private async Task ExecuteMainPageCommand()
         {
-            await _navigationService.NavigateAsync("Navigation/MainPage", useModalNavigation: false);
+            await _navigationService.NavigateAsync("MyNavigationPage/MainPage", useModalNavigation: false);
             IsVisibleAdminButtons = Settings.IsAdmin;
             IsVisibleMainPageButton = false;
         }

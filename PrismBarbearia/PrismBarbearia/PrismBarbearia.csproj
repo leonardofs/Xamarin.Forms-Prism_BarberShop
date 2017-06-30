@@ -54,6 +54,7 @@
     <Compile Include="ViewModels\ContactPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MenuPageViewModel.cs" />
+    <Compile Include="ViewModels\MyNavigationPageViewModel.cs" />
     <Compile Include="ViewModels\SchedulesPageViewModel.cs" />
     <Compile Include="ViewModels\SchedulesWeekPageViewModel.cs" />
     <Compile Include="ViewModels\ServicesPageViewModel.cs" />
@@ -69,8 +70,8 @@
     <Compile Include="Views\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Navigation.xaml.cs">
-      <DependentUpon>Navigation.xaml</DependentUpon>
+    <Compile Include="Views\MyNavigationPage.xaml.cs">
+      <DependentUpon>MyNavigationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SchedulesPage.xaml.cs">
       <DependentUpon>SchedulesPage.xaml</DependentUpon>
@@ -202,7 +203,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Navigation.xaml">
+    <EmbeddedResource Include="Views\MyNavigationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
