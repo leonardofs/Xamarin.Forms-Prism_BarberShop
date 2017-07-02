@@ -3,38 +3,79 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:controls="clr-namespace:PrismBarbearia.Controls;assembly:PrismBarbearia"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
              prism:ViewModelLocator.AutowireViewModel="True"             
              x:Class="PrismBarbearia.Views.SchedulesPage"
              Title="{Binding Title}">
 
-    <StackLayout>
-        <AbsoluteLayout>
+    <syncfusion:SfListView x:Name="listView" 
+                           ItemsSource="{Binding BarberServicesList}"
+                           ItemSize="75"                           
+                           ItemSpacing="0,0,0,0"
+                           SelectionMode="Single"
+                           SelectionGesture="Tap"
+                           SelectionBackgroundColor="#FFA726"
+                           Orientation="Vertical"
+                           AutoFitMode="None"
+                           HeaderSize="80" 
+                           FooterSize="80"
+                           IsStickyHeader="True" 
+                           IsStickyFooter="True">
 
-            <Button Margin="6,0,3,6" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"
-                    AbsoluteLayout.LayoutBounds="0,1,.5,.12" AbsoluteLayout.LayoutFlags="All" />
+        <syncfusion:SfListView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="5" ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition Width="0.3*"/>
+                    </Grid.ColumnDefinitions>
 
-            <Button Margin="3,0,6,6" Text="Agendar" TextColor="White" BackgroundColor="DarkGreen"
-                    AbsoluteLayout.LayoutBounds="1,1,.5,.12" AbsoluteLayout.LayoutFlags="All" />
-            <!--x, y, width, height-->
+                    <Label Grid.Row="0" Text="{Binding Name}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Price}" TextColor="White" BackgroundColor="#43A047" Font="Medium" 
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </Grid>
+            </DataTemplate>
+        </syncfusion:SfListView.ItemTemplate>
+        <syncfusion:SfListView.LayoutManager>
+            <syncfusion:GridLayout SpanCount="1" />
+        </syncfusion:SfListView.LayoutManager>
+
+        <syncfusion:SfListView.DataSource>
+            <data:DataSource>
+                <data:DataSource.SortDescriptors>
+                    <data:SortDescriptor PropertyName="Name" Direction="Ascending"/>
+                </data:DataSource.SortDescriptors>
+                <!--<data:DataSource.GroupDescriptors>
+                    <data:GroupDescriptor PropertyName="Price"/>
+                </data:DataSource.GroupDescriptors> agrupador -->
+            </data:DataSource>
+        </syncfusion:SfListView.DataSource>
 
 
-            <controls:MyListView ItemsSource="{Binding BarberServicesList}" ItemTappedCommand="{Binding BarberServiceCommand}" 
-                                 AbsoluteLayout.LayoutBounds=".5,.1,1,.85" AbsoluteLayout.LayoutFlags="All">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <AbsoluteLayout Padding="4,2,4,2">
-                                <Label Text="{Binding Name}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" HorizontalTextAlignment="Center"
-                                           AbsoluteLayout.LayoutBounds="0,.5,.5,1" AbsoluteLayout.LayoutFlags="All" />
+        <syncfusion:SfListView.HeaderTemplate>
+            <DataTemplate>
+                <Grid BackgroundColor="#FFA726" Margin="0,5">
+                    <Label Text="Escolha um serviço" Font = "Large"  TextColor="DarkGreen"
+                           VerticalOptions ="Center" HorizontalOptions="Center" />
+                </Grid>
+            </DataTemplate>
+        </syncfusion:SfListView.HeaderTemplate>
 
-                                <Label Text="{Binding Price}" TextColor="White" BackgroundColor="#43A047" Font="Large" HorizontalTextAlignment="Center"
-                                           AbsoluteLayout.LayoutBounds="1,.5,.5,1" AbsoluteLayout.LayoutFlags="All" />
-                            </AbsoluteLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </controls:MyListView>
+        <syncfusion:SfListView.FooterTemplate>
+            <DataTemplate>
+                <Grid BackgroundColor="#FFA726" Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="Edit.png" />
+                    <Image Grid.Column="1" Source="Delete.png" />
+                </Grid>
+            </DataTemplate>
+        </syncfusion:SfListView.FooterTemplate>
 
-        </AbsoluteLayout>
-    </StackLayout>
+    </syncfusion:SfListView>
+
 </ContentPage>

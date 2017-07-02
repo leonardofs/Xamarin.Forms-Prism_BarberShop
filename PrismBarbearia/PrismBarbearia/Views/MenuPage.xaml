@@ -9,27 +9,26 @@
     <MasterDetailPage.Master>
         <ContentPage Title="MENU" Padding="20" BackgroundColor="#1B5E20">
             <StackLayout>
-                <Label Text="{Binding Privilegio}" TextColor="White" HorizontalOptions="Center"/>
+                
+                <Label Text="{Binding Privilegio}" Style="{DynamicResource MenuLabel}"/>
 
                 <Button Text="Entrar com facebook" IsVisible="{Binding IsVisibleLogInButton}" Command="{Binding LoginFacebookCommand}" 
-                        BackgroundColor="DarkBlue" TextColor="White" HeightRequest="75">
-                    <Button.Image>
-                        <OnPlatform x:TypeArguments="FileImageSource" Android="facebook.png" WinPhone="Assets/facebook.png" iOS="Resources/facebook.png"/>
-                    </Button.Image>
-                </Button>
+                        Style="{DynamicResource LoginButton}" />
 
                 <Button Text="LogOut" IsVisible="{Binding IsVisibleLogOutButton}" Command="{Binding LogOutFacebookCommand}"
-                BackgroundColor="DarkRed" TextColor="White" />
+                        Style="{DynamicResource LogOutButton}" />
 
-                <Button Text="Agenda" Command="{Binding SchedulesWeekPageCommand}" BackgroundColor="Green" TextColor="White" 
-                        IsVisible="{Binding IsVisibleAdminButtons}"/>
+                <Button Text="Página Inicial" Command="{Binding MainPageCommand}" IsVisible="{Binding IsVisibleMainPageButton}"
+                        Style="{DynamicResource MainButton}" />
 
-                <Button Text="Página inicial" Command="{Binding MainPageCommand}" BackgroundColor="Green" TextColor="White" 
-                        IsVisible="{Binding IsVisibleMainPageButton}"/>
+                <Button Text="Agenda" Command="{Binding SchedulesWeekPageCommand}" IsVisible="{Binding IsVisibleAdminButtons}"
+                        Style="{DynamicResource AdminButton}" />
 
-                <Button Text="Editar conceito" IsVisible="{Binding IsVisibleAdminButtons}" BackgroundColor="Gray" TextColor="White"/>
+                <Button Text="Editar conceito" IsVisible="{Binding IsVisibleAdminButtons}"
+                        Style="{DynamicResource AdminButton}" />
 
-                <Button Text="Editar informações de contato" IsVisible="{Binding IsVisibleAdminButtons}" BackgroundColor="Gray" TextColor="White"/>
+                <Button Text="Editar informações de contato" IsVisible="{Binding IsVisibleAdminButtons}"
+                        Style="{DynamicResource AdminButton}" />
 
             </StackLayout>
         </ContentPage>

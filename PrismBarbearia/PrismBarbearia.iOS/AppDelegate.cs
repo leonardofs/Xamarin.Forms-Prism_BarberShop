@@ -6,6 +6,7 @@ using Foundation;
 using UIKit;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using Syncfusion.ListView.XForms.iOS;
 
 namespace PrismBarbearia.iOS
 {
@@ -24,7 +25,10 @@ namespace PrismBarbearia.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();            
+            global::Xamarin.Forms.Forms.Init();
+
+            SfListViewRenderer.Init();
+
             LoadApplication(new App(new iOSInitializer()));
 
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();

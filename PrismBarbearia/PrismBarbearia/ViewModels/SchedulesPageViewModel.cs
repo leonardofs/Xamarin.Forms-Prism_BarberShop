@@ -2,6 +2,7 @@
 using Prism.Services;
 using PrismBarbearia.Models;
 using System.Collections.ObjectModel;
+using Syncfusion.ListView.XForms;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -11,6 +12,7 @@ namespace PrismBarbearia.ViewModels
         public BarberService cortarCabelo;
         public BarberService fazerBarba;
         public BarberService pintarCabelo;
+        public BarberService tirarPraLavar;
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public SchedulesPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
@@ -29,7 +31,11 @@ namespace PrismBarbearia.ViewModels
             pintarCabelo.Name = "Pintar cabelo";
             pintarCabelo.Price = "30,00";
 
-            BarberServicesList = new ObservableCollection<BarberService> { cortarCabelo, fazerBarba, pintarCabelo };
+            tirarPraLavar = new BarberService();
+            tirarPraLavar.Name = "Tirar pra lavar";
+            tirarPraLavar.Price = "90,00";
+
+            BarberServicesList = new ObservableCollection<BarberService> { cortarCabelo, fazerBarba, pintarCabelo, tirarPraLavar};
         }
 
     }

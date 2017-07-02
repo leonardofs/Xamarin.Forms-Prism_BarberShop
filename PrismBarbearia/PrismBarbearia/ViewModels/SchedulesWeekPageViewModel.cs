@@ -53,7 +53,7 @@ namespace PrismBarbearia.ViewModels
         public void fazerBarba()
         {
             BarberShopAppointment fazerBarba = new BarberShopAppointment();
-            fazerBarba.From = new DateTime(2017, 06, 29, 10, 0, 0);
+            fazerBarba.From = new DateTime(2017, 07, 5, 10, 0, 0);
             fazerBarba.To = fazerBarba.From.AddHours(0.5);
             servico.Name = "fazer barba";
             fazerBarba.EventName = servico.Name;
@@ -64,7 +64,7 @@ namespace PrismBarbearia.ViewModels
         public void cortarCabelo()
         {
             BarberShopAppointment cortarCabelo = new BarberShopAppointment();
-            cortarCabelo.From = new DateTime(2017, 06, 28, 10, 0, 0);
+            cortarCabelo.From = new DateTime(2017, 07, 6, 11, 0, 0);
             cortarCabelo.To = cortarCabelo.From.AddHours(0.5);//30 minutos de duração
             servico.Name = "cortar cabelo";
             cortarCabelo.EventName = servico.Name;

@@ -6,7 +6,7 @@
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="PrismBarbearia.Views.MainPage"
             Title="{Binding Title}"
-            BarBackgroundColor="#43A047">
+            Style="{DynamicResource TabbedPage}"> 
 
     <TabbedPage.Children>
 

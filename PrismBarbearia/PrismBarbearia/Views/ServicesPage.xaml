@@ -9,11 +9,10 @@
 
 
     <AbsoluteLayout>
-        <!--x, y, width, height-->
 
         <Button Margin="6,0,3,6" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"
                     AbsoluteLayout.LayoutBounds="0,1,.5,.1" AbsoluteLayout.LayoutFlags="All" />
-
+                                            <!--x, y, width, height-->
         <Button Margin="3,0,6,6" Text="Agendar" TextColor="White" BackgroundColor="DarkGreen"
                     AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" />
 

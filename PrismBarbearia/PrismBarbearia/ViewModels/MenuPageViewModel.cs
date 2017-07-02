@@ -48,10 +48,10 @@ namespace PrismBarbearia.ViewModels
 
         protected AzureService azureService;
 
-        public DelegateCommand LoginFacebookCommand { get; private set; }
-        public DelegateCommand LogOutFacebookCommand { get; private set; }
-        public DelegateCommand SchedulesWeekPageCommand { get; private set; }
-        public DelegateCommand MainPageCommand { get; private set; }
+        public DelegateCommand LoginFacebookCommand { get; set; }
+        public DelegateCommand LogOutFacebookCommand { get; set; }
+        public DelegateCommand SchedulesWeekPageCommand { get; set; }
+        public DelegateCommand MainPageCommand { get; set; }
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public MenuPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
@@ -59,7 +59,7 @@ namespace PrismBarbearia.ViewModels
             azureService = Xamarin.Forms.DependencyService.Get<AzureService>();
 
             LoginFacebookCommand = new DelegateCommand(async () => await ExecuteLoginFacebookCommand());
-            LogOutFacebookCommand = new DelegateCommand(() => ExecuteLogOutFacebookCommand());
+            LogOutFacebookCommand = new DelegateCommand(async () => await ExecuteLogOutFacebookCommandAsync());
             SchedulesWeekPageCommand = new DelegateCommand(async () => await ExecuteSchedulesWeekPageCommand());
             MainPageCommand = new DelegateCommand(async () => await ExecuteMainPageCommand());
 
@@ -89,47 +89,31 @@ namespace PrismBarbearia.ViewModels
         {
             if (CrossConnectivity.Current.IsConnected)
             {
-                if (IsBusy || !(await LoginAsync()))
-                    return;
-
-                else
+                try
                 {
-                    //await _navigationService.NavigateAsync("ServicesPage", null, false);
-                }
-                IsBusy = false;
-                IsVisibleLogInButton = false;
-                IsVisibleLogOutButton = true;
+                    if (IsBusy || !(await LoginAsync()))
+                        return;
 
-                if (Settings.IsAdmin)
-                {
-                    IsVisibleAdminButtons = true;
-                    Privilegio = "Barbeiro";
-                }
-                else
-                {
-                    IsVisibleAdminButtons = false;
-                    Privilegio = "Cliente";
-                }
+                    IsBusy = false;
+                    IsVisibleLogInButton = false;
+                    IsVisibleLogOutButton = true;
 
+                    if (Settings.IsAdmin)
+                    {
+                        IsVisibleAdminButtons = true;
+                        Privilegio = "Barbeiro";
+                    }
+                    else
+                    {
+                        IsVisibleAdminButtons = false;
+                        Privilegio = "Cliente";
+                    }
+                }
+                catch { IsBusy = false; }
             }
             else //Se desconectado
             {
                 await _pageDialogService.DisplayAlertAsync("Sem rede", "não é possível fazer login sem conexão com a internet", "OK");
-            }
-        }
-
-        private void ExecuteLogOutFacebookCommand()
-        {
-            if (Settings.IsLoggedIn)
-            {
-                Settings.AuthToken = string.Empty;
-                Settings.UserId = string.Empty;
-                IsVisibleLogInButton = true;
-                IsVisibleLogOutButton = false;
-                IsVisibleAdminButtons = false;
-                Privilegio = "Faça o login";
-                //TODO voltar para página inicial para fazer login
-                //if (está na pagina de serviços) entao await _navigationService.GoBackAsync();
             }
         }
 
@@ -143,11 +127,26 @@ namespace PrismBarbearia.ViewModels
             return azureService.LoginAsync();
         }
 
+        private async Task ExecuteLogOutFacebookCommandAsync()
+        {
+            if (Settings.IsLoggedIn)
+            {
+                Settings.AuthToken = string.Empty;
+                Settings.UserId = string.Empty;
+                IsVisibleLogInButton = true;
+                IsVisibleLogOutButton = false;
+                IsVisibleAdminButtons = false;
+                Privilegio = "Faça o login";
+                IsVisibleMainPageButton = false;
+                await _navigationService.NavigateAsync("MyNavigationPage/MainPage", useModalNavigation: false);
+            }
+        }        
+
         private async Task ExecuteSchedulesWeekPageCommand()
         {
-            await _navigationService.NavigateAsync("MyNavigationPage/SchedulesWeekPage", useModalNavigation: false);
-            IsVisibleAdminButtons = !Settings.IsAdmin;
-            IsVisibleMainPageButton = true;
+           await _navigationService.NavigateAsync("MyNavigationPage/SchedulesWeekPage", useModalNavigation: false);
+           IsVisibleAdminButtons = !Settings.IsAdmin;
+           IsVisibleMainPageButton = true;
         }
 
         private async Task ExecuteMainPageCommand()

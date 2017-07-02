@@ -9,7 +9,7 @@
 
     <ScrollView Padding="20">
 
-        <Label Text="Pagina de Contato"/>
+        <Label Style="{DynamicResource TitleLabel}" Text="Pagina de Contato"/>
 
     </ScrollView>
 

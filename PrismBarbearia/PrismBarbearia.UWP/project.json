@@ -7,12 +7,13 @@
     "Newtonsoft.Json": "10.0.3",
     "Prism.Core": "6.3.0",
     "Prism.Unity.Forms": "6.3.0",
+    "Syncfusion.Xamarin.SfListView": "15.2.0.43",
     "Syncfusion.Xamarin.SfSchedule": "15.2.0.43",
     "Unity": "4.0.1",
     "Xam.Plugin.Connectivity": "2.3.0",
     "Xam.Plugin.ExternalMaps": "3.0.10",
     "Xam.Plugins.Settings": "2.5.8",
-    "Xamarin.Forms": "2.3.4.247"
+    "Xamarin.Forms": "2.3.5.256-pre6"
   },
   "frameworks": {
     "uap10.0": {}

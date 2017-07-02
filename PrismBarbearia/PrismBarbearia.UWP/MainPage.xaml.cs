@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using Syncfusion.ListView.XForms.UWP;
 
 namespace PrismBarbearia.UWP
 {
@@ -22,6 +23,8 @@ namespace PrismBarbearia.UWP
         public MainPage()
         {
             this.InitializeComponent();
+
+            SfListViewRenderer.Init();
 
             LoadApplication(new PrismBarbearia.App(new UwpInitializer()));
         }
