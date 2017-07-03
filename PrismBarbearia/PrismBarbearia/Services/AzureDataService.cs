@@ -74,15 +74,16 @@ namespace PrismBarbearia.Services
             return await serviceTable.ToEnumerableAsync(); ;
         }
 
-        public async Task<BarberService> AddService(string id, string name, string price)
+        public async Task<BarberService> AddService(string detail, string name, string price,string image)
         {
             await Initialize();
 
             var service = new BarberService
             {
-                Id = id,
-                Name = name,
-                Price = price
+                ServiceName = name,
+                ServicePrice = price,
+                ServiceDetail = detail,
+                ServiceImage = image
             };
 
             await serviceTable.InsertAsync(service);

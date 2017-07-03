@@ -1,27 +1,29 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
 
 namespace PrismBarbearia.Models
 {
     [DataTable("agendamentos")]
     public class BarberService
     {
-        [Newtonsoft.Json.JsonProperty("Id")]
-        public string Id { get; set; }
-
-        [Version]
-        public string AzureVersion { get; set; }
-
-        public string Name { get; set; }
-
-        private string price;
-
-        public string Price
-        {
-            get { return price; }
-            set { price = "R$ " + value; }
+        public string id { get; set; }
+        public string ServiceName { get; set; }
+        public string ServiceDetail { get; set; }
+        public string ServiceImage { get; set; }
+        public string servicePrice;
+        public string ServicePrice {
+            get
+            {
+                return servicePrice;
+            }
+            set
+            {
+                servicePrice = "R$ " + value;
+            }
         }
-
-
-        public string Image { get; set; }
+        public string version { get; set; }
+        public DateTime createdAt { get; set; }
+        public DateTime updatedAt { get; set; }
+        public bool deleted { get; set; }
     }
 }

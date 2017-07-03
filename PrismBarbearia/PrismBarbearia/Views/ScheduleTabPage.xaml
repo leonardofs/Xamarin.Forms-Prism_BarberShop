@@ -8,7 +8,17 @@
              prism:ViewModelLocator.AutowireViewModel="True"             
              x:Class="PrismBarbearia.Views.ScheduleTabPage"
              Title="{Binding Title}">
-
+    <!--<StackLayout>
+        <ListView ItemsSource="{Binding BarberServicesList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell Text="{Binding ServiceName}"
+                       Detail="{Binding ServiceDetail}"
+                       ImageSource="{Binding ServiceImage}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>-->
     <syncfusion:SfListView x:Name="listView" 
                            ItemsSource="{Binding BarberServicesList}"
                            ItemSize="75"                           
@@ -32,9 +42,9 @@
                         <ColumnDefinition Width="0.3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Text="{Binding Name}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
+                    <Label Grid.Row="0" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
                            HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Price}" TextColor="White" BackgroundColor="#43A047" Font="Medium" 
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Medium" 
                            HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                 </Grid>
             </DataTemplate>
@@ -43,16 +53,17 @@
             <syncfusion:GridLayout SpanCount="1" />
         </syncfusion:SfListView.LayoutManager>
 
-        <syncfusion:SfListView.DataSource>
+        <!--<syncfusion:SfListView.DataSource>
             <data:DataSource>
                 <data:DataSource.SortDescriptors>
-                    <data:SortDescriptor PropertyName="Name" Direction="Ascending"/>
+                    <data:SortDescriptor PropertyName="ServiceName" Direction="Ascending"/>
                 </data:DataSource.SortDescriptors>
-                <!--<data:DataSource.GroupDescriptors>
-                    <data:GroupDescriptor PropertyName="Price"/>
-                </data:DataSource.GroupDescriptors> agrupador -->
+
+                <data:DataSource.GroupDescriptors>
+                    <data:GroupDescriptor PropertyName="ServicePrice"/>
+                </data:DataSource.GroupDescriptors> 
             </data:DataSource>
-        </syncfusion:SfListView.DataSource>
+        </syncfusion:SfListView.DataSource>-->
 
 
         <syncfusion:SfListView.HeaderTemplate>
@@ -78,5 +89,4 @@
         </syncfusion:SfListView.FooterTemplate>
 
     </syncfusion:SfListView>
-
 </ContentPage>
