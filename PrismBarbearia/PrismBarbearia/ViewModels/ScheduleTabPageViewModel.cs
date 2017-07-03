@@ -81,8 +81,9 @@ namespace PrismBarbearia.ViewModels
             if(serviceTapped != null)
             {
                 BarberService service = serviceTapped as BarberService;
-                //await azureDataService.AddService("id52", service.Name, service.Price);
-               // await _navigationService.NavigateAsync("DaysPage", serviceTapped as NavigationParameters, false);
+                await azureDataService.AddService("id63", service.ServiceName, "R$ "+service.ServicePrice);
+                await _navigationService.NavigateAsync("DaysPage", serviceTapped as NavigationParameters, false);
+                SyncServices();
             }                    
         }
 
