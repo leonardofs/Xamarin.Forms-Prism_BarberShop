@@ -6,7 +6,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
              prism:ViewModelLocator.AutowireViewModel="True"             
-             x:Class="PrismBarbearia.Views.SchedulesPage"
+             x:Class="PrismBarbearia.Views.ScheduleTabPage"
              Title="{Binding Title}">
 
     <syncfusion:SfListView x:Name="listView" 
@@ -21,7 +21,8 @@
                            HeaderSize="80" 
                            FooterSize="80"
                            IsStickyHeader="True" 
-                           IsStickyFooter="True">
+                           IsStickyFooter="True"
+                           ItemTapped="services_ItemTapped">
 
         <syncfusion:SfListView.ItemTemplate>
             <DataTemplate>
