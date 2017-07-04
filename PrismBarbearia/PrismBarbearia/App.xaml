@@ -32,6 +32,7 @@
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontFamily" Value="Arial" />
         <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="10"/>
       </Style>
 
       <Style x:Key="MenuLabel" TargetType="Label">
@@ -63,6 +64,14 @@
         </Setter>
       </Style>
 
+      <Style x:Key="Banner" TargetType="Image">
+        <Setter Property="Source">
+          <Setter.Value>
+            <OnPlatform x:TypeArguments="ImageSource" Android="banner.png" WinPhone="Assets/banner.png" iOS="Resources/banner.png"/>
+          </Setter.Value>
+        </Setter>
+      </Style>
+
       <Style  x:Key="AdminButton" TargetType="Button">
         <Setter Property="BackgroundColor" Value="Gray" />
         <Setter Property="TextColor" Value="White" />
@@ -74,7 +83,7 @@
         <Setter Property="TextColor" Value="White" />
         <Setter Property="HeightRequest" Value="70" />
       </Style>
-      
+
       <Style x:Key="NavigationPage" TargetType="NavigationPage">
         <Setter Property="BarBackgroundColor" Value="{StaticResource StatusBarColor}"/>
         <Setter Property="BarTextColor" Value="White"/>
