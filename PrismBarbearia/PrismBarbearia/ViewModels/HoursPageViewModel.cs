@@ -34,7 +34,7 @@ namespace PrismBarbearia.ViewModels
             foreach (var item in schedulesAz)
             {
                 var listItem = item as BarberSchedule;
-                if (listItem.Day == "03/07/2017")
+                if (listItem.Day == "03/07/2017")//teste com data, no lugar da data parametro da navigation
                 {
                     Temp.Add(listItem);
                 }
