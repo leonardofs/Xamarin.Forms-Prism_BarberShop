@@ -7,7 +7,6 @@
                 x:Class="PrismBarbearia.Views.ServicesPage"
                 Title="{Binding Title}">
 
-
     <AbsoluteLayout>
         <StackLayout AbsoluteLayout.LayoutBounds=".5,.5,.9,.8" AbsoluteLayout.LayoutFlags="All">
             <Entry Text="Nome" />
