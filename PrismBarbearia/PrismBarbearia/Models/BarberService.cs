@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
 using System;
+using Prism.Navigation;
 
 namespace PrismBarbearia.Models
 {
@@ -25,5 +26,10 @@ namespace PrismBarbearia.Models
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
         public bool deleted { get; set; }
+
+        public static implicit operator BarberService(NavigationParameters v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,40 +8,45 @@ using Xamarin.Forms;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class ScheduleTabPageViewModel : BaseViewModel
+    public class ScheduleTabPageViewModel : BaseViewModel, INavigationAware
     {
         public ObservableCollection<BarberService> BarberServicesList { get; }
-        //public BarberService cortarCabelo;
-        //public BarberService fazerBarba;
-        //public BarberService pintarCabelo;
-        //public BarberService tirarPraLavar;
         protected AzureDataService azureDataService;
+        private BarberService selectedService;
+
+        public BarberService SelectedService
+        {
+            get { return selectedService; }
+            set
+            {
+                SetProperty(ref selectedService, value);
+                if (SelectedService != null)
+                {
+                    ExecuteServiceSelected(SelectedService);
+                }
+            }
+        }
+
+        public override void OnNavigatedTo(NavigationParameters parameters)
+        {
+            SelectedService = (BarberService)parameters["Service"];
+        }
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public ScheduleTabPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             azureDataService = Xamarin.Forms.DependencyService.Get<AzureDataService>();
-
             Title = "AGENDAR";
             BarberServicesList = new ObservableCollection<BarberService>();
             SyncServices();
-            //cortarCabelo = new BarberService();
-            //cortarCabelo.Name = "Cortar cabelo";
-            //cortarCabelo.Price = "20,00";
 
-            //fazerBarba = new BarberService();
-            //fazerBarba.Name = "Fazer barba";
-            //fazerBarba.Price = "10,00";
+        }
 
-            //pintarCabelo = new BarberService();
-            //pintarCabelo.Name = "Pintar cabelo";
-            //pintarCabelo.Price = "30,00";
-
-            //tirarPraLavar = new BarberService();
-            //tirarPraLavar.Name = "Tirar pra lavar";
-            //tirarPraLavar.Price = "90,00";
-
-
+        private async void ExecuteServiceSelected(object obj)
+        {
+            var navigationParams = new NavigationParameters();
+            navigationParams.Add("service", new BarberService());
+            await _navigationService.NavigateAsync("DaysPage",navigationParams,false);
         }
 
         async void SyncServices()
@@ -70,7 +75,7 @@ namespace PrismBarbearia.ViewModels
                 }
                 if (Error != null)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Erro", Error.Message, "OK");
+                    await _pageDialogService.DisplayAlertAsync("Erro", Error.Message, "OK");
                 }
             }
             return;
@@ -78,12 +83,13 @@ namespace PrismBarbearia.ViewModels
 
         public async void Navigate(object serviceTapped)
         {
-            if(serviceTapped != null)
+            if (serviceTapped != null)
             {
+                
                 BarberService service = serviceTapped as BarberService;
                 //await azureDataService.AddService("id52", service.Name, service.Price);
-               // await _navigationService.NavigateAsync("DaysPage", serviceTapped as NavigationParameters, false);
-            }                    
+                // await _navigationService.NavigateAsync("DaysPage", serviceTapped as NavigationParameters, false);
+            }
         }
 
     }

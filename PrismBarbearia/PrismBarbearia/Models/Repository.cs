@@ -7,14 +7,36 @@ namespace PrismBarbearia.Models
     {
         public async Task<List<BarberService>> GetServices()
         {
-            List<BarberService> Services;
+            List<BarberService> services;
             var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Servicos?zumo-api-version=2.0.0";
             using (var Client = new System.Net.Http.HttpClient())
             {
                 var JSON = await Client.GetStringAsync(URLwebAPI);
-                Services = Newtonsoft.Json.JsonConvert.DeserializeObject<List<BarberService>>(JSON);
+                services = Newtonsoft.Json.JsonConvert.DeserializeObject<List<BarberService>>(JSON);
             }
-            return Services;
+            return services;
+        }
+        public async Task<List<BarberHour>> GetHours(string selectedDay)
+        {
+            List<BarberHour> hours;
+            var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Hours?zumo-api-version=2.0.0";
+            using (var Client = new System.Net.Http.HttpClient())
+            {
+                var JSON = await Client.GetStringAsync(URLwebAPI);
+                hours = Newtonsoft.Json.JsonConvert.DeserializeObject<List<BarberHour>>(JSON);
+            }
+            return hours;
+        }
+        public async Task<List<BarberSchedule>> GetSchedule(string selectedDay)
+        {
+            List<BarberSchedule> schedule;
+            var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Hours?zumo-api-version=2.0.0";
+            using (var Client = new System.Net.Http.HttpClient())
+            {
+                var JSON = await Client.GetStringAsync(URLwebAPI);
+                schedule = Newtonsoft.Json.JsonConvert.DeserializeObject<List<BarberSchedule>>(JSON);
+            }
+            return schedule;
         }
     }
 }

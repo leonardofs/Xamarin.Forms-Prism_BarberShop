@@ -5,5 +5,8 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="PrismBarbearia.Views.DaysPage"
              Title="{Binding Title}">
-  
+    <ListView ItemsSource="{Binding Days}"
+              SelectedItem="{Binding SelectedDay}">
+        
+    </ListView>
 </ContentPage>
