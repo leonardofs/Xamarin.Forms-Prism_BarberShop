@@ -1,19 +1,15 @@
-﻿namespace PrismBarbearia.Models
+﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
+
+namespace PrismBarbearia.Models
 {
+    [DataTable("agendamentos")]
     public class BarberService
     {
         public string Id { get; set; }
-        public string Name { get; set; }
-
-        private string price;
-
-        public string Price
-        {
-            get { return price; }
-            set { price = "R$ " + value; }
-        }
-
-
-        public string Image { get; set; }
+        public string ServiceName { get; set; }
+        public string ServiceDetail { get; set; }
+        public string ServiceImage { get; set; }     
+        public string ServicePrice { get; set; }
     }
 }

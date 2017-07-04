@@ -27,8 +27,8 @@ namespace PrismBarbearia.ViewModels
             servico = new BarberService();
             EventsCollection = new ObservableCollection<BarberShopAppointment>();
 
-            cortarCabelo();
-            fazerBarba();
+            //cortarCabelo();
+            //fazerBarba();
         }
 
         public async void novoEventoAsync(DateTime dateTime)
@@ -50,27 +50,27 @@ namespace PrismBarbearia.ViewModels
             if (r) EventsCollection.Remove(evento as BarberShopAppointment);
         }
 
-        public void fazerBarba()
-        {
-            BarberShopAppointment fazerBarba = new BarberShopAppointment();
-            fazerBarba.From = new DateTime(2017, 07, 5, 10, 0, 0);
-            fazerBarba.To = fazerBarba.From.AddHours(0.5);
-            servico.Name = "fazer barba";
-            fazerBarba.EventName = servico.Name;
-            fazerBarba.Color = Color.Blue;
-            EventsCollection.Add(fazerBarba);
-        }
+        //public void fazerBarba()
+        //{
+        //    BarberShopAppointment fazerBarba = new BarberShopAppointment();
+        //    fazerBarba.From = new DateTime(2017, 07, 5, 10, 0, 0);
+        //    fazerBarba.To = fazerBarba.From.AddHours(0.5);
+        //    servico.Name = "fazer barba";
+        //    fazerBarba.EventName = servico.Name;
+        //    fazerBarba.Color = Color.Blue;
+        //    EventsCollection.Add(fazerBarba);
+        //}
 
-        public void cortarCabelo()
-        {
-            BarberShopAppointment cortarCabelo = new BarberShopAppointment();
-            cortarCabelo.From = new DateTime(2017, 07, 6, 11, 0, 0);
-            cortarCabelo.To = cortarCabelo.From.AddHours(0.5);//30 minutos de duração
-            servico.Name = "cortar cabelo";
-            cortarCabelo.EventName = servico.Name;
-            cortarCabelo.Color = Color.Green;
-            EventsCollection.Add(cortarCabelo);
-        }
+        //public void cortarCabelo()
+        //{
+        //    BarberShopAppointment cortarCabelo = new BarberShopAppointment();
+        //    cortarCabelo.From = new DateTime(2017, 07, 6, 11, 0, 0);
+        //    cortarCabelo.To = cortarCabelo.From.AddHours(0.5);//30 minutos de duração
+        //    servico.Name = "cortar cabelo";
+        //    cortarCabelo.EventName = servico.Name;
+        //    cortarCabelo.Color = Color.Green;
+        //    EventsCollection.Add(cortarCabelo);
+        //}
 
     }
 }

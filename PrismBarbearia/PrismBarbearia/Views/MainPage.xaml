@@ -10,11 +10,11 @@
 
     <TabbedPage.Children>
 
-        <local:AboutPage />
+        <local:AboutTabPage />
 
-        <local:ContactPage />
+        <local:ContactTabPage />
 
-        <local:SchedulesPage />
+        <local:ScheduleTabPage />
 
     </TabbedPage.Children>
 

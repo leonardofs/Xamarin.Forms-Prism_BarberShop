@@ -6,12 +6,22 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
              prism:ViewModelLocator.AutowireViewModel="True"             
-             x:Class="PrismBarbearia.Views.SchedulesPage"
+             x:Class="PrismBarbearia.Views.ScheduleTabPage"
              Title="{Binding Title}">
-
+    <!--<StackLayout>
+        <ListView ItemsSource="{Binding BarberServicesList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell Text="{Binding ServiceName}"
+                       Detail="{Binding ServiceDetail}"
+                       ImageSource="{Binding ServiceImage}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>-->
     <syncfusion:SfListView x:Name="listView" 
                            ItemsSource="{Binding BarberServicesList}"
-                           ItemSize="75"                           
+                           ItemSize="100"                           
                            ItemSpacing="0,0,0,0"
                            SelectionMode="Single"
                            SelectionGesture="Tap"
@@ -21,39 +31,29 @@
                            HeaderSize="80" 
                            FooterSize="80"
                            IsStickyHeader="True" 
-                           IsStickyFooter="True">
+                           IsStickyFooter="True"
+                           SelectedItem="{Binding SelectedService}">
 
         <syncfusion:SfListView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="5" ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="0.3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Text="{Binding Name}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
-                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Price}" TextColor="White" BackgroundColor="#43A047" Font="Medium" 
-                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Image Grid.Row="0" Grid.Column="1" Source="{Binding ServiceImage}" BackgroundColor="DarkGreen"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
+                           />
+                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Medium" 
+                           />
                 </Grid>
             </DataTemplate>
         </syncfusion:SfListView.ItemTemplate>
         <syncfusion:SfListView.LayoutManager>
             <syncfusion:GridLayout SpanCount="1" />
         </syncfusion:SfListView.LayoutManager>
-
-        <syncfusion:SfListView.DataSource>
-            <data:DataSource>
-                <data:DataSource.SortDescriptors>
-                    <data:SortDescriptor PropertyName="Name" Direction="Ascending"/>
-                </data:DataSource.SortDescriptors>
-                <!--<data:DataSource.GroupDescriptors>
-                    <data:GroupDescriptor PropertyName="Price"/>
-                </data:DataSource.GroupDescriptors> agrupador -->
-            </data:DataSource>
-        </syncfusion:SfListView.DataSource>
-
-
         <syncfusion:SfListView.HeaderTemplate>
             <DataTemplate>
                 <Grid BackgroundColor="#FFA726" Margin="0,5">
@@ -77,5 +77,5 @@
         </syncfusion:SfListView.FooterTemplate>
 
     </syncfusion:SfListView>
-
+   <!-- <Button Text="Adicionar Servico" Command="{Binding AddServiceCommand}"/> -->
 </ContentPage>

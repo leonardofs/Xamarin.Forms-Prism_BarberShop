@@ -1,11 +1,10 @@
-﻿/*
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
 using PrismBarbearia.Helpers;
-using PrismBarbearia.Services;
 using PrismBarbearia.iOS;
+using PrismBarbearia.Authentication;
 
 [assembly: Xamarin.Forms.Dependency(typeof(SocialAuthenticationiOS))]
 namespace PrismBarbearia.iOS
@@ -26,9 +25,8 @@ namespace PrismBarbearia.iOS
 
                 return user;
             }
-            catch (Exception ex)
+            catch
             {
-                //TODO: Log error
                 throw;
             }
         }
@@ -50,4 +48,3 @@ namespace PrismBarbearia.iOS
         }
     }
 }
-*/

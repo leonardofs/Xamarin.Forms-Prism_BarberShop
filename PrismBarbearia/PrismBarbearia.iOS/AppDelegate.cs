@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using UIKit;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
@@ -28,10 +24,9 @@ namespace PrismBarbearia.iOS
             global::Xamarin.Forms.Forms.Init();
 
             SfListViewRenderer.Init();
-
-            LoadApplication(new App(new iOSInitializer()));
-
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+
+            LoadApplication(new App(new iOSInitializer()));           
 
             return base.FinishedLaunching(app, options);
         }

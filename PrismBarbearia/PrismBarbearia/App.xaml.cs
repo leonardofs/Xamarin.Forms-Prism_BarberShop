@@ -20,11 +20,13 @@ namespace PrismBarbearia
             Container.RegisterTypeForNavigation<MyNavigationPage>();
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<MenuPage>();
-            Container.RegisterTypeForNavigation<AboutPage>();
-            Container.RegisterTypeForNavigation<ContactPage>();
-            Container.RegisterTypeForNavigation<SchedulesPage>();
+            Container.RegisterTypeForNavigation<AboutTabPage>();
+            Container.RegisterTypeForNavigation<ContactTabPage>();
+            Container.RegisterTypeForNavigation<ScheduleTabPage>();
             Container.RegisterTypeForNavigation<ServicesPage>();
             Container.RegisterTypeForNavigation<SchedulesWeekPage>();
+            Container.RegisterTypeForNavigation<DaysPage>();
+            Container.RegisterTypeForNavigation<HoursPage>();
         }
     }
 }

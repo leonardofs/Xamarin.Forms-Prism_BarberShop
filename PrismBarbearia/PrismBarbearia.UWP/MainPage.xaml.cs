@@ -26,7 +26,7 @@ namespace PrismBarbearia.UWP
 
             SfListViewRenderer.Init();
 
-            LoadApplication(new PrismBarbearia.App(new UwpInitializer()));
+            LoadApplication(new PrismBarbearia.App(new UwpInitializer()));            
         }
     }
 

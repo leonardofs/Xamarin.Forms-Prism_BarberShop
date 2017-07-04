@@ -23,9 +23,8 @@ namespace PrismBarbearia.UWP
 
                 return user;
             }
-            catch (Exception ex)
+            catch
             {
-                //TODO: Log error
                 throw;
             }
         }

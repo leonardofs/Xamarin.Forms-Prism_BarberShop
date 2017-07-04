@@ -1,19 +1,42 @@
-﻿namespace PrismBarbearia.Models
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace PrismBarbearia.Models
 {
-    public class Repository
+    class Repository
     {
-        /*
-    public async Task<List<Servicos>> GetServicos()
-    {
-        List<Servicos> TodosServicos;
-        var URLWebAPI = "http://barbeariamobile.azurewebsites.net/servicos";
-       using (var Client = new System.Net.Http.HttpClient())
+        public async Task<List<BarberService>> GetServices()
         {
-            var JSON = await Client.GetStringAsync(URLWebAPI);
-            TodosServicos= Newtonsoft.Json.JsonConvert.DeserializeObject<List<Servicos>>(JSON);
+            List<BarberService> services;
+            var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Servicos?zumo-api-version=2.0.0";
+            using (var Client = new System.Net.Http.HttpClient())
+            {
+                var JSON = await Client.GetStringAsync(URLwebAPI);
+                services = Newtonsoft.Json.JsonConvert.DeserializeObject<List<BarberService>>(JSON);
+            }
+            return services;
         }
-        return TodosServicos;
-    }
-    */
+        public async Task<List<BarberHour>> GetHours(string selectedDay)
+        {
+            List<BarberHour> hours;
+            var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Hours?zumo-api-version=2.0.0";
+            using (var Client = new System.Net.Http.HttpClient())
+            {
+                var JSON = await Client.GetStringAsync(URLwebAPI);
+                hours = Newtonsoft.Json.JsonConvert.DeserializeObject<List<BarberHour>>(JSON);
+            }
+            return hours;
+        }
+        public async Task<List<BarberSchedule>> GetSchedule(string selectedDay)
+        {
+            List<BarberSchedule> schedule;
+            var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Hours?zumo-api-version=2.0.0";
+            using (var Client = new System.Net.Http.HttpClient())
+            {
+                var JSON = await Client.GetStringAsync(URLwebAPI);
+                schedule = Newtonsoft.Json.JsonConvert.DeserializeObject<List<BarberSchedule>>(JSON);
+            }
+            return schedule;
+        }
     }
 }

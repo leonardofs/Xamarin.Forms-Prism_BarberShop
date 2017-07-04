@@ -24,9 +24,8 @@ namespace PrismBarbearia.Droid
 
                 return user;
             }
-            catch (Exception ex)
+            catch
             {
-                //TODO: Log error
                 throw;
             }
         }

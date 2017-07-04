@@ -2,12 +2,11 @@
 
 namespace PrismBarbearia.Views
 {
-    public partial class AboutPage : ContentPage
+    public partial class DaysPage : ContentPage
     {
-        public AboutPage()
+        public DaysPage()
         {
             InitializeComponent();
-            
         }
     }
 }

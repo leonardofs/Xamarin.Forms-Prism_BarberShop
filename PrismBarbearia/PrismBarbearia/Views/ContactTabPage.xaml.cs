@@ -2,11 +2,11 @@
 
 namespace PrismBarbearia.Views
 {
-    public partial class SchedulesPage : ContentPage
+    public partial class ContactTabPage : ContentPage
     {
-        public SchedulesPage()
+        public ContactTabPage()
         {
             InitializeComponent();
-        }  
+        }
     }
 }
