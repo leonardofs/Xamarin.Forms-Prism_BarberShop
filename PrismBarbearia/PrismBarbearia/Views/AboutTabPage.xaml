@@ -10,7 +10,7 @@
 
         <ScrollView>
             <StackLayout Padding="20">
-                
+                <Image x:Name="banner" HeightRequest="100" WidthRequest="100"  Source="banner.png" />
                 <Label Style="{DynamicResource MainLabel}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id facilisis ligula, a imperdiet sem. Ut luctus blandit metus ac lobortis. Mauris massa sapien, sagittis tristique velit id, viverra maximus nibh. Curabitur in quam dapibus, rhoncus odio quis, vestibulum magna. Ut venenatis, massa vitae egestas aliquet, odio sem lobortis massa, at sodales risus nisl et lectus. Nullam tincidunt imperdiet ante ac vestibulum. Duis mattis sed urna eu viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce porta augue justo, ut ultrices nunc accumsan ut." />
 
             </StackLayout>

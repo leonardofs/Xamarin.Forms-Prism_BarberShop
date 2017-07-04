@@ -108,6 +108,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Assets\banner.png" />
     <Content Include="Assets\hamburger.png" />
     <Content Include="Assets\facebook.png" />
     <Content Include="Properties\Default.rd.xml" />
