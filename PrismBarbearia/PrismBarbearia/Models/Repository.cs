@@ -30,7 +30,7 @@ namespace PrismBarbearia.Models
         public async Task<List<BarberSchedule>> GetSchedule(string selectedDay)
         {
             List<BarberSchedule> schedule;
-            var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Hours?zumo-api-version=2.0.0";
+            var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Agendamento?zumo-api-version=2.0.0";
             using (var Client = new System.Net.Http.HttpClient())
             {
                 var JSON = await Client.GetStringAsync(URLwebAPI);

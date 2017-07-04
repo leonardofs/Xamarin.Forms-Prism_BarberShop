@@ -38,15 +38,12 @@
             <DataTemplate>
                 <Grid Padding="5" ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*"/>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition Width="0.9*"/>
                     </Grid.ColumnDefinitions>
-
-                    <Image Grid.Row="0" Grid.Column="1" Source="{Binding ServiceImage}" BackgroundColor="DarkGreen"/>
                     <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
-                           />
-                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Medium" 
+                          HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Large" 
                            />
                 </Grid>
             </DataTemplate>
