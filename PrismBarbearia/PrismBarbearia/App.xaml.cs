@@ -1,5 +1,7 @@
 ﻿using Prism.Unity;
 using PrismBarbearia.Views;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
 
 namespace PrismBarbearia
 {
@@ -13,6 +15,10 @@ namespace PrismBarbearia
         protected override void OnInitialized()
         {
             NavigationService.NavigateAsync("MenuPage/MyNavigationPage/MainPage");
+            MobileCenter.Start("uwp=a5206e2c-dd25-414f-b9f3-eebaa3bce4bb;" +
+                   "android=d0d959cd-a188-411c-912e-b7120e0e4c42;" +
+                   "ios=a7e7daaf-e142-4ae8-9797-bad797ea2e8d;",
+                   typeof(Analytics), typeof(Crashes));
         }
 
         protected override void RegisterTypes()
