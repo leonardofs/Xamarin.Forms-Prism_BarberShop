@@ -2,6 +2,7 @@
 using PrismBarbearia.Views;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 namespace PrismBarbearia
 {

@@ -87,7 +87,7 @@ namespace PrismBarbearia.ViewModels
             //if (hourTapped != null) comentei para clicar em "Escolha um horário no cabeçado" para fazer teste"
             //{
                 string _hourTapped = hourTapped as string;
-                await _pageDialogService.DisplayAlertAsync("Erro", "Agendado com sucesso:" +
+                await _pageDialogService.DisplayAlertAsync("Agendamento", "Agendado com sucesso:" +
                                                            "\nServiço: " + serviceTapped.ServiceName +
                                                            "\nDia: " + dayTapped.Date+
                                                            "\nHorário: " + _hourTapped, "OK");
