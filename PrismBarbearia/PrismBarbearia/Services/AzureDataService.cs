@@ -28,8 +28,9 @@ namespace PrismBarbearia.Services
             if (Client?.SyncContext?.IsInitialized ?? false)
                 return;
 
-            var appUrl = "http://appxamarindemo.azurewebsites.net";
-            
+            //var appUrl = "http://appxamarindemo.azurewebsites.net";
+            var appUrl = "http://barbearia8ball.azurewebsites.net";
+
             Client = new MobileServiceClient(appUrl);
             
             //InitializeDatabase for path
@@ -74,13 +75,13 @@ namespace PrismBarbearia.Services
             return await serviceTable.ToEnumerableAsync(); ;
         }
 
-        public async Task<BarberService> AddService(string id, string name, string price)//, string price,string image)
+        public async Task<BarberService> AddService(string name, string price)//, string id, string detail, string image)
         {
             await Initialize();
 
             var service = new BarberService
             {
-                Id = id,
+                //Id = id,
                 ServiceName = name,
                 ServicePrice = price,
                 //Detail = detail,

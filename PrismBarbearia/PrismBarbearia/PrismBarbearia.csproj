@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Authentication\IAuthentication.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Models\BarberDay.cs" />
     <Compile Include="Models\BarberHour.cs" />
     <Compile Include="Models\BarberSchedule.cs" />
     <Compile Include="Models\BarberShopAppointment.cs" />

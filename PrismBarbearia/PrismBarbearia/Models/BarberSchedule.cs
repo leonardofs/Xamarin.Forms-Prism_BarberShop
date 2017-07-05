@@ -16,6 +16,6 @@ namespace PrismBarbearia.Models
             public string FacebookID { get; set; }
             public string Hour { get; set; }
             public string Service { get; set; }
-            public string Day { get; set; }
+            public string Date { get; set; }
     }
 }

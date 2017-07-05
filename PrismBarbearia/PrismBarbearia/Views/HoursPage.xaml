@@ -2,8 +2,65 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="PrismBarbearia.Views.HoursPage"
              Title="{Binding Title}">
-  
+
+    <syncfusion:SfListView x:Name="listView" 
+                           ItemsSource="{Binding aDefinirLista}"
+                           ItemSize="50"                           
+                           ItemSpacing="0,0,0,0"
+                           SelectionMode="Single"
+                           SelectionGesture="Tap"
+                           SelectionBackgroundColor="#FFA726"
+                           Orientation="Vertical"
+                           AutoFitMode="None"
+                           HeaderSize="60" 
+                           FooterSize="60"
+                           IsStickyHeader="False" 
+                           IsStickyFooter="False"
+                           ItemTapped="HourTapped">
+
+        <syncfusion:SfListView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="5" ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition Width="0.9*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
+                          HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Large" 
+                           />
+                </Grid>
+            </DataTemplate>
+        </syncfusion:SfListView.ItemTemplate>
+        <syncfusion:SfListView.LayoutManager>
+            <syncfusion:GridLayout SpanCount="1" />
+        </syncfusion:SfListView.LayoutManager>
+        <syncfusion:SfListView.HeaderTemplate>
+            <DataTemplate>
+                <Grid BackgroundColor="#FFA726" Margin="0,5">
+                    <Label Text="Escolha um horário" Font = "Large"  TextColor="DarkGreen"
+                           VerticalOptions ="Center" HorizontalOptions="Center" />
+                </Grid>
+            </DataTemplate>
+        </syncfusion:SfListView.HeaderTemplate>
+
+        <syncfusion:SfListView.FooterTemplate>
+            <DataTemplate>
+                <Grid BackgroundColor="#FFA726" Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="Edit.png" />
+                    <Image Grid.Column="1" Source="Delete.png" />
+                </Grid>
+            </DataTemplate>
+        </syncfusion:SfListView.FooterTemplate>
+
+    </syncfusion:SfListView>
+
 </ContentPage>

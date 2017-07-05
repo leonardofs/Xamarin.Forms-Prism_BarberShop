@@ -12,7 +12,7 @@ namespace PrismBarbearia.Views
             InitializeComponent();
         }
 
-        private void services_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private void ServiceTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             ViewModel.Navigate(e.ItemData);
         }

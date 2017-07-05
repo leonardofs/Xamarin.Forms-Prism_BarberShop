@@ -2,23 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:controls="clr-namespace:PrismBarbearia.Controls;assembly:PrismBarbearia"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
              prism:ViewModelLocator.AutowireViewModel="True"             
              x:Class="PrismBarbearia.Views.ScheduleTabPage"
              Title="{Binding Title}">
-    <!--<StackLayout>
-        <ListView ItemsSource="{Binding BarberServicesList}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ImageCell Text="{Binding ServiceName}"
-                       Detail="{Binding ServiceDetail}"
-                       ImageSource="{Binding ServiceImage}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>-->
+    
     <syncfusion:SfListView x:Name="listView" 
                            ItemsSource="{Binding BarberServicesList}"
                            ItemSize="100"                           
@@ -28,11 +16,11 @@
                            SelectionBackgroundColor="#FFA726"
                            Orientation="Vertical"
                            AutoFitMode="None"
-                           HeaderSize="80" 
-                           FooterSize="80"
-                           IsStickyHeader="True" 
-                           IsStickyFooter="True"
-                           SelectedItem="{Binding SelectedService}">
+                           HeaderSize="60" 
+                           FooterSize="60"
+                           IsStickyHeader="False" 
+                           IsStickyFooter="False"
+                           ItemTapped="ServiceTapped">
 
         <syncfusion:SfListView.ItemTemplate>
             <DataTemplate>
@@ -42,9 +30,9 @@
                         <ColumnDefinition Width="0.9*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
-                          HorizontalTextAlignment="Center" />
+                          HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                     <Label Grid.Row="0" Grid.Column="2" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Large" 
-                           />
+                          HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                 </Grid>
             </DataTemplate>
         </syncfusion:SfListView.ItemTemplate>

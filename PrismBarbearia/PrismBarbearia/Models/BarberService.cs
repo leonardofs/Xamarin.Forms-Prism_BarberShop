@@ -9,7 +9,14 @@ namespace PrismBarbearia.Models
         public string Id { get; set; }
         public string ServiceName { get; set; }
         public string ServiceDetail { get; set; }
-        public string ServiceImage { get; set; }     
-        public string ServicePrice { get; set; }
+        public string ServiceImage { get; set; }    
+
+        private string servicePrice;
+        public string ServicePrice
+        {
+            get { return "R$ "+servicePrice; }
+            set { servicePrice = value; }
+        }
+
     }
 }
