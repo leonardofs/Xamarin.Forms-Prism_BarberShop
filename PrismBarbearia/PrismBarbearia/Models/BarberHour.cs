@@ -8,7 +8,6 @@ namespace PrismBarbearia.Models
 {
     public class BarberHour
     {
-            public string id { get; set; }
-            public string Hours { get; set; }
+            public string Hour { get; set; }
     }
 }

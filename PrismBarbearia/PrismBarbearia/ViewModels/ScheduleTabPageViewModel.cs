@@ -60,7 +60,7 @@ namespace PrismBarbearia.ViewModels
             if (serviceTapped != null)
             {
                 BarberService _serviceTapped = serviceTapped as BarberService;
-                await azureDataService.AddService(_serviceTapped.ServiceName, _serviceTapped.ServicePrice);
+                //await azureDataService.AddService(_serviceTapped.ServiceName, _serviceTapped.ServicePrice);
                 //guarda na easytable, se quiser testar, coloque o nome da sua tabela na Models/BarberService e url no AzureDataService
                 
                 NavigationParameters navigationParams = new NavigationParameters();

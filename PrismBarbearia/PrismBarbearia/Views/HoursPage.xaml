@@ -8,12 +8,12 @@
              Title="{Binding Title}">
 
     <syncfusion:SfListView x:Name="listView" 
-                           ItemsSource="{Binding aDefinirLista}"
+                           ItemsSource="{Binding Hours}"
                            ItemSize="50"                           
                            ItemSpacing="0,0,0,0"
                            SelectionMode="Single"
                            SelectionGesture="Tap"
-                           SelectionBackgroundColor="#FFA726"
+                           SelectionBackgroundColor="Black" 
                            Orientation="Vertical"
                            AutoFitMode="None"
                            HeaderSize="60" 
@@ -21,18 +21,12 @@
                            IsStickyHeader="False" 
                            IsStickyFooter="False"
                            ItemTapped="HourTapped">
-
+                            
         <syncfusion:SfListView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="5" ColumnSpacing="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.1*"/>
-                        <ColumnDefinition Width="0.9*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
+                    <Label Grid.Row="0" Text="{Binding Hour}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
                           HorizontalTextAlignment="Center" />
-                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Large" 
-                           />
                 </Grid>
             </DataTemplate>
         </syncfusion:SfListView.ItemTemplate>

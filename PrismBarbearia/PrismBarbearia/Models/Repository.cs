@@ -16,7 +16,7 @@ namespace PrismBarbearia.Models
             }
             return services;
         }
-        public async Task<List<BarberHour>> GetHours(string selectedDay)
+        public async Task<List<BarberHour>> GetHours()
         {
             List<BarberHour> hours;
             var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Hours?zumo-api-version=2.0.0";

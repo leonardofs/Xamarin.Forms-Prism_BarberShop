@@ -22,14 +22,15 @@ namespace PrismBarbearia.Services
 
         public MobileServiceClient Client { get; set; } = null;
         IMobileServiceSyncTable<BarberService> serviceTable;
+        IMobileServiceSyncTable<BarberSchedule> scheduleTable;
 
         public async Task Initialize()
         {
             if (Client?.SyncContext?.IsInitialized ?? false)
                 return;
 
-            //var appUrl = "http://appxamarindemo.azurewebsites.net";
-            var appUrl = "http://barbearia8ball.azurewebsites.net";
+            var appUrl = "http://appxamarindemo.azurewebsites.net";
+            // var appUrl = "http://barbearia8ball.azurewebsites.net";
 
             Client = new MobileServiceClient(appUrl);
             
@@ -48,6 +49,7 @@ namespace PrismBarbearia.Services
 
             //Get our sync table that will call out to azure
             serviceTable = Client.GetSyncTable<BarberService>();
+            scheduleTable = Client.GetSyncTable<BarberSchedule>();
         }
 
         public async Task SyncService()
@@ -91,7 +93,19 @@ namespace PrismBarbearia.Services
             await serviceTable.InsertAsync(service);
             await SyncService();
             return service;
-        }            
+        }
+        public async Task<BarberSchedule> AddSchedule(string service, string date, string hour)
+        {
+            await Initialize();
+            var schedule = new BarberSchedule
+            {
+                Service = service,
+                Date = date,
+                Hour = hour
+            };
+            await scheduleTable.InsertAsync(schedule);
+            return schedule;
+        }
 
     }
 }
