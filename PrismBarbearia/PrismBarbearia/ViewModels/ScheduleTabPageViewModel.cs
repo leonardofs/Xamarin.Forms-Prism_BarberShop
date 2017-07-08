@@ -12,12 +12,11 @@ namespace PrismBarbearia.ViewModels
     {
 
         public ObservableCollection<BarberService> BarberServicesList { get; }
-        protected AzureDataService azureDataService;
+        
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public ScheduleTabPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            azureDataService = Xamarin.Forms.DependencyService.Get<AzureDataService>();
             Title = "AGENDAR";
             BarberServicesList = new ObservableCollection<BarberService>();
             SyncServices();
@@ -58,11 +57,7 @@ namespace PrismBarbearia.ViewModels
         public async void Navigate(object serviceTapped)
         {
             if (serviceTapped != null)
-            {
-                BarberService _serviceTapped = serviceTapped as BarberService;
-                //await azureDataService.AddService(_serviceTapped.ServiceName, _serviceTapped.ServicePrice);
-                //guarda na easytable, se quiser testar, coloque o nome da sua tabela na Models/BarberService e url no AzureDataService
-                
+            {                
                 NavigationParameters navigationParams = new NavigationParameters();
                 navigationParams.Add("serviceTapped", serviceTapped);
                 await _navigationService.NavigateAsync("DaysPage", navigationParams, false);

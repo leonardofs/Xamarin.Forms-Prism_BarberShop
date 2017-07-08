@@ -25,7 +25,7 @@ namespace PrismBarbearia.Droid
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
             LoadApplication(new App(new AndroidInitializer()));
-
+            
             //Window.SetStatusBarColor.(Android.Graphics.Color(27, 94, 32)); //here
         }
     }

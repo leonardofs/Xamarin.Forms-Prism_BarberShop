@@ -9,16 +9,18 @@
 
     <AbsoluteLayout>
         <StackLayout AbsoluteLayout.LayoutBounds=".5,.5,.9,.8" AbsoluteLayout.LayoutFlags="All">
-            <Entry Text="Nome" />
-            <Entry Text="Telefone" />
+            <Entry Text="{Binding NomeEntry}" Placeholder="Nome" Style="{DynamicResource Entrys}"/>
+            <Entry Text="{Binding TelefoneEntry}" Placeholder="Telefone" Style="{DynamicResource Entrys}" Keyboard="Telephone" />
         </StackLayout>
 
 
         <Button Margin="6,0,3,6" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"
-                    AbsoluteLayout.LayoutBounds="0,1,.5,.1" AbsoluteLayout.LayoutFlags="All" />
+                AbsoluteLayout.LayoutBounds="0,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
+                Command="{Binding CancelarButtonCommand}" />
         <!--x, y, width, height-->
         <Button Margin="3,0,6,6" Text="Agendar" TextColor="White" BackgroundColor="DarkGreen"
-                    AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" />
+                AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
+                Command="{Binding AgendarButtonCommand}" IsEnabled="{Binding CanExecuteAgendarButton}"/>
 
     </AbsoluteLayout>
 

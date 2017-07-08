@@ -1,12 +1,6 @@
-﻿using System;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using Prism.Navigation;
-using Prism.Commands;
-using System.Threading.Tasks;
-using Plugin.Connectivity;
-using PrismBarbearia.Helpers;
 using Prism.Services;
-using PrismBarbearia.Services;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -34,12 +28,13 @@ namespace PrismBarbearia.ViewModels
 
         protected INavigationService _navigationService { get; }
         protected IPageDialogService _pageDialogService { get; }
+           
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public BaseViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
         {
             _navigationService = navigationService;
-            _pageDialogService = pageDialogService;
+            _pageDialogService = pageDialogService;            
         }
 
         public virtual void OnNavigatedFrom(NavigationParameters parameters)

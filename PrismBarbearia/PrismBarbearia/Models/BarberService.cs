@@ -3,7 +3,6 @@ using System;
 
 namespace PrismBarbearia.Models
 {
-    [DataTable("agendamentos")]
     public class BarberService
     {
         public string Id { get; set; }
@@ -17,6 +16,5 @@ namespace PrismBarbearia.Models
             get { return "R$ "+servicePrice; }
             set { servicePrice = value; }
         }
-
     }
 }

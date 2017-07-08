@@ -1,7 +1,6 @@
 ﻿using Syncfusion.SfSchedule.XForms;
 using Xamarin.Forms;
 using PrismBarbearia.ViewModels;
-using System.Diagnostics;
 
 namespace PrismBarbearia.Views
 {
@@ -12,12 +11,6 @@ namespace PrismBarbearia.Views
         public SchedulesWeekPage()
         {
             InitializeComponent();
-            WorkWeekViewSettings workweekViewSettings = new WorkWeekViewSettings();
-            WorkWeekLabelSettings workWeekLabelSettings = new WorkWeekLabelSettings();
-            workWeekLabelSettings.TimeFormat = "hh:mm";
-            workWeekLabelSettings.TimeLabelColor = Color.DarkGreen;
-            workweekViewSettings.WorkWeekLabelSettings = workWeekLabelSettings;
-            schedule.WorkWeekViewSettings = workweekViewSettings;
         }
 
         private async void CellTappedAsync(object sender, CellTappedEventArgs args)
@@ -25,7 +18,6 @@ namespace PrismBarbearia.Views
             if (args.Appointment == null)
             {
                 ViewModel.novoEventoAsync(args.Datetime);
-                Debug.WriteLine(args.Datetime);
             }
             else
             {

@@ -29,12 +29,12 @@
                         WorkStartHour="8" 
                         WorkEndHour="20"                             
                         TimeSlotColor="White"
-                        TimeSlotBorderColor="Gray" 
+                        TimeSlotBorderColor="#43A047" 
                         TimeSlotBorderStrokeWidth="5"
                         VerticalLineStrokeWidth="5" 
                         VerticalLineColor="DarkGreen"                        
-                        NonWorkingHoursTimeSlotColor="Red"
-                        NonWorkingHoursTimeSlotBorderColor="DarkRed" >
+                        NonWorkingHoursTimeSlotColor="Gray"
+                        NonWorkingHoursTimeSlotBorderColor="#43A047">
 
                     <schedule:WorkWeekViewSettings.NonAccessibleBlocks>
                         <!--<schedule:NonAccessibleBlock                                 
@@ -44,16 +44,23 @@
 				                Color="Black" /> NAO FUNCIONOU NO ANDROID-->
                     </schedule:WorkWeekViewSettings.NonAccessibleBlocks>
 
+                    <schedule:WorkWeekViewSettings.WorkWeekLabelSettings>
+                        <schedule:WorkWeekLabelSettings
+                            TimeFormat = "hh:mm"
+                            TimeLabelColor = "#1B5E20">
+                        </schedule:WorkWeekLabelSettings>
+                    </schedule:WorkWeekViewSettings.WorkWeekLabelSettings>
+
                 </schedule:WorkWeekViewSettings>
 
             </schedule:SfSchedule.WorkWeekViewSettings>
 
             <schedule:SfSchedule.SelectionStyle>
                 <schedule:SelectionStyle 
-                   BackgroundColor="Blue" 
+                   BackgroundColor="#43A047"
                    BorderColor="Black" 
                    BorderThickness="5" 
-                   BorderCornerRadius="5">
+                   BorderCornerRadius="1">
                 </schedule:SelectionStyle>
             </schedule:SfSchedule.SelectionStyle>
 
@@ -73,11 +80,14 @@
 
 
             <schedule:SfSchedule.AppointmentStyle>
-                <schedule:AppointmentStyle BorderWidth="10" 
+                <schedule:AppointmentStyle 
+                BorderWidth="5" 
                 TextColor="White" 
-                BorderCornerRadius="10" 
-                TextSize="12"
-                BorderColor="GreenYellow">
+                BorderCornerRadius="1" 
+                TextSize="10"
+                BorderColor="#FFA726"
+                SelectionBorderColor="Black"
+                SelectionTextColor="Black">
                 </schedule:AppointmentStyle>
             </schedule:SfSchedule.AppointmentStyle>
 

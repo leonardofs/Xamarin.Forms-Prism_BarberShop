@@ -21,7 +21,6 @@ namespace PrismBarbearia.Services
     {
 
         public MobileServiceClient Client { get; set; } = null;
-        IMobileServiceSyncTable<BarberService> serviceTable;
         IMobileServiceSyncTable<BarberSchedule> scheduleTable;
 
         public async Task Initialize()
@@ -29,11 +28,11 @@ namespace PrismBarbearia.Services
             if (Client?.SyncContext?.IsInitialized ?? false)
                 return;
 
-            var appUrl = "http://appxamarindemo.azurewebsites.net";
-            // var appUrl = "http://barbearia8ball.azurewebsites.net";
+            //var appUrl = "http://appxamarindemo.azurewebsites.net";
+            var appUrl = "http://barbearia8ball.azurewebsites.net";
 
             Client = new MobileServiceClient(appUrl);
-            
+
             //InitializeDatabase for path
             var path = "syncstore.db";
             path = Path.Combine(MobileServiceClient.DefaultDatabasePath, path);
@@ -42,68 +41,65 @@ namespace PrismBarbearia.Services
             var store = new MobileServiceSQLiteStore(path);
 
             //Define table
-            store.DefineTable<BarberService>();
+            store.DefineTable<BarberSchedule>();
 
             //Initialize SyncContext
             await Client.SyncContext.InitializeAsync(store);
 
             //Get our sync table that will call out to azure
-            serviceTable = Client.GetSyncTable<BarberService>();
             scheduleTable = Client.GetSyncTable<BarberSchedule>();
+            //scheduleTable = Client.GetSyncTable<BarberSchedule>();
         }
 
-        public async Task SyncService()
+        public async Task SyncSchedule()
         {
             try
             {
                 if (!CrossConnectivity.Current.IsConnected)
                     return;
 
-                await serviceTable.PullAsync("agendamentosFeitos", serviceTable.CreateQuery());
+                await scheduleTable.PullAsync("agendamentosFeitos", scheduleTable.CreateQuery());
                 await Client.SyncContext.PushAsync();
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Unable to sync coffees, that is alright as we have offline capabilities: " + ex);
+                Debug.WriteLine("Unable to sync schedules, that is alright as we have offline capabilities: " + ex);
             }
 
         }
 
-        public async Task<IEnumerable<BarberService>> GetServices()
+        public async Task<IEnumerable<BarberSchedule>> GetSchedule()
         {
             await Initialize();
-            await SyncService();
+            await SyncSchedule();
 
-            return await serviceTable.ToEnumerableAsync(); ;
+            return await scheduleTable.ToEnumerableAsync();
         }
-
-        public async Task<BarberService> AddService(string name, string price)//, string id, string detail, string image)
-        {
-            await Initialize();
-
-            var service = new BarberService
-            {
-                //Id = id,
-                ServiceName = name,
-                ServicePrice = price,
-                //Detail = detail,
-                //Image = image
-            };
-
-            await serviceTable.InsertAsync(service);
-            await SyncService();
-            return service;
-        }
-        public async Task<BarberSchedule> AddSchedule(string service, string date, string hour)
+      
+        public async Task<BarberSchedule> AddSchedule(string service, DateTime dateTime)
         {
             await Initialize();
             var schedule = new BarberSchedule
             {
                 Service = service,
-                Date = date,
-                Hour = hour
+                DateTime = dateTime
             };
             await scheduleTable.InsertAsync(schedule);
+            await SyncSchedule();
+            return schedule;
+        }
+
+        public async Task<BarberSchedule> AddScheduleOut(string service, string phoneNumber, DateTime dateTime)
+        {
+            await Initialize();
+            var schedule = new BarberSchedule
+            {
+                Service = service,
+                PhoneNumber = phoneNumber,
+                DateTime = dateTime
+            };
+            await scheduleTable.InsertAsync(schedule);
+            await SyncSchedule();
             return schedule;
         }
 

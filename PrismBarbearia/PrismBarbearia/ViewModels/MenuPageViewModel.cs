@@ -79,10 +79,10 @@ namespace PrismBarbearia.ViewModels
                 Settings.UserId = string.Empty;
             }
 
-            isVisibleAdminButtons = Settings.IsAdmin;
-            isVisibleLogInButton = !Settings.IsLoggedIn;
-            isVisibleLogOutButton = Settings.IsLoggedIn;
-            isVisibleMainPageButton = false;
+            IsVisibleAdminButtons = Settings.IsAdmin;
+            IsVisibleLogInButton = !Settings.IsLoggedIn;
+            IsVisibleLogOutButton = Settings.IsLoggedIn;
+            IsVisibleMainPageButton = false;
         }
 
         private async Task ExecuteLoginFacebookCommand()

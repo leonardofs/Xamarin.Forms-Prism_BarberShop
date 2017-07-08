@@ -21,7 +21,8 @@ namespace PrismBarbearia.ViewModels
         private BarberService serviceTapped;
         private BarberSchedule scheduleTemp;
         private BarberHour hourSchedule;
-        AzureDataService scheduleService;
+        private AzureDataService scheduleService;
+
         public HoursPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             scheduleService = new AzureDataService();
@@ -36,7 +37,6 @@ namespace PrismBarbearia.ViewModels
             hourSchedule = new BarberHour();
             hourSchedule.Hour = "00:00";
             CallSyncAvaliableHours();
-
         }
 
         async void CallSyncAvaliableHours()
@@ -58,8 +58,8 @@ namespace PrismBarbearia.ViewModels
             }
 
             await SyncHours();
-            int i = 0,index = 1;
-            while(i < Temp.Count)
+            int i = 0, index = 1;
+            while (i < Temp.Count)
             {
 
                 scheduleTemp = Temp.ElementAt<BarberSchedule>(i);
@@ -118,7 +118,7 @@ namespace PrismBarbearia.ViewModels
                 {
                     IsBusy = true;
                     var Repository = new Repository();
-                    var Items = await Repository.GetSchedule(dayTapped.Date);
+                    var Items = await Repository.GetSchedule(/*dayTapped.Date*/);
                     foreach (var Service in Items)
                     {
                         Schedules.Add(Service);
@@ -143,23 +143,29 @@ namespace PrismBarbearia.ViewModels
         public override void OnNavigatedTo(NavigationParameters navigationParams)
         {
             serviceTapped = navigationParams.GetValue<BarberService>("serviceTapped");
-            dayTapped = navigationParams.GetValue<BarberDay>("dayTapped");            
+            dayTapped = navigationParams.GetValue<BarberDay>("dayTapped");
         }
 
         public async void NewSchedule(object hourTapped)
         {
-            //if (hourTapped != null) comentei para clicar em "Escolha um horário no cabeçado" para fazer teste"
-            //{
+            if (hourTapped != null)
+            {
                 BarberHour _hourTapped = hourTapped as BarberHour;
-                await scheduleService.AddSchedule(serviceTapped.ServiceName, dayTapped.Date, _hourTapped.Hour);
+
+                DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + _hourTapped.Hour), "dd-MM-yyyy HH:mm",
+                                                       System.Globalization.CultureInfo.InvariantCulture);
+
+                /*guarda na easytable, se quiser testar, altere para o nome da sua tabela na Models/BarberSchedule 
+                 e da sua url no AzureDataService para testar*/
+                await scheduleService.AddSchedule(serviceTapped.ServiceName, scheduleDate);
+                
                 await _pageDialogService.DisplayAlertAsync("Agendamento", "Agendado com sucesso:" +
                                                            "\nServiço: " + serviceTapped.ServiceName +
-                                                           "\nDia: " + dayTapped.Date+
-                                                           "\nHorário: " + _hourTapped.Hour, "OK");
-            
+                                                           "\nData: " + scheduleDate, "OK");
+
                 //await _navigationService.GoBackAsync(null, false);
-            //}
+            }
         }
-        
+
     }
 }

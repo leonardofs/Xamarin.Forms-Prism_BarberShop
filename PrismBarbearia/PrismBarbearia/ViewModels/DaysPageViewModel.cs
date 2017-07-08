@@ -28,7 +28,7 @@ namespace PrismBarbearia.ViewModels
             {
                 DateTime date = DateTime.Today.AddDays(i);
                 BarberDay day = new BarberDay();
-                day.Date = date.ToString("dd/MM/yyyy");
+                day.Date = date.ToString("dd-MM-yyyy");
                 if (date.DayOfWeek == 0)
                     continue;
                 else

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class SchedulesWeekPageViewModel : BaseViewModel
+    public class SchedulesWeekPageViewModel : BaseViewModel, INavigatedAware
     {
         private ObservableCollection<BarberShopAppointment> eventsCollection;
         public ObservableCollection<BarberShopAppointment> EventsCollection
@@ -16,33 +16,29 @@ namespace PrismBarbearia.ViewModels
             get { return eventsCollection; }
             set { SetProperty(ref eventsCollection, value); }
         }
+        public ObservableCollection<BarberSchedule> BarberSchedulesList { get; }
 
-        public BarberService servico;
+        private BarberShopAppointment eventAppointment { get; set; }
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public SchedulesWeekPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             Title = "AGENDA";
-            //-------------------------------------------------TESTES--------------------------------------------------//                        
-            servico = new BarberService();
+            eventAppointment = new BarberShopAppointment();
             EventsCollection = new ObservableCollection<BarberShopAppointment>();
-
-            //cortarCabelo();
-            //fazerBarba();
+            BarberSchedulesList = new ObservableCollection<BarberSchedule>();
         }
 
         public async void novoEventoAsync(DateTime dateTime)
         {
-            await _navigationService.NavigateAsync("ServicesPage", useModalNavigation: false);
-            /*BarberShopAppointment pintarCabelo = new BarberShopAppointment();
-            pintarCabelo.From = dateTime;
-            pintarCabelo.To = pintarCabelo.From.AddHours(1);
-            servico.Name = "pintar cabelo";
-            pintarCabelo.EventName = servico.Name;
-            pintarCabelo.Color = Color.Pink;
-            EventsCollection.Add(pintarCabelo);*/
+            if (dateTime != null)
+            {
+                NavigationParameters navigationParams = new NavigationParameters();
+                navigationParams.Add("dateTime", dateTime);
+                await _navigationService.NavigateAsync("ServicesPage", navigationParams, false);                
+            }                                        
         }
-
+        
         public async Task cancelarEventoAsync(object evento)
         {
             bool r = await _pageDialogService.DisplayAlertAsync("Cancelar evento", "Deseja cancelar este evento?", "Sim", "Não");
@@ -50,27 +46,51 @@ namespace PrismBarbearia.ViewModels
             if (r) EventsCollection.Remove(evento as BarberShopAppointment);
         }
 
-        //public void fazerBarba()
-        //{
-        //    BarberShopAppointment fazerBarba = new BarberShopAppointment();
-        //    fazerBarba.From = new DateTime(2017, 07, 5, 10, 0, 0);
-        //    fazerBarba.To = fazerBarba.From.AddHours(0.5);
-        //    servico.Name = "fazer barba";
-        //    fazerBarba.EventName = servico.Name;
-        //    fazerBarba.Color = Color.Blue;
-        //    EventsCollection.Add(fazerBarba);
-        //}
+        public override void OnNavigatedTo(NavigationParameters parameters)
+        {
+            SyncSchedules();
+        }
 
-        //public void cortarCabelo()
-        //{
-        //    BarberShopAppointment cortarCabelo = new BarberShopAppointment();
-        //    cortarCabelo.From = new DateTime(2017, 07, 6, 11, 0, 0);
-        //    cortarCabelo.To = cortarCabelo.From.AddHours(0.5);//30 minutos de duração
-        //    servico.Name = "cortar cabelo";
-        //    cortarCabelo.EventName = servico.Name;
-        //    cortarCabelo.Color = Color.Green;
-        //    EventsCollection.Add(cortarCabelo);
-        //}
+        async void SyncSchedules()
+        {
+            if (!IsBusy)
+            {
+                Exception Error = null;
+                BarberSchedulesList.Clear();
+                EventsCollection.Clear();
+
+                try
+                {
+                    IsBusy = true;
+                    var Repository = new Repository();
+                    var Items = await Repository.GetSchedule();
+                    foreach (var Schedule in Items)
+                    {
+                        BarberSchedulesList.Add(Schedule);
+
+                        eventAppointment.From = Schedule.DateTime;
+                        eventAppointment.To = eventAppointment.From.AddHours(0.5);
+                        eventAppointment.EventName = Schedule.Service;
+                        eventAppointment.Color = Color.ForestGreen;
+                        
+                        EventsCollection.Add(eventAppointment);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Error = ex;
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
+                if (Error != null)
+                {
+                    await _pageDialogService.DisplayAlertAsync("Erro", Error.Message, "OK");
+                }
+            }
+            return;
+        }
 
     }
 }

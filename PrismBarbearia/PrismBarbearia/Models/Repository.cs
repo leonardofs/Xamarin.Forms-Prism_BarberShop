@@ -27,16 +27,17 @@ namespace PrismBarbearia.Models
             }
             return hours;
         }
-        public async Task<List<BarberSchedule>> GetSchedule(string selectedDay)
+        public async Task<List<BarberSchedule>> GetSchedule()
         {
-            List<BarberSchedule> schedule;
-            var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Agendamento?zumo-api-version=2.0.0";
+            List<BarberSchedule> schedules;
+            //var URLwebAPI = "http://appxamarindemo.azurewebsites.net/tables/Agendamento?zumo-api-version=2.0.0";
+            var URLwebAPI = "http://barbearia8ball.azurewebsites.net/tables/agendamentos?zumo-api-version=2.0.0";
             using (var Client = new System.Net.Http.HttpClient())
             {
                 var JSON = await Client.GetStringAsync(URLwebAPI);
-                schedule = Newtonsoft.Json.JsonConvert.DeserializeObject<List<BarberSchedule>>(JSON);
+                schedules = Newtonsoft.Json.JsonConvert.DeserializeObject<List<BarberSchedule>>(JSON);
             }
-            return schedule;
+            return schedules;
         }
     }
 }
