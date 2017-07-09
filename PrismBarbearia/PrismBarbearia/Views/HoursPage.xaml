@@ -8,8 +8,8 @@
              Title="{Binding Title}">
 
     <syncfusion:SfListView x:Name="listView" 
-                           ItemsSource="{Binding Hours}"
-                           ItemSize="50"                           
+                           ItemsSource="{Binding HoursAvaliable}"
+                           ItemSize="50"
                            ItemSpacing="0,0,0,0"
                            SelectionMode="Single"
                            SelectionGesture="Tap"
@@ -20,8 +20,9 @@
                            FooterSize="60"
                            IsStickyHeader="False" 
                            IsStickyFooter="False"
-                           ItemTapped="HourTapped">
-                            
+                           ItemTapped="HourTapped"
+                           >
+
         <syncfusion:SfListView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="5" ColumnSpacing="0">

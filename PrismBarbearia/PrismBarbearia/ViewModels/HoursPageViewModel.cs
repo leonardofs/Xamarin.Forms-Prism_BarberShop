@@ -13,10 +13,10 @@ namespace PrismBarbearia.ViewModels
 {
     public class HoursPageViewModel : BaseViewModel, INavigatedAware
     {
-        public ObservableCollection<BarberHour> Hours { get; }
+        public ObservableCollection<string> Hours { get; }
+        public ObservableCollection<BarberHour> HoursAvaliable { get; }
         public ObservableCollection<BarberSchedule> Schedules { get; }
         public ObservableCollection<BarberSchedule> Temp { get; set; }
-        public ObservableCollection<BarberHour> HoursTemp { get; }
         private BarberDay dayTapped;
         private BarberService serviceTapped;
         private BarberSchedule scheduleTemp;
@@ -26,16 +26,15 @@ namespace PrismBarbearia.ViewModels
         public HoursPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             scheduleService = new AzureDataService();
-            Hours = new ObservableCollection<BarberHour>();
+            Hours = new ObservableCollection<string>();
             Schedules = new ObservableCollection<BarberSchedule>();
+            HoursAvaliable = new ObservableCollection<BarberHour>();
             Temp = new ObservableCollection<BarberSchedule>();
-            HoursTemp = new ObservableCollection<BarberHour>();
             Title = "Horários";
             dayTapped = new BarberDay();
             serviceTapped = new BarberService();
             scheduleTemp = new BarberSchedule();
             hourSchedule = new BarberHour();
-            hourSchedule.Hour = "00:00";
             CallSyncAvaliableHours();
         }
 
@@ -58,16 +57,26 @@ namespace PrismBarbearia.ViewModels
             }
 
             await SyncHours();
-            int i = 0, index = 1;
+            int i = 0, index = 0;
             while (i < Temp.Count)
             {
 
                 scheduleTemp = Temp.ElementAt<BarberSchedule>(i);
-                hourSchedule.Hour = scheduleTemp.Hour;
-                //index = Hours.IndexOf(hourSchedule);
+                var hora = scheduleTemp.DateTime.Hour;
+                string horaTratada;
+                if (hora < 10)
+                    horaTratada = "0" + hora.ToString();
+                else
+                    horaTratada = hora.ToString();
+                var minutos = scheduleTemp.DateTime.Minute.ToString();
+                if (minutos == "0")
+                    minutos = "00";
+                string horario = horaTratada + ":" + minutos;
+                index = Hours.IndexOf(horario);
                 if (index >= 0)
                 {
                     Hours.RemoveAt(index);
+                    HoursAvaliable.RemoveAt(index);
                 }
                 i++;
             }
@@ -88,7 +97,8 @@ namespace PrismBarbearia.ViewModels
                     var Items = await Repository.GetHours();
                     foreach (var Hour in Items)
                     {
-                        Hours.Add(Hour);
+                        Hours.Add(Hour.Hour);
+                        HoursAvaliable.Add(Hour);
                     }
                 }
                 catch (Exception ex)
@@ -155,8 +165,6 @@ namespace PrismBarbearia.ViewModels
                 DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + _hourTapped.Hour), "dd-MM-yyyy HH:mm",
                                                        System.Globalization.CultureInfo.InvariantCulture);
 
-                /*guarda na easytable, se quiser testar, altere para o nome da sua tabela na Models/BarberSchedule 
-                 e da sua url no AzureDataService para testar*/
                 await scheduleService.AddSchedule(serviceTapped.ServiceName, scheduleDate);
                 
                 await _pageDialogService.DisplayAlertAsync("Agendamento", "Agendado com sucesso:" +

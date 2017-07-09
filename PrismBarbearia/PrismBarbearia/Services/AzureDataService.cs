@@ -29,7 +29,6 @@ namespace PrismBarbearia.Services
             if (Client?.SyncContext?.IsInitialized ?? false)
                 return;
 
-            //var appUrl = "http://appxamarindemo.azurewebsites.net";
             var appUrl = "http://barbearia8ball.azurewebsites.net";
 
             Client = new MobileServiceClient(appUrl);
