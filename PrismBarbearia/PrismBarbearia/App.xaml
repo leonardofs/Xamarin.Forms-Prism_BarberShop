@@ -14,7 +14,7 @@
       <Color x:Key="StatusBarColor">#1B5E20</Color>
       <Color x:Key="TabBarColor">#43A047</Color>
       <Color x:Key="BackgroundColor">#381C784</Color>
-      <Color x:Key="SecondaryColor">#FFA726</Color>
+      <Color x:Key="SecondaryColor">#009688</Color>
 
       <!-- ESTILOS -->
 

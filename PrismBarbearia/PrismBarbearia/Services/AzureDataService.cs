@@ -117,7 +117,7 @@ namespace PrismBarbearia.Services
                 Service = service,
                 Name = name,
                 PhoneNumber = phoneNumber,
-                DateTime = dateTime
+                DateTime = dateTime.AddHours(-3)
             };
             await scheduleTable.InsertAsync(schedule);
             await SyncSchedule();
