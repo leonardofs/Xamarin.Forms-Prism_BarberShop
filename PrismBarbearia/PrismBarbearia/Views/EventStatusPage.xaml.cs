@@ -2,9 +2,9 @@
 
 namespace PrismBarbearia.Views
 {
-    public partial class ServicesPage : ContentPage
+    public partial class EventStatusPage : ContentPage
     {
-        public ServicesPage()
+        public EventStatusPage()
         {
             InitializeComponent();
         }

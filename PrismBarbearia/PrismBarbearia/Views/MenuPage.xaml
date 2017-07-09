@@ -30,6 +30,9 @@
                 <Button Text="Editar informações de contato" IsVisible="{Binding IsVisibleAdminButtons}"
                         Style="{DynamicResource AdminButton}" />
 
+                <Button Text="Editar lista de serviços" Command="{Binding EditServicesCommand}" IsVisible="{Binding IsVisibleAdminButtons}"
+                        Style="{DynamicResource AdminButton}" />
+
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

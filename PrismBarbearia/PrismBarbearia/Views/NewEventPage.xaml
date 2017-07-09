@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PrismBarbearia.Views.NewEventPage"
+             Title="{Binding Title}">
+
+    <AbsoluteLayout>
+
+        <Label Text="Cadastre nome, telefone e selecione um serviço" Style="{DynamicResource TitleLabel}"
+               AbsoluteLayout.LayoutBounds=".5,.01,0.95,.07" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Entry Text="{Binding NomeEntry}" Placeholder="Nome" Style="{DynamicResource Entrys}"
+               AbsoluteLayout.LayoutBounds=".5,.09,0.95,.07" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Entry Text="{Binding TelefoneEntry}" Placeholder="Telefone" Style="{DynamicResource Entrys}" Keyboard="Telephone"
+               AbsoluteLayout.LayoutBounds=".5,.18,0.95,.07" AbsoluteLayout.LayoutFlags="All"/>
+
+
+        <syncfusion:SfListView x:Name="listView" 
+                               ItemsSource="{Binding BarberServicesList}"
+                               ItemSize="50"                           
+                               ItemSpacing="0,0,0,0"
+                               SelectionMode="Single"
+                               SelectionGesture="Tap"
+                               SelectionBackgroundColor="#FFA726"
+                               Orientation="Vertical"
+                               AutoFitMode="None"
+                               SelectedItem="{Binding SelectedService}"
+                               Margin="0,30"
+                               HeaderSize="25" 
+                               FooterSize="25"
+                               IsStickyHeader="True" 
+                               IsStickyFooter="True"
+                               AbsoluteLayout.LayoutBounds=".5,.7,1,.73" AbsoluteLayout.LayoutFlags="All">
+
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5" ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.75*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Large" 
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Small" />
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+            <syncfusion:SfListView.LayoutManager>
+                <syncfusion:GridLayout SpanCount="1" />
+            </syncfusion:SfListView.LayoutManager>
+
+            <syncfusion:SfListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid BackgroundColor="#FFA726" Margin="0,5">
+                        <Label VerticalOptions ="Center" HorizontalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfListView.HeaderTemplate>
+
+            <syncfusion:SfListView.FooterTemplate>
+                <DataTemplate>
+                    <Grid BackgroundColor="#FFA726" Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="Edit.png" />
+                        <Image Grid.Column="1" Source="Delete.png" />
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfListView.FooterTemplate>
+
+        </syncfusion:SfListView>
+
+
+        <Button Margin="6,0,3,6" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"
+                AbsoluteLayout.LayoutBounds="0,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
+                Command="{Binding CancelarButtonCommand}" />
+        <!--x, y, width, height-->
+        <Button Margin="3,0,6,6" Text="Agendar" TextColor="White" BackgroundColor="DarkGreen"
+                AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
+                Command="{Binding AgendarButtonCommand}" IsEnabled="{Binding CanExecuteAgendarButton}"/>
+
+    </AbsoluteLayout>
+
+</ContentPage>

@@ -4,12 +4,12 @@ using Prism.Services;
 using PrismBarbearia.Models;
 using PrismBarbearia.Services;
 using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class ServicesPageViewModel : BaseViewModel, INavigatedAware
+    public class NewEventPageViewModel : BaseViewModel, INavigatedAware
     {
         private AzureDataService azureDataService;
 
@@ -23,7 +23,7 @@ namespace PrismBarbearia.ViewModels
                 SetProperty(ref nomeEntry, value);
                 canExecuteAgendarButtonChanged();
             }
-        }        
+        }
 
         private string telefoneEntry;
         public string TelefoneEntry
@@ -43,20 +43,34 @@ namespace PrismBarbearia.ViewModels
             set { SetProperty(ref canExecuteAgendarButton, value); }
         }
 
+        private BarberService selectedService;
+        public BarberService SelectedService
+        {
+            get { return selectedService; }
+            set
+            {
+                SetProperty(ref selectedService, value);
+                canExecuteAgendarButtonChanged();
+            }
+        }
+
         public DelegateCommand AgendarButtonCommand { get; }
         public DelegateCommand CancelarButtonCommand { get; }
-
+        public ObservableCollection<BarberService> BarberServicesList { get; }
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
-        public ServicesPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
+        public NewEventPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            Title = "LISTA DE SERVIÇOS";
+            Title = "NOVO AGENDAMENTO";
             azureDataService = Xamarin.Forms.DependencyService.Get<AzureDataService>();
 
             NomeEntry = "";
             TelefoneEntry = "";
             AgendarButtonCommand = new DelegateCommand(async () => await ExecuteAgendarButtonCommand());
             CancelarButtonCommand = new DelegateCommand(async () => await ExecuteCancelarButtonCommand());
+
+            BarberServicesList = new ObservableCollection<BarberService>();
+            SyncServices();
         }
 
         BarberSchedule Schedule = new BarberSchedule();
@@ -70,14 +84,14 @@ namespace PrismBarbearia.ViewModels
 
         public async Task ExecuteAgendarButtonCommand()
         {
-            Schedule.Service = NomeEntry;
-            await azureDataService.AddScheduleOut(Schedule.Service, TelefoneEntry, Schedule.DateTime);
+
+            await azureDataService.AddScheduleOut(SelectedService.ServiceName, NomeEntry, TelefoneEntry, Schedule.DateTime);
             await _navigationService.GoBackAsync();
         }
 
         private void canExecuteAgendarButtonChanged()
         {
-            if (NomeEntry.Length > 2 && TelefoneEntry.Length > 7)
+            if (NomeEntry.Length > 2 && TelefoneEntry.Length > 7 && SelectedService != null)
                 CanExecuteAgendarButton = true;
             else
                 CanExecuteAgendarButton = false;
@@ -86,6 +100,38 @@ namespace PrismBarbearia.ViewModels
         public async Task ExecuteCancelarButtonCommand()
         {
             await _navigationService.GoBackAsync();
+        }
+
+        async void SyncServices()
+        {
+            if (!IsBusy)
+            {
+                Exception Error = null;
+                BarberServicesList.Clear();
+                try
+                {
+                    IsBusy = true;
+                    var Repository = new Repository();
+                    var Items = await Repository.GetServices();
+                    foreach (var Service in Items)
+                    {
+                        BarberServicesList.Add(Service);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Error = ex;
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
+                if (Error != null)
+                {
+                    await _pageDialogService.DisplayAlertAsync("Erro", Error.Message, "OK");
+                }
+            }
+            return;
         }
 
     }

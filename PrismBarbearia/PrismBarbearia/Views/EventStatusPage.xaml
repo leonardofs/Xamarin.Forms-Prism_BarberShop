@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PrismBarbearia.Views.EventStatusPage">
+    
+    <AbsoluteLayout>
+
+        <StackLayout  AbsoluteLayout.LayoutBounds=".5,.05,.85,.95" AbsoluteLayout.LayoutFlags="All">
+            
+            <Label Text="Nome do cliente"/>
+            <Label Text="{Binding NomeCliente}"/>
+
+            <Label Text="Telefone do cliente"/>
+            <Label Text="{Binding TelefoneCliente}"/>
+
+            <Label Text="Serviço"/>
+            <Label Text="{Binding Serviço}"/>
+            
+        </StackLayout>
+
+        <Button Margin="6,0,3,6" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"
+                AbsoluteLayout.LayoutBounds="0,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
+                Command="{Binding CancelarButtonCommand}" />
+        <!--x, y, width, height-->
+        <Button Margin="3,0,6,6" Text="Desmarcar" TextColor="White" BackgroundColor="Black"
+                AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
+                Command="{Binding DesmarcarButtonCommand}"/>
+        
+    </AbsoluteLayout>
+    
+</ContentPage>

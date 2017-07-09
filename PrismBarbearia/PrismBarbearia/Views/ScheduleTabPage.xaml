@@ -6,7 +6,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"             
              x:Class="PrismBarbearia.Views.ScheduleTabPage"
              Title="{Binding Title}">
-    
+
     <syncfusion:SfListView x:Name="listView" 
                            ItemsSource="{Binding BarberServicesList}"
                            ItemSize="100"                           
@@ -26,13 +26,13 @@
             <DataTemplate>
                 <Grid Padding="5" ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.1*"/>
-                        <ColumnDefinition Width="0.9*"/>
+                        <ColumnDefinition Width="0.75*"/>
+                        <ColumnDefinition Width="0.25*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
-                          HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Large" 
-                          HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Large" 
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Small" />
                 </Grid>
             </DataTemplate>
         </syncfusion:SfListView.ItemTemplate>
@@ -62,5 +62,5 @@
         </syncfusion:SfListView.FooterTemplate>
 
     </syncfusion:SfListView>
-   <!-- <Button Text="Adicionar Servico" Command="{Binding AddServiceCommand}"/> -->
+    
 </ContentPage>

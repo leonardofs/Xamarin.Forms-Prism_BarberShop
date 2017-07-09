@@ -5,6 +5,7 @@ using PrismBarbearia.Models;
 using System;
 using Prism.Services;
 using System.Threading.Tasks;
+using Plugin.Connectivity;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -35,19 +36,23 @@ namespace PrismBarbearia.ViewModels
             {
                 NavigationParameters navigationParams = new NavigationParameters();
                 navigationParams.Add("dateTime", dateTime);
-                await _navigationService.NavigateAsync("ServicesPage", navigationParams, false);                
+                await _navigationService.NavigateAsync("NewEventPage", navigationParams, false);                
             }                                        
         }
         
-        public async Task cancelarEventoAsync(object evento)
+        public async Task cancelarEventoAsync(DateTime dateTime)
         {
-            bool r = await _pageDialogService.DisplayAlertAsync("Cancelar evento", "Deseja cancelar este evento?", "Sim", "Não");
-
-            if (r) EventsCollection.Remove(evento as BarberShopAppointment);
+            NavigationParameters navigationParams = new NavigationParameters();
+            navigationParams.Add("dateTime", dateTime);
+            await _navigationService.NavigateAsync("EventStatusPage", navigationParams, false);
+            
+            //bool r = await _pageDialogService.DisplayAlertAsync("Cancelar evento", "Deseja cancelar este evento?", "Sim", "Não");
+            //if (r) EventsCollection.Remove(evento as BarberShopAppointment);
         }
 
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
+            if(CrossConnectivity.Current.IsConnected)
             SyncSchedules();
         }
 

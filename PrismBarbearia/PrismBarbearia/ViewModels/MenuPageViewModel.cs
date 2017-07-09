@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PrismBarbearia.Services;
 using PrismBarbearia.Helpers;
 using System.Diagnostics;
+using System;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -52,6 +53,7 @@ namespace PrismBarbearia.ViewModels
         public DelegateCommand LogOutFacebookCommand { get; set; }
         public DelegateCommand SchedulesWeekPageCommand { get; set; }
         public DelegateCommand MainPageCommand { get; set; }
+        public DelegateCommand EditServicesCommand { get; set; }
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public MenuPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
@@ -62,7 +64,7 @@ namespace PrismBarbearia.ViewModels
             LogOutFacebookCommand = new DelegateCommand(async () => await ExecuteLogOutFacebookCommandAsync());
             SchedulesWeekPageCommand = new DelegateCommand(async () => await ExecuteSchedulesWeekPageCommand());
             MainPageCommand = new DelegateCommand(async () => await ExecuteMainPageCommand());
-
+            EditServicesCommand = new DelegateCommand(async () => await ExecuteEditServicesCommand());
 
             Privilegio = "Faça o login";
             if (Settings.IsLoggedIn)
@@ -83,6 +85,13 @@ namespace PrismBarbearia.ViewModels
             IsVisibleLogInButton = !Settings.IsLoggedIn;
             IsVisibleLogOutButton = Settings.IsLoggedIn;
             IsVisibleMainPageButton = false;
+        }
+
+        private async Task ExecuteEditServicesCommand()
+        {
+            IsVisibleAdminButtons = Settings.IsAdmin;
+            IsVisibleMainPageButton = true;
+            await _navigationService.NavigateAsync("MyNavigationPage/EditServicesPage", useModalNavigation: false);
         }
 
         private async Task ExecuteLoginFacebookCommand()
@@ -145,7 +154,7 @@ namespace PrismBarbearia.ViewModels
         private async Task ExecuteSchedulesWeekPageCommand()
         {
            await _navigationService.NavigateAsync("MyNavigationPage/SchedulesWeekPage", useModalNavigation: false);
-           IsVisibleAdminButtons = !Settings.IsAdmin;
+           IsVisibleAdminButtons = Settings.IsAdmin;
            IsVisibleMainPageButton = true;
         }
 

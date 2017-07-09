@@ -21,7 +21,8 @@ namespace PrismBarbearia.Views
             }
             else
             {
-                await ViewModel.cancelarEventoAsync(args.Appointment);
+                //await ViewModel.cancelarEventoAsync(args.Appointment);
+                await ViewModel.cancelarEventoAsync(args.Datetime);
             }
 
         }

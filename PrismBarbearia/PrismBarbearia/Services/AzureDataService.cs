@@ -22,6 +22,7 @@ namespace PrismBarbearia.Services
 
         public MobileServiceClient Client { get; set; } = null;
         IMobileServiceSyncTable<BarberSchedule> scheduleTable;
+        IMobileServiceSyncTable<BarberService> serviceTable;
 
         public async Task Initialize()
         {
@@ -42,12 +43,14 @@ namespace PrismBarbearia.Services
 
             //Define table
             store.DefineTable<BarberSchedule>();
+            store.DefineTable<BarberService>();
 
             //Initialize SyncContext
             await Client.SyncContext.InitializeAsync(store);
 
             //Get our sync table that will call out to azure
             scheduleTable = Client.GetSyncTable<BarberSchedule>();
+            serviceTable = Client.GetSyncTable<BarberService>();
             //scheduleTable = Client.GetSyncTable<BarberSchedule>();
         }
 
@@ -68,6 +71,23 @@ namespace PrismBarbearia.Services
 
         }
 
+        public async Task SyncService()
+        {
+            try
+            {
+                if (!CrossConnectivity.Current.IsConnected)
+                    return;
+
+                await serviceTable.PullAsync("servicosFeitos", serviceTable.CreateQuery());
+                await Client.SyncContext.PushAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Unable to sync schedules, that is alright as we have offline capabilities: " + ex);
+            }
+
+        }
+
         public async Task<IEnumerable<BarberSchedule>> GetSchedule()
         {
             await Initialize();
@@ -75,7 +95,7 @@ namespace PrismBarbearia.Services
 
             return await scheduleTable.ToEnumerableAsync();
         }
-      
+
         public async Task<BarberSchedule> AddSchedule(string service, DateTime dateTime)
         {
             await Initialize();
@@ -89,12 +109,13 @@ namespace PrismBarbearia.Services
             return schedule;
         }
 
-        public async Task<BarberSchedule> AddScheduleOut(string service, string phoneNumber, DateTime dateTime)
+        public async Task<BarberSchedule> AddScheduleOut(string service, string name, string phoneNumber, DateTime dateTime)
         {
             await Initialize();
             var schedule = new BarberSchedule
             {
                 Service = service,
+                Name = name,
                 PhoneNumber = phoneNumber,
                 DateTime = dateTime
             };
@@ -103,5 +124,35 @@ namespace PrismBarbearia.Services
             return schedule;
         }
 
+        public async Task<BarberSchedule> RemoveSchedule(string id)
+        {
+            await Initialize();
+            var schedule = new BarberSchedule { Id = id };
+            await scheduleTable.DeleteAsync(schedule);
+            await SyncSchedule();
+            return schedule;
+        }
+
+        public async Task<BarberService> AddService(string name, string price)
+        {
+            await Initialize();
+            var service = new BarberService
+            {
+                ServiceName = name,
+                ServicePrice = "R$ " + price
+            };
+            await serviceTable.InsertAsync(service);
+            await SyncService();
+            return service;
+        }
+
+        public async Task<BarberService> RemoveService(string id)
+        {
+            await Initialize();
+            var service = new BarberService { Id = id };
+            await serviceTable.DeleteAsync(service);
+            await SyncService();
+            return service;
+        }
     }
 }

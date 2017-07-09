@@ -19,19 +19,17 @@
       <!-- ESTILOS -->
 
       <Style x:Key="Entrys" TargetType="Entry">
-        <Setter Property="PlaceholderColor" Value="White" />
+        <Setter Property="PlaceholderColor" Value="#FFA726" />
         <Setter Property="TextColor" Value="White" />
-        <Setter Property="BackgroundColor" Value="#1B5E20" />
-        <Setter Property="Margin" Value="0,0,0,30" />
+        <Setter Property="BackgroundColor" Value="#43A047" />
       </Style>
 
       <Style x:Key="TitleLabel" TargetType="Label">
         <Setter Property="TextColor" Value="Black" />
         <Setter Property="FontSize" Value="17" />
         <Setter Property="FontFamily" Value="Arial" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
       </Style>
 
       <Style x:Key="MainLabel" TargetType="Label">

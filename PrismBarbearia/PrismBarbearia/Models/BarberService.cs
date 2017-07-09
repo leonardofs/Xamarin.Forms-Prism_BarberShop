@@ -3,18 +3,13 @@ using System;
 
 namespace PrismBarbearia.Models
 {
+    [DataTable("servicos")]
     public class BarberService
     {
         public string Id { get; set; }
         public string ServiceName { get; set; }
         public string ServiceDetail { get; set; }
-        public string ServiceImage { get; set; }    
-
-        private string servicePrice;
-        public string ServicePrice
-        {
-            get { return "R$ "+servicePrice; }
-            set { servicePrice = value; }
-        }
+        public string ServiceImage { get; set; }
+        public string ServicePrice { get; set; }
     }
 }
