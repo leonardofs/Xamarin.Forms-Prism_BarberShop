@@ -101,7 +101,7 @@ namespace PrismBarbearia.Services
             var schedule = new BarberSchedule
             {
                 Service = service,
-                DateTime = dateTime
+                DateTime = dateTime.AddHours(-3)
             };
             await scheduleTable.InsertAsync(schedule);
             await SyncSchedule();
