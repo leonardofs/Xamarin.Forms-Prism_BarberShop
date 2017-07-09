@@ -45,7 +45,7 @@
 
             <syncfusion:SfListView.HeaderTemplate>
                 <DataTemplate>
-                    <Grid BackgroundColor="#FFA726" Margin="0,5">
+                    <Grid BackgroundColor="{DynamicResource SecondaryColor}" Margin="0,5">
                         <Label VerticalOptions ="Center" HorizontalOptions="Center" />
                     </Grid>
                 </DataTemplate>
@@ -53,7 +53,7 @@
 
             <syncfusion:SfListView.FooterTemplate>
                 <DataTemplate>
-                    <Grid BackgroundColor="#FFA726" Margin="0,5,0,0">
+                    <Grid BackgroundColor="{DynamicResource SecondaryColor}" Margin="0,5,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />

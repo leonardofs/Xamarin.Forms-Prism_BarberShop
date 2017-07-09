@@ -85,10 +85,16 @@ namespace PrismBarbearia.ViewModels
 
         private void CanExecuteAdicionarButtonChanged()
         {
-            if (NewServiceEntry != null && ServicePriceEntry != null)
+            if (NewServiceEntry != null && NewServiceEntry != "" && ServicePriceEntry != null && ServicePriceEntry != "")
+            {
                 CanExecuteAdicionarButton = true;
+                CanExecuteEditarButton = true;
+            }
             else
+            {
                 CanExecuteAdicionarButton = false;
+                CanExecuteEditarButton = false;
+            }
         }
 
         private void CanExecuteEditarButtonChanged()
@@ -109,30 +115,69 @@ namespace PrismBarbearia.ViewModels
 
         private async Task ExecuteDeletarButtonCommand()
         {
-            IsBusy = true;
-            var Repository = new Repository();
-            var Items = await Repository.GetServices();
-            foreach (var Service in Items)
+            if (!IsBusy)
             {
-                if (SelectedService.ServiceName == Service.ServiceName)
+                Exception Error = null;
+                try
                 {
-                    await azureDataService.RemoveService(Service.Id);
+                    IsBusy = true;
+                    var Repository = new Repository();
+                    var Items = await Repository.GetServices();
+                    foreach (var Service in Items)
+                    {
+                        if (SelectedService.ServiceName == Service.ServiceName)
+                        {
+                            await azureDataService.RemoveService(Service.Id);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Error = ex;
+                }
+                finally
+                {
+                    IsBusy = false;
                     SyncServices();
+                }
+                if (Error != null)
+                {
+                    await _pageDialogService.DisplayAlertAsync("Erro", Error.Message, "OK");
                 }
             }
         }
 
         private async Task ExecuteEditarButtonCommand()
         {
-            var Repository = new Repository();
-            var Items = await Repository.GetServices();
-            foreach (var Service in Items)
+            if (!IsBusy)
             {
-                if (SelectedService.ServiceName == Service.ServiceName)
+                Exception Error = null;
+                try
                 {
-                    await azureDataService.RemoveService(Service.Id);
-                    await azureDataService.AddService(NewServiceEntry, ServicePriceEntry);
+                    IsBusy = true;
+                    var Repository = new Repository();
+                    var Items = await Repository.GetServices();
+                    foreach (var Service in Items)
+                    {
+                        if (SelectedService.ServiceName == Service.ServiceName)
+                        {
+                            await azureDataService.RemoveService(Service.Id);
+                            await azureDataService.AddService(NewServiceEntry, ServicePriceEntry);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Error = ex;
+                }
+                finally
+                {
+                    IsBusy = false;
                     SyncServices();
+                }
+                if (Error != null)
+                {
+                    await _pageDialogService.DisplayAlertAsync("Erro", Error.Message, "OK");
                 }
             }
         }
@@ -147,7 +192,7 @@ namespace PrismBarbearia.ViewModels
                 {
                     await _pageDialogService.DisplayAlertAsync("Serviço já existe", "Não é possível adicionar outro serviço com o mesmo nome", "Ok");
                     return;
-                }                    
+                }
             }
             await azureDataService.AddService(NewServiceEntry, ServicePriceEntry);
             SyncServices();
