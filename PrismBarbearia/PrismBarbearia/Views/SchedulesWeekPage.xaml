@@ -41,7 +41,7 @@
                                 StartTime="11" 
 			                    EndTime="13" 
 				                Text="ALMOÇO" 
-				                Color="Black" /> NAO FUNCIONOU NO ANDROID-->
+				                Color="Black" />-->
                     </schedule:WorkWeekViewSettings.NonAccessibleBlocks>
 
                     <schedule:WorkWeekViewSettings.WorkWeekLabelSettings>
