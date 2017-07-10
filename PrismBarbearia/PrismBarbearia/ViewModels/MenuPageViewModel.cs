@@ -10,7 +10,7 @@ using System;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class MenuPageViewModel : BaseViewModel
+    public class MenuPageViewModel : BaseViewModel, INavigatedAware
     {
         private string privilegio;
         public string Privilegio
@@ -48,6 +48,7 @@ namespace PrismBarbearia.ViewModels
         }
 
         protected AzureService azureService;
+        private AzureService loginService;
 
         public DelegateCommand LoginFacebookCommand { get; set; }
         public DelegateCommand LogOutFacebookCommand { get; set; }
@@ -58,6 +59,7 @@ namespace PrismBarbearia.ViewModels
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public MenuPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
+            loginService = new AzureService();
             azureService = Xamarin.Forms.DependencyService.Get<AzureService>();
 
             LoginFacebookCommand = new DelegateCommand(async () => await ExecuteLoginFacebookCommand());
@@ -66,14 +68,13 @@ namespace PrismBarbearia.ViewModels
             MainPageCommand = new DelegateCommand(async () => await ExecuteMainPageCommand());
             EditServicesCommand = new DelegateCommand(async () => await ExecuteEditServicesCommand());
 
-            Privilegio = "Faça o login";
+
             if (Settings.IsLoggedIn)
             {
-                if (Settings.IsAdmin)
-                    Privilegio = "Barbeiro";
-                else
-                    Privilegio = "Cliente";
+                GetNameAsync();
             }
+            else
+                Privilegio = "Faça o login";
 
             if (!CrossConnectivity.Current.IsConnected)
             {
@@ -85,6 +86,17 @@ namespace PrismBarbearia.ViewModels
             IsVisibleLogInButton = !Settings.IsLoggedIn;
             IsVisibleLogOutButton = Settings.IsLoggedIn;
             IsVisibleMainPageButton = false;
+        }
+
+        async void GetNameAsync()
+        {
+            await GetFacebookInfo();
+        }
+
+        async Task GetFacebookInfo()
+        {
+            var identity = await loginService.GetIdentityAsync();
+            Privilegio = identity.UserClaims[2].Value;
         }
 
         private async Task ExecuteEditServicesCommand()
@@ -106,23 +118,14 @@ namespace PrismBarbearia.ViewModels
                     IsBusy = false;
                     IsVisibleLogInButton = false;
                     IsVisibleLogOutButton = true;
-
-                    if (Settings.IsAdmin)
-                    {
-                        IsVisibleAdminButtons = true;
-                        Privilegio = "Barbeiro";
-                    }
-                    else
-                    {
-                        IsVisibleAdminButtons = false;
-                        Privilegio = "Cliente";
-                    }
+                    IsVisibleAdminButtons = Settings.IsAdmin;
+                    GetNameAsync();
                 }
                 catch { IsBusy = false; }
             }
             else //Se desconectado
             {
-                await _pageDialogService.DisplayAlertAsync("Sem rede", "não é possível fazer login sem conexão com a internet", "OK");
+                await _pageDialogService.DisplayAlertAsync("Sem rede", "Não é possível fazer login sem conexão com a internet", "OK");
             }
         }
 
@@ -149,19 +152,17 @@ namespace PrismBarbearia.ViewModels
                 IsVisibleMainPageButton = false;
                 await _navigationService.NavigateAsync("MyNavigationPage/MainPage", useModalNavigation: false);
             }
-        }        
+        }
 
         private async Task ExecuteSchedulesWeekPageCommand()
         {
-           await _navigationService.NavigateAsync("MyNavigationPage/SchedulesWeekPage", useModalNavigation: false);
-           IsVisibleAdminButtons = Settings.IsAdmin;
-           IsVisibleMainPageButton = true;
+            await _navigationService.NavigateAsync("MyNavigationPage/SchedulesWeekPage", useModalNavigation: false);
+            IsVisibleMainPageButton = true;
         }
 
         private async Task ExecuteMainPageCommand()
         {
             await _navigationService.NavigateAsync("MyNavigationPage/MainPage", useModalNavigation: false);
-            IsVisibleAdminButtons = Settings.IsAdmin;
             IsVisibleMainPageButton = false;
         }
 

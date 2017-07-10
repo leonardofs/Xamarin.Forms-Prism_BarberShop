@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using PrismBarbearia.Services;
 using System;
 using Xamarin.Forms;
+using Plugin.Connectivity;
+using PrismBarbearia.Helpers;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -12,7 +14,7 @@ namespace PrismBarbearia.ViewModels
     {
 
         public ObservableCollection<BarberService> BarberServicesList { get; }
-        
+
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public ScheduleTabPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
@@ -57,10 +59,24 @@ namespace PrismBarbearia.ViewModels
         public async void Navigate(object serviceTapped)
         {
             if (serviceTapped != null)
-            {                
-                NavigationParameters navigationParams = new NavigationParameters();
-                navigationParams.Add("serviceTapped", serviceTapped);
-                await _navigationService.NavigateAsync("DaysPage", navigationParams, false);
+            {
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    if (Settings.IsLoggedIn)
+                    {
+                        NavigationParameters navigationParams = new NavigationParameters();
+                        navigationParams.Add("serviceTapped", serviceTapped);
+                        await _navigationService.NavigateAsync("DaysPage", navigationParams, false);
+                    }
+                    else
+                    {
+                        await _pageDialogService.DisplayAlertAsync("Faça o Login", "Para realizar o agendamento é preciso estar logado", "OK");
+                    }
+                }
+                else
+                {
+                    await _pageDialogService.DisplayAlertAsync("Sem rede", "Não é possível fazer agendamentos sem conexão com a internet", "OK");
+                }
             }
         }
 

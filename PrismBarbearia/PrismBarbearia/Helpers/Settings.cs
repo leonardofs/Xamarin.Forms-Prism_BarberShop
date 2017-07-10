@@ -26,7 +26,7 @@ namespace PrismBarbearia.Helpers
         }
 
         public static bool IsLoggedIn => !string.IsNullOrWhiteSpace(UserId);
-        //public static bool IsAdmin => UserId == "sid:29640aeba7e2c9c56a0ca59a5b32e73b";//barbeiro8
-        public static bool IsAdmin => UserId == "sid:f6b9bcd73e4f2c2a2c10bb40648731c2";//fred
+        public static bool IsAdmin => UserId == "sid:a3b2dd9e678a67f991410b35207d0572";
+        //facebook do admin barbeiro8ball@hotmail.com   senha: barbeiro@8ball
     }
 }

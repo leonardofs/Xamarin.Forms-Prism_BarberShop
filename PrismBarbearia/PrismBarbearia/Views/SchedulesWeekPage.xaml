@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:schedule="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="PrismBarbearia.Views.SchedulesWeekPage"
-             Title="{Binding Title}"
-             xmlns:schedule="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms">
+             Title="{Binding Title}">
 
     <ContentPage.Content>
 
@@ -15,7 +15,7 @@
             <schedule:SfSchedule.ViewHeaderStyle>
                 <!--Estilos da página-->
                 <schedule:ViewHeaderStyle
-                    BackgroundColor="DarkGreen"
+                    BackgroundColor="#1B5E20"
                     DayTextColor="White" 
                     DateTextColor="White" 
                     DayTextStyle="Arial,12" 
@@ -30,9 +30,9 @@
                         WorkEndHour="20"                             
                         TimeSlotColor="White"
                         TimeSlotBorderColor="#43A047" 
-                        TimeSlotBorderStrokeWidth="5"
-                        VerticalLineStrokeWidth="5" 
-                        VerticalLineColor="DarkGreen"                        
+                        TimeSlotBorderStrokeWidth="7"
+                        VerticalLineStrokeWidth="7" 
+                        VerticalLineColor="#1B5E20"                        
                         NonWorkingHoursTimeSlotColor="Gray"
                         NonWorkingHoursTimeSlotBorderColor="#43A047">
 
@@ -64,10 +64,6 @@
                 </schedule:SelectionStyle>
             </schedule:SfSchedule.SelectionStyle>
 
-            <!--<schedule:SfSchedule.SelectionView>
-                <Button BackgroundColor="Green" Text="Novo" TextColor="White"/>
-            </schedule:SfSchedule.SelectionView> BOTÃO APARECE APENAS NO ANDROID -->
-
             <!--Define as variáveis do evento da ViewModel.cs-->
             <schedule:SfSchedule.AppointmentMapping>
                 <schedule:ScheduleAppointmentMapping
@@ -78,16 +74,13 @@
                 </schedule:ScheduleAppointmentMapping>
             </schedule:SfSchedule.AppointmentMapping>
 
-
             <schedule:SfSchedule.AppointmentStyle>
                 <schedule:AppointmentStyle 
                 BorderWidth="5" 
-                TextColor="White" 
+                TextColor="White"
                 BorderCornerRadius="1" 
                 TextSize="10"
-                BorderColor="#FFA726"
-                SelectionBorderColor="Black"
-                SelectionTextColor="Black">
+                BorderColor="#1B5E20">
                 </schedule:AppointmentStyle>
             </schedule:SfSchedule.AppointmentStyle>
 

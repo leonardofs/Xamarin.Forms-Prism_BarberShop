@@ -36,6 +36,20 @@ namespace PrismBarbearia.ViewModels
             set { SetProperty(ref serviço, value); }
         }
 
+        private string birthday;
+        public string Birthday
+        {
+            get { return birthday; }
+            set { SetProperty(ref birthday, value); }
+        }
+
+        private string email;
+        public string Email
+        {
+            get { return email; }
+            set { SetProperty(ref email, value); }
+        }
+
         public DelegateCommand DesmarcarButtonCommand { get; set; }
         public DelegateCommand CancelarButtonCommand { get; set; }
 
@@ -123,6 +137,8 @@ namespace PrismBarbearia.ViewModels
                         {
                             NomeCliente = Schedule.Name;
                             TelefoneCliente = Schedule.PhoneNumber;
+                            Email = Schedule.Email;
+                            Birthday = Schedule.Birthday;
                             Serviço = Schedule.Service;
                         }
                     }

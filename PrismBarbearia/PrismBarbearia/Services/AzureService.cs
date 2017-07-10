@@ -4,13 +4,16 @@ using PrismBarbearia.Services;
 using System.Threading.Tasks;
 using PrismBarbearia.Authentication;
 using Xamarin.Forms;
+using PrismBarbearia.Models;
+using System.Collections.Generic;
+using System;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AzureService))]
 namespace PrismBarbearia.Services
 {
     public class AzureService
     {
-        static readonly string AppUrl = "https://socialloginmaratonafred.azurewebsites.net";
+        static readonly string AppUrl = "https://barbearia8ball.azurewebsites.net";
 
         public MobileServiceClient Client { get; set; } = null;
         public static bool UseAuth { get; set; } = false;
@@ -53,6 +56,15 @@ namespace PrismBarbearia.Services
                 return true;
             }
 
+        }
+        
+        public async Task<AppServiceIdentity> GetIdentityAsync()
+        {
+            Initialize();
+
+            List<AppServiceIdentity>  identities = await Client.InvokeApiAsync<List<AppServiceIdentity>>("/.auth/me");
+
+            return identities[0];
         }
 
     }
