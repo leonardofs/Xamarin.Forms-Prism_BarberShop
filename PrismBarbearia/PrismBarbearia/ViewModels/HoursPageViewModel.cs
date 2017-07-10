@@ -45,9 +45,9 @@ namespace PrismBarbearia.ViewModels
         async Task GetFacebookInfo()
         {
             var identity = await loginService.GetIdentityAsync();
-            name = identity.UserClaims[2].Value;
-            email = identity.UserClaims[1].Value;
-            birthdate = identity.UserClaims[7].Value;
+            name = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"))?.Value;
+            email = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"))?.Value;
+            birthdate = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/dateofbirth"))?.Value;
             DateTime birthday = DateTime.ParseExact(birthdate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             birthdate = birthday.ToString("dd/MM");
         }
@@ -173,24 +173,29 @@ namespace PrismBarbearia.ViewModels
 
         public async void NewSchedule(object hourTapped)
         {
-            if (hourTapped != null)
+            if (hourTapped != null && !IsBusy)
             {
-
                 if (CrossConnectivity.Current.IsConnected)
                 {
                     if (Settings.IsLoggedIn)
                     {
+                        IsBusy = true;
+
                         BarberHour _hourTapped = hourTapped as BarberHour;
 
                         DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + _hourTapped.Hour), "dd-MM-yyyy HH:mm",
                                                                System.Globalization.CultureInfo.InvariantCulture);
 
-                        await scheduleService.AddSchedule(serviceTapped.ServiceName, name, email, birthdate, scheduleDate);
-
-                        await _pageDialogService.DisplayAlertAsync("Agendamento", "Agendado com sucesso:" +
+                        bool r = await _pageDialogService.DisplayAlertAsync("Agendamento", "Tem certeza que deseja realizar este agendamento?\n" +
                                                                    "\nServiço: " + serviceTapped.ServiceName +
-                                                                   "\nData: " + scheduleDate, "OK");
-                        await _navigationService.GoBackAsync(null, false);
+                                                                   "\nData: " + dayTapped.Date + " " + _hourTapped.Hour, "Sim", "Não");
+                        if (r)
+                        {
+                            await scheduleService.AddSchedule(serviceTapped.ServiceName, name, email, birthdate, scheduleDate);
+                            await _navigationService.GoBackAsync(null, false);
+                        }
+                        
+                        IsBusy = false;
                     }
                     else
                     {
