@@ -15,6 +15,12 @@
             <Label Text="Telefone do cliente"/>
             <Label Text="{Binding TelefoneCliente}"/>
 
+            <Label Text="Email"/>
+            <Label Text="{Binding Email}"/>
+
+            <Label Text="Data de aniversário"/>
+            <Label Text="{Binding Birthday}"/>
+
             <Label Text="Serviço"/>
             <Label Text="{Binding Serviço}"/>
             

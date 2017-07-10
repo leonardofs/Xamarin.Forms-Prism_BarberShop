@@ -4,6 +4,9 @@ using PrismBarbearia.Services;
 using System.Threading.Tasks;
 using PrismBarbearia.Authentication;
 using Xamarin.Forms;
+using PrismBarbearia.Models;
+using System.Collections.Generic;
+using System;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AzureService))]
 namespace PrismBarbearia.Services
@@ -53,6 +56,15 @@ namespace PrismBarbearia.Services
                 return true;
             }
 
+        }
+        
+        public async Task<AppServiceIdentity> GetIdentityAsync()
+        {
+            Initialize();
+
+            List<AppServiceIdentity>  identities = await Client.InvokeApiAsync<List<AppServiceIdentity>>("/.auth/me");
+
+            return identities[0];
         }
 
     }

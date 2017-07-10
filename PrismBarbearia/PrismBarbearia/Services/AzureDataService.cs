@@ -95,12 +95,15 @@ namespace PrismBarbearia.Services
             return await scheduleTable.ToEnumerableAsync();
         }
 
-        public async Task<BarberSchedule> AddSchedule(string service, DateTime dateTime)
+        public async Task<BarberSchedule> AddSchedule(string service, string name, string email, string birthday, DateTime dateTime)
         {
             await Initialize();
             var schedule = new BarberSchedule
             {
                 Service = service,
+                Name = name,
+                Email = email,
+                Birthday = birthday,
                 DateTime = dateTime.AddHours(-3)
             };
             await scheduleTable.InsertAsync(schedule);

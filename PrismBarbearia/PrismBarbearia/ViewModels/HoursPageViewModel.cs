@@ -1,15 +1,13 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
+﻿using Prism.Navigation;
 using Prism.Services;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using PrismBarbearia.Models;
 using System.Threading.Tasks;
 using PrismBarbearia.Services;
 using PrismBarbearia.Helpers;
+using Plugin.Connectivity;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -22,27 +20,42 @@ namespace PrismBarbearia.ViewModels
         private BarberDay dayTapped;
         private BarberService serviceTapped;
         private BarberSchedule scheduleTemp;
-        private BarberHour hourSchedule;
         private AzureDataService scheduleService;
+        private AzureService loginService;
+        private string name;
+        private string email;
+        private string birthdate;
 
+        //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public HoursPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
+            loginService = new AzureService();
             scheduleService = new AzureDataService();
             Hours = new ObservableCollection<string>();
             Schedules = new ObservableCollection<BarberSchedule>();
             HoursAvaliable = new ObservableCollection<BarberHour>();
             Temp = new ObservableCollection<BarberSchedule>();
-            Title = "Horários";
+            Title = "HORÁRIOS";
             dayTapped = new BarberDay();
             serviceTapped = new BarberService();
             scheduleTemp = new BarberSchedule();
-            hourSchedule = new BarberHour();
-            CallSyncAvaliableHours();
+            CallSync();
         }
 
-        async void CallSyncAvaliableHours()
+        async Task GetFacebookInfo()
+        {
+            var identity = await loginService.GetIdentityAsync();
+            name = identity.UserClaims[2].Value;
+            email = identity.UserClaims[1].Value;
+            birthdate = identity.UserClaims[7].Value;
+            DateTime birthday = DateTime.ParseExact(birthdate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            birthdate = birthday.ToString("dd/MM");
+        }
+
+        async void CallSync()
         {
             await SyncAvaliableHours();
+            await GetFacebookInfo();
         }
 
         async Task SyncAvaliableHours()
@@ -130,7 +143,7 @@ namespace PrismBarbearia.ViewModels
                 {
                     IsBusy = true;
                     var Repository = new Repository();
-                    var Items = await Repository.GetSchedule(/*dayTapped.Date*/);
+                    var Items = await Repository.GetSchedule();
                     foreach (var Service in Items)
                     {
                         Schedules.Add(Service);
@@ -162,23 +175,31 @@ namespace PrismBarbearia.ViewModels
         {
             if (hourTapped != null)
             {
-                if (Settings.IsLoggedIn)
+
+                if (CrossConnectivity.Current.IsConnected)
                 {
-                    BarberHour _hourTapped = hourTapped as BarberHour;
+                    if (Settings.IsLoggedIn)
+                    {
+                        BarberHour _hourTapped = hourTapped as BarberHour;
 
-                    DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + _hourTapped.Hour), "dd-MM-yyyy HH:mm",
-                                                           System.Globalization.CultureInfo.InvariantCulture);
+                        DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + _hourTapped.Hour), "dd-MM-yyyy HH:mm",
+                                                               System.Globalization.CultureInfo.InvariantCulture);
 
-                    await scheduleService.AddSchedule(serviceTapped.ServiceName, scheduleDate);
+                        await scheduleService.AddSchedule(serviceTapped.ServiceName, name, email, birthdate, scheduleDate);
 
-                    await _pageDialogService.DisplayAlertAsync("Agendamento", "Agendado com sucesso:" +
-                                                               "\nServiço: " + serviceTapped.ServiceName +
-                                                               "\nData: " + scheduleDate, "OK");
-                    await _navigationService.GoBackAsync(null, false);
+                        await _pageDialogService.DisplayAlertAsync("Agendamento", "Agendado com sucesso:" +
+                                                                   "\nServiço: " + serviceTapped.ServiceName +
+                                                                   "\nData: " + scheduleDate, "OK");
+                        await _navigationService.GoBackAsync(null, false);
+                    }
+                    else
+                    {
+                        await _pageDialogService.DisplayAlertAsync("Faça o Login", "Para realizar o agendamento é preciso estar logado", "OK");
+                    }
                 }
                 else
                 {
-                    await _pageDialogService.DisplayAlertAsync("Faça o LogIn", "Para realizar o agendamento é preciso estar logado", "OK");
+                    await _pageDialogService.DisplayAlertAsync("Sem rede", "Não é possível fazer agendamentos sem conexão com a internet", "OK");
                 }
             }
 

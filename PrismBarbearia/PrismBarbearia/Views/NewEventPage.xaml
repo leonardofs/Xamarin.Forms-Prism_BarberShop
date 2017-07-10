@@ -25,7 +25,7 @@
                                ItemSpacing="0,0,0,0"
                                SelectionMode="Single"
                                SelectionGesture="Tap"
-                               SelectionBackgroundColor="#FFA726"
+                               SelectionBackgroundColor="{DynamicResource SecondaryColor}"
                                Orientation="Vertical"
                                AutoFitMode="None"
                                SelectedItem="{Binding SelectedService}"
@@ -43,9 +43,9 @@
                             <ColumnDefinition Width="0.75*"/>
                             <ColumnDefinition Width="0.25*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="{DynamicResource StatusBarColor}" Font="Large" 
                                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="#43A047" Font="Large" 
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="{DynamicResource TabBarColor}" Font="Large" 
                                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Small" />
                     </Grid>
                 </DataTemplate>
@@ -56,7 +56,7 @@
 
             <syncfusion:SfListView.HeaderTemplate>
                 <DataTemplate>
-                    <Grid BackgroundColor="#FFA726" Margin="0,5">
+                    <Grid BackgroundColor="{DynamicResource SecondaryColor}" Margin="0,5">
                         <Label VerticalOptions ="Center" HorizontalOptions="Center" />
                     </Grid>
                 </DataTemplate>
@@ -64,7 +64,7 @@
 
             <syncfusion:SfListView.FooterTemplate>
                 <DataTemplate>
-                    <Grid BackgroundColor="#FFA726" Margin="0,5,0,0">
+                    <Grid BackgroundColor="{DynamicResource SecondaryColor}" Margin="0,5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
@@ -82,7 +82,7 @@
                 AbsoluteLayout.LayoutBounds="0,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
                 Command="{Binding CancelarButtonCommand}" />
         <!--x, y, width, height-->
-        <Button Margin="3,0,6,6" Text="Agendar" TextColor="White" BackgroundColor="DarkGreen"
+        <Button Margin="3,0,6,6" Text="Agendar" TextColor="White" BackgroundColor="{DynamicResource StatusBarColor}"
                 AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
                 Command="{Binding AgendarButtonCommand}" IsEnabled="{Binding CanExecuteAgendarButton}"/>
 

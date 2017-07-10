@@ -7,7 +7,7 @@
                   x:Class="PrismBarbearia.Views.MenuPage">
 
     <MasterDetailPage.Master>
-        <ContentPage Title="MENU" Padding="20" BackgroundColor="#1B5E20">
+        <ContentPage Title="MENU" Padding="20" BackgroundColor="{DynamicResource TabBarColor}">
             <StackLayout>
                 
                 <Label Text="{Binding Privilegio}" Style="{DynamicResource MenuLabel}"/>

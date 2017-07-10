@@ -7,12 +7,11 @@ namespace PrismBarbearia.Models
     public class BarberSchedule
     {
         public string Id { get; set; }
-        public string FacebookID { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
+        public string Birthday { get; set; }
         public string PhoneNumber { get; set; }
         public string Service { get; set; }
-        public string Date { get; set; }
-        public string Hour { get; set; }
         public DateTime DateTime { get; set; }
     }
 }

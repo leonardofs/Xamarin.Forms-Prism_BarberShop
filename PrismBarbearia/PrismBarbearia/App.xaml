@@ -14,12 +14,12 @@
       <Color x:Key="StatusBarColor">#1B5E20</Color>
       <Color x:Key="TabBarColor">#43A047</Color>
       <Color x:Key="BackgroundColor">#381C784</Color>
-      <Color x:Key="SecondaryColor">#009688</Color>
+      <Color x:Key="SecondaryColor">Black</Color>
 
       <!-- ESTILOS -->
 
       <Style x:Key="Entrys" TargetType="Entry">
-        <Setter Property="PlaceholderColor" Value="#FFA726" />
+        <Setter Property="PlaceholderColor" Value="{DynamicResource StatusBarColor}" />
         <Setter Property="TextColor" Value="White" />
         <Setter Property="BackgroundColor" Value="#43A047" />
       </Style>
@@ -38,12 +38,6 @@
         <Setter Property="FontFamily" Value="Arial" />
         <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="Margin" Value="10"/>
-      </Style>
-
-      <Style x:Key="EntrysLabel" TargetType="Label">
-        <Setter Property="TextColor" Value="Black" />
-        <Setter Property="FontSize" Value="15" />
-        <Setter Property="FontFamily" Value="Arial" />
       </Style>
 
       <Style x:Key="MenuLabel" TargetType="Label">

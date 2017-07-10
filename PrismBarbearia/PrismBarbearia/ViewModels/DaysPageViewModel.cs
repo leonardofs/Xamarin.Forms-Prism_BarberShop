@@ -1,7 +1,9 @@
-﻿using Prism.Commands;
+﻿using Plugin.Connectivity;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
+using PrismBarbearia.Helpers;
 using PrismBarbearia.Models;
 using PrismBarbearia.Services;
 using System;
@@ -49,8 +51,22 @@ namespace PrismBarbearia.ViewModels
         {
             if (dayTapped != null)
             {
-                _navigationParams.Add("dayTapped", dayTapped);
-                await _navigationService.NavigateAsync("HoursPage", _navigationParams, false);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    if (Settings.IsLoggedIn)
+                    {
+                        _navigationParams.Add("dayTapped", dayTapped);
+                        await _navigationService.NavigateAsync("HoursPage", _navigationParams, false);
+                    }
+                    else
+                    {
+                        await _pageDialogService.DisplayAlertAsync("Faça o Login", "Para realizar o agendamento é preciso estar logado", "OK");
+                    }
+                }
+                else
+                {
+                    await _pageDialogService.DisplayAlertAsync("Sem rede", "Não é possível fazer agendamentos sem conexão com a internet", "OK");
+                }
             }
         }
 

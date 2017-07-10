@@ -13,48 +13,22 @@
                            ItemSpacing="0,0,0,0"
                            SelectionMode="Single"
                            SelectionGesture="Tap"
-                           SelectionBackgroundColor="Black" 
+                           SelectionBackgroundColor="{DynamicResource SecondaryColor}" 
                            Orientation="Vertical"
                            AutoFitMode="None"
-                           HeaderSize="60" 
-                           FooterSize="60"
-                           IsStickyHeader="False" 
-                           IsStickyFooter="False"
-                           ItemTapped="HourTapped"
-                           >
+                           ItemTapped="HourTapped">
 
         <syncfusion:SfListView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="5" ColumnSpacing="0">
-                    <Label Grid.Row="0" Text="{Binding Hour}" TextColor="White" BackgroundColor="DarkGreen" Font="Large" 
-                          HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0" Text="{Binding Hour}" TextColor="White" BackgroundColor="{DynamicResource StatusBarColor}" Font="Large" 
+                          HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                 </Grid>
             </DataTemplate>
         </syncfusion:SfListView.ItemTemplate>
         <syncfusion:SfListView.LayoutManager>
             <syncfusion:GridLayout SpanCount="1" />
         </syncfusion:SfListView.LayoutManager>
-        <syncfusion:SfListView.HeaderTemplate>
-            <DataTemplate>
-                <Grid BackgroundColor="#FFA726" Margin="0,5">
-                    <Label Text="Escolha um horário" Font = "Large"  TextColor="DarkGreen"
-                           VerticalOptions ="Center" HorizontalOptions="Center" />
-                </Grid>
-            </DataTemplate>
-        </syncfusion:SfListView.HeaderTemplate>
-
-        <syncfusion:SfListView.FooterTemplate>
-            <DataTemplate>
-                <Grid BackgroundColor="#FFA726" Margin="0,5,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Source="Edit.png" />
-                    <Image Grid.Column="1" Source="Delete.png" />
-                </Grid>
-            </DataTemplate>
-        </syncfusion:SfListView.FooterTemplate>
 
     </syncfusion:SfListView>
 
