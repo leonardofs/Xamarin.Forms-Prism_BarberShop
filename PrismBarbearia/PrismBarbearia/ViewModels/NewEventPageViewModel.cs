@@ -84,14 +84,14 @@ namespace PrismBarbearia.ViewModels
 
         public async Task ExecuteAgendarButtonCommand()
         {
+            await azureDataService.AddSchedule(SelectedService.ServiceName, TelefoneEntry, NomeEntry, "email não informado", "aniversário não informado", Schedule.DateTime);
 
-            await azureDataService.AddScheduleOut(SelectedService.ServiceName, NomeEntry, TelefoneEntry, Schedule.DateTime);
             await _navigationService.GoBackAsync();
         }
 
         private void canExecuteAgendarButtonChanged()
         {
-            if (NomeEntry.Length > 2 && TelefoneEntry.Length > 7 && SelectedService != null)
+            if (NomeEntry.Length > 1 && TelefoneEntry.Length > 7 && SelectedService != null)
                 CanExecuteAgendarButton = true;
             else
                 CanExecuteAgendarButton = false;

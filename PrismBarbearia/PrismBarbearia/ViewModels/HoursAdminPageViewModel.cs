@@ -8,11 +8,51 @@ using System.Threading.Tasks;
 using PrismBarbearia.Services;
 using PrismBarbearia.Helpers;
 using Plugin.Connectivity;
+using Prism.Commands;
 
 namespace PrismBarbearia.ViewModels
 {
-    public class HoursPageViewModel : BaseViewModel, INavigatedAware
+    public class HoursAdminPageViewModel : BaseViewModel, INavigatedAware
     {
+        private string nomeEntry;
+        public string NomeEntry
+        {
+            get { return nomeEntry; }
+            set
+            {
+                SetProperty(ref nomeEntry, value);
+                canExecuteAgendarButtonChanged();
+            }
+        }
+
+        private string telefoneEntry;
+        public string TelefoneEntry
+        {
+            get { return telefoneEntry; }
+            set
+            {
+                SetProperty(ref telefoneEntry, value);
+                canExecuteAgendarButtonChanged();
+            }
+        }
+
+        private BarberHour selectedHour;
+        public BarberHour SelectedHour
+        {
+            get { return selectedHour; }
+            set { SetProperty(ref selectedHour, value); }
+        }
+
+        private bool canExecuteAgendarButton;
+        public bool CanExecuteAgendarButton
+        {
+            get { return canExecuteAgendarButton; }
+            set { SetProperty(ref canExecuteAgendarButton, value); }
+        }
+
+        public DelegateCommand AgendarButtonCommand { get; set; }
+        public DelegateCommand CancelarButtonCommand { get; set; }
+
         public ObservableCollection<string> Hours { get; }
         public ObservableCollection<BarberHour> HoursAvaliable { get; }
         public ObservableCollection<BarberSchedule> Schedules { get; }
@@ -21,50 +61,70 @@ namespace PrismBarbearia.ViewModels
         private BarberService serviceTapped;
         private BarberSchedule scheduleTemp;
         private AzureDataService scheduleService;
-        private AzureService loginService;
-        private string name;
-        private string email;
-        private string birthdate;
 
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
-        public HoursPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
+        public HoursAdminPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            loginService = new AzureService();
+            NomeEntry = "";
+            TelefoneEntry = "";
             scheduleService = new AzureDataService();
             Hours = new ObservableCollection<string>();
             Schedules = new ObservableCollection<BarberSchedule>();
             HoursAvaliable = new ObservableCollection<BarberHour>();
             Temp = new ObservableCollection<BarberSchedule>();
-            Title = "HORÁRIOS";
+            Title = "AGENDAMENTO";
             dayTapped = new BarberDay();
             serviceTapped = new BarberService();
             scheduleTemp = new BarberSchedule();
+            AgendarButtonCommand = new DelegateCommand(async () => await ExecuteAgendarButtonCommand());
+            CancelarButtonCommand = new DelegateCommand(async () => await ExecuteCancelarButtonCommand());
             CallSync();
         }
 
-        async Task GetFacebookInfo()
+        private void canExecuteAgendarButtonChanged()
         {
-            var identity = await loginService.GetIdentityAsync();
-
-            name = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"))?.Value;
-            email = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"))?.Value;
-            birthdate = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/dateofbirth"))?.Value;
-
-            if (name == null) name = "nome não informado";
-            if (email == null) email = "email não informado";
-            if (birthdate == null)
-                birthdate = "aniversário não informado";
+            if (NomeEntry.Length > 1 && TelefoneEntry.Length > 7 && SelectedHour != null)
+                CanExecuteAgendarButton = true;
             else
+                CanExecuteAgendarButton = false;
+        }
+
+        private async Task ExecuteCancelarButtonCommand()
+        {
+            await _navigationService.GoBackAsync(null, false);
+        }
+
+        private async Task ExecuteAgendarButtonCommand()
+        {
+            if (SelectedHour != null)
             {
-                DateTime birthday = DateTime.ParseExact(birthdate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                birthdate = birthday.ToString("dd/MM");
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + SelectedHour.Hour), "dd-MM-yyyy HH:mm",
+                                                           System.Globalization.CultureInfo.InvariantCulture);
+
+                    bool r = await _pageDialogService.DisplayAlertAsync("Agendamento", "Tem certeza que deseja realizar este agendamento?\n" +
+                                                               "\nServiço: " + serviceTapped.ServiceName +
+                                                               "\nData: " + dayTapped.Date + " " + SelectedHour.Hour, "Sim", "Não");
+                    if (r)
+                    {
+                        await scheduleService.AddSchedule(serviceTapped.ServiceName, NomeEntry, TelefoneEntry, "email não informado", "aniversário não informado", scheduleDate);
+                        await _navigationService.GoBackAsync(null, false);
+                    }
+
+                }
+                else
+                {
+                    await _pageDialogService.DisplayAlertAsync("Sem rede", "Não é possível fazer agendamentos sem conexão com a internet", "OK");
+                }
             }
+
+
         }
 
         async void CallSync()
         {
             await SyncAvaliableHours();
-            await GetFacebookInfo();
         }
 
         async Task SyncAvaliableHours()
@@ -178,39 +238,6 @@ namespace PrismBarbearia.ViewModels
         {
             serviceTapped = navigationParams.GetValue<BarberService>("serviceTapped");
             dayTapped = navigationParams.GetValue<BarberDay>("dayTapped");
-        }
-
-        public async void NewSchedule(object hourTapped)
-        {
-            if (hourTapped != null && !IsBusy)
-            {
-                if (CrossConnectivity.Current.IsConnected)
-                {
-                    IsBusy = true;
-
-                    BarberHour _hourTapped = hourTapped as BarberHour;
-
-                    DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + _hourTapped.Hour), "dd-MM-yyyy HH:mm",
-                                                           System.Globalization.CultureInfo.InvariantCulture);
-
-                    bool r = await _pageDialogService.DisplayAlertAsync("Agendamento", "Tem certeza que deseja realizar este agendamento?\n" +
-                                                               "\nServiço: " + serviceTapped.ServiceName +
-                                                               "\nData: " + dayTapped.Date + " " + _hourTapped.Hour, "Sim", "Não");
-                    if (r)
-                    {
-                        await scheduleService.AddSchedule(serviceTapped.ServiceName, name, "celular não informado", email, birthdate, scheduleDate);
-                        await _navigationService.GoBackAsync(null, false);
-                    }
-
-                    IsBusy = false;
-
-                }
-                else
-                {
-                    await _pageDialogService.DisplayAlertAsync("Sem rede", "Não é possível fazer agendamentos sem conexão com a internet", "OK");
-                }
-            }
-
         }
 
     }

@@ -53,10 +53,15 @@ namespace PrismBarbearia.ViewModels
             {
                 if (CrossConnectivity.Current.IsConnected)
                 {
-                    if (Settings.IsLoggedIn)
+                    if (!Settings.IsAdmin)
                     {
                         _navigationParams.Add("dayTapped", dayTapped);
                         await _navigationService.NavigateAsync("HoursPage", _navigationParams, false);
+                    }
+                    else if (Settings.IsAdmin)
+                    {
+                        _navigationParams.Add("dayTapped", dayTapped);
+                        await _navigationService.NavigateAsync("HoursAdminPage", _navigationParams, false);
                     }
                     else
                     {

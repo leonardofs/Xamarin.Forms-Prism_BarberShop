@@ -4,12 +4,12 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="PrismBarbearia.Views.NewEventPage"
+             x:Class="PrismBarbearia.Views.HoursAdminPage"
              Title="{Binding Title}">
 
     <AbsoluteLayout>
 
-        <Label Text="Cadastre nome, telefone e selecione um serviço" Style="{DynamicResource TitleLabel}"
+        <Label Text="Cadastre nome, telefone e selecione um horário" Style="{DynamicResource TitleLabel}"
                AbsoluteLayout.LayoutBounds=".5,.01,0.95,.07" AbsoluteLayout.LayoutFlags="All"/>
 
         <Entry Text="{Binding NomeEntry}" Placeholder="Nome" Style="{DynamicResource Entrys}"
@@ -18,9 +18,8 @@
         <Entry Text="{Binding TelefoneEntry}" Placeholder="Telefone" Style="{DynamicResource Entrys}" Keyboard="Telephone"
                AbsoluteLayout.LayoutBounds=".5,.18,0.95,.07" AbsoluteLayout.LayoutFlags="All"/>
 
-
         <syncfusion:SfListView x:Name="listView" 
-                               ItemsSource="{Binding BarberServicesList}"
+                               ItemsSource="{Binding HoursAvaliable}"
                                ItemSize="50"                           
                                ItemSpacing="0,0,0,0"
                                SelectionMode="Single"
@@ -28,7 +27,7 @@
                                SelectionBackgroundColor="{DynamicResource SecondaryColor}"
                                Orientation="Vertical"
                                AutoFitMode="None"
-                               SelectedItem="{Binding SelectedService}"
+                               SelectedItem="{Binding SelectedHour}"
                                Margin="0,30"
                                HeaderSize="25" 
                                FooterSize="25"
@@ -39,14 +38,8 @@
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="5" ColumnSpacing="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.75*"/>
-                            <ColumnDefinition Width="0.25*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding ServiceName}" TextColor="White" BackgroundColor="{DynamicResource StatusBarColor}" Font="Large" 
-                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding ServicePrice}" TextColor="White" BackgroundColor="{DynamicResource TabBarColor}" Font="Large" 
-                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Small" />
+                        <Label Grid.Row="0" Text="{Binding Hour}" TextColor="White" BackgroundColor="{DynamicResource StatusBarColor}" Font="Large" 
+                          HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                     </Grid>
                 </DataTemplate>
             </syncfusion:SfListView.ItemTemplate>

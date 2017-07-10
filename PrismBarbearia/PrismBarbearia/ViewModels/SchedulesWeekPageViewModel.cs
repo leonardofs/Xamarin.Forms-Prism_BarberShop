@@ -32,28 +32,25 @@ namespace PrismBarbearia.ViewModels
 
         public async void novoEventoAsync(DateTime dateTime)
         {
-            if (dateTime != null)
+            if (dateTime != null && (Device.OS != TargetPlatform.Windows) || (Device.OS == TargetPlatform.Windows && Device.Idiom == TargetIdiom.Desktop))
             {
                 NavigationParameters navigationParams = new NavigationParameters();
                 navigationParams.Add("dateTime", dateTime);
-                await _navigationService.NavigateAsync("NewEventPage", navigationParams, false);                
-            }                                        
+                await _navigationService.NavigateAsync("NewEventPage", navigationParams, false);
+            }
         }
-        
+
         public async Task cancelarEventoAsync(DateTime dateTime)
         {
             NavigationParameters navigationParams = new NavigationParameters();
             navigationParams.Add("dateTime", dateTime);
             await _navigationService.NavigateAsync("EventStatusPage", navigationParams, false);
-            
-            //bool r = await _pageDialogService.DisplayAlertAsync("Cancelar evento", "Deseja cancelar este evento?", "Sim", "Não");
-            //if (r) EventsCollection.Remove(evento as BarberShopAppointment);
         }
 
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
-            if(CrossConnectivity.Current.IsConnected)
-            SyncSchedules();
+            if (CrossConnectivity.Current.IsConnected)
+                SyncSchedules();
         }
 
         async void SyncSchedules()
@@ -77,7 +74,7 @@ namespace PrismBarbearia.ViewModels
                         eventAppointment.To = eventAppointment.From.AddHours(0.5);
                         eventAppointment.EventName = Schedule.Service;
                         eventAppointment.Color = Color.ForestGreen;
-                        
+
                         EventsCollection.Add(eventAppointment);
                     }
                 }

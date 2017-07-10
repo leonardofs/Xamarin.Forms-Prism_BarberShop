@@ -36,6 +36,7 @@ namespace PrismBarbearia
             Container.RegisterTypeForNavigation<HoursPage>();
             Container.RegisterTypeForNavigation<EventStatusPage>();
             Container.RegisterTypeForNavigation<EditServicesPage>();
+            Container.RegisterTypeForNavigation<HoursAdminPage>();
         }
     }
 }

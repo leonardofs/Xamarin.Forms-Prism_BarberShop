@@ -76,7 +76,7 @@
                 AbsoluteLayout.LayoutBounds="1,1,.33,.1" AbsoluteLayout.LayoutFlags="All" 
                 Command="{Binding AdicionarButtonCommand}" IsEnabled="{Binding CanExecuteAdicionarButton}"/>
 
-        <Button Margin="4,0,2,4" Text="Deletar" TextColor="White" BackgroundColor="{DynamicResource SecondaryColor}"
+        <Button Margin="4,0,2,4" Text="Deletar" TextColor="White" BackgroundColor="DarkRed"
                 AbsoluteLayout.LayoutBounds="0,1,.33,.1" AbsoluteLayout.LayoutFlags="All" 
                 Command="{Binding DeletarButtonCommand}" IsEnabled="{Binding CanExecuteEditarButton}" />
         <!--x, y, width, height-->

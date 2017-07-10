@@ -14,14 +14,14 @@
       <Color x:Key="StatusBarColor">#1B5E20</Color>
       <Color x:Key="TabBarColor">#43A047</Color>
       <Color x:Key="BackgroundColor">#381C784</Color>
-      <Color x:Key="SecondaryColor">Black</Color>
-
+      <Color x:Key="SecondaryColor">#78db7c</Color>
+      
       <!-- ESTILOS -->
 
       <Style x:Key="Entrys" TargetType="Entry">
-        <Setter Property="PlaceholderColor" Value="{DynamicResource StatusBarColor}" />
-        <Setter Property="TextColor" Value="White" />
-        <Setter Property="BackgroundColor" Value="#43A047" />
+        <Setter Property="PlaceholderColor" Value="{DynamicResource TabBarColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryColor}" />
       </Style>
 
       <Style x:Key="TitleLabel" TargetType="Label">
@@ -48,7 +48,7 @@
       </Style>
 
       <Style  x:Key="LoginButton" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="DarkBlue" />
+        <Setter Property="BackgroundColor" Value="#3B5998" />
         <Setter Property="TextColor" Value="White" />
         <Setter Property="HeightRequest" Value="70" />
         <Setter Property="Image">
@@ -84,7 +84,7 @@
       </Style>
 
       <Style  x:Key="MainButton" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource TabBarColor}" />
         <Setter Property="TextColor" Value="White" />
         <Setter Property="HeightRequest" Value="70" />
       </Style>
