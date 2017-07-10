@@ -9,6 +9,8 @@ using System.Linq;
 using PrismBarbearia.Models;
 using System.Threading.Tasks;
 using PrismBarbearia.Services;
+using PrismBarbearia.Helpers;
+
 namespace PrismBarbearia.ViewModels
 {
     public class HoursPageViewModel : BaseViewModel, INavigatedAware
@@ -160,19 +162,26 @@ namespace PrismBarbearia.ViewModels
         {
             if (hourTapped != null)
             {
-                BarberHour _hourTapped = hourTapped as BarberHour;
+                if (Settings.IsLoggedIn)
+                {
+                    BarberHour _hourTapped = hourTapped as BarberHour;
 
-                DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + _hourTapped.Hour), "dd-MM-yyyy HH:mm",
-                                                       System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + _hourTapped.Hour), "dd-MM-yyyy HH:mm",
+                                                           System.Globalization.CultureInfo.InvariantCulture);
 
-                await scheduleService.AddSchedule(serviceTapped.ServiceName, scheduleDate);
-                
-                await _pageDialogService.DisplayAlertAsync("Agendamento", "Agendado com sucesso:" +
-                                                           "\nServiço: " + serviceTapped.ServiceName +
-                                                           "\nData: " + scheduleDate, "OK");
+                    await scheduleService.AddSchedule(serviceTapped.ServiceName, scheduleDate);
 
-                //await _navigationService.GoBackAsync(null, false);
+                    await _pageDialogService.DisplayAlertAsync("Agendamento", "Agendado com sucesso:" +
+                                                               "\nServiço: " + serviceTapped.ServiceName +
+                                                               "\nData: " + scheduleDate, "OK");
+                    await _navigationService.GoBackAsync(null, false);
+                }
+                else
+                {
+                    await _pageDialogService.DisplayAlertAsync("Faça o LogIn", "Para realizar o agendamento é preciso estar logado", "OK");
+                }
             }
+
         }
 
     }
