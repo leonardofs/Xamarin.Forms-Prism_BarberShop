@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Prism.Navigation;
+using Prism.Services;
 
 namespace PrismBarbearia.ViewModels
 {
-    class EditHoursPageViewModel
+    class EditHoursPageViewModel : BaseViewModel
     {
+        public EditHoursPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
+        {
+        }
     }
 }

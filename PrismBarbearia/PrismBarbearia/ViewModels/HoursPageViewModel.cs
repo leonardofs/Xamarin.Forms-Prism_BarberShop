@@ -50,7 +50,7 @@ namespace PrismBarbearia.ViewModels
             foreach (var item in schedulesAz)
             {
                 var listItem = item as BarberSchedule;
-                if (listItem.Date == dayTapped.Date)
+                if (listItem.DateTime.Date.ToString("dd-MM-yyyy") == dayTapped.Date)
                 {
                     Temp.Add(listItem);
                 }
