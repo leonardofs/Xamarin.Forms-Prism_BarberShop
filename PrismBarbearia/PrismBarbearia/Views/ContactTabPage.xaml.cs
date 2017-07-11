@@ -8,9 +8,6 @@ namespace PrismBarbearia.Views
         {
             InitializeComponent();
 
-           
-
-
         }
 
        protected override void OnAppearing()
@@ -27,7 +24,8 @@ namespace PrismBarbearia.Views
             {
                 Type = PinType.Place,
                 Position = position,
-                Label = "A barbearia"
+                Label = "A barbearia",
+                Address = "R. Paraná, 3001 - Jardim Belvedere, Divinópolis - MG"
                 
             };
             MyMap.Pins.Add(pin);

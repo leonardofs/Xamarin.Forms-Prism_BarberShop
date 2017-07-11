@@ -10,7 +10,12 @@
 
     <ScrollView Padding="20">
 
-        <Label Style="{DynamicResource TitleLabel}" Text="Pagina de Contato"/>
+        <Label Style="{DynamicResource TitleLabel}" Text=" Ligue para nós (37) 3222-2222">
+            <Label.GestureRecognizers>
+               <TapGestureRecognizer Command="{Binding SettingsCommand}"/>
+            </Label.GestureRecognizers>
+        </Label>
+
         <maps:Map WidthRequest="320" HeightRequest="200"
             x:Name="MyMap"
             

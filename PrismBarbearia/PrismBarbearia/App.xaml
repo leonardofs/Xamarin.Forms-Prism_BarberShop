@@ -26,10 +26,9 @@
 
       <Style x:Key="TitleLabel" TargetType="Label">
         <Setter Property="TextColor" Value="Black" />
-        <Setter Property="FontSize" Value="17" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="FontFamily" Value="Arial" />
-        <Setter Property="HorizontalTextAlignment" Value="Center"/>
-        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>    
       </Style>
 
       <Style x:Key="MainLabel" TargetType="Label">
