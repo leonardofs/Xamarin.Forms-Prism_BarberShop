@@ -58,6 +58,7 @@
     <Compile Include="ViewModels\DaysPageViewModel.cs" />
     <Compile Include="ViewModels\EditServicesPageViewModel.cs" />
     <Compile Include="ViewModels\EventStatusPageViewModel.cs" />
+    <Compile Include="ViewModels\HoursAdminPageViewModel.cs" />
     <Compile Include="ViewModels\HoursPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MenuPageViewModel.cs" />
@@ -79,6 +80,9 @@
     </Compile>
     <Compile Include="Views\EventStatusPage.xaml.cs">
       <DependentUpon>EventStatusPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HoursAdminPage.xaml.cs">
+      <DependentUpon>HoursAdminPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HoursPage.xaml.cs">
       <DependentUpon>HoursPage.xaml</DependentUpon>
@@ -280,6 +284,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\EditServicesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HoursAdminPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

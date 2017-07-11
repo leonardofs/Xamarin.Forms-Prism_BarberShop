@@ -101,6 +101,7 @@
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork@2x" />
     <None Include="packages.config" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PrismBarbearia\PrismBarbearia.csproj">
@@ -273,8 +274,41 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-20x20%401x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-20x20%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-20x20%403x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-29x29%401x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-29x29%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-29x29%403x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-40x40%401x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-40x40%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-40x40%403x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-57x57%401x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-57x57%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-60x60%401x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-60x60%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-60x60%403x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-72x72%401x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-72x72%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-76x76%401x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-76x76%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-76x76%403x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-App-83.5x83.5%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-50x50%401x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-50x50%402x.png" />
     <Content Include="Resources\banner.png" />
     <Content Include="Resources\facebook.png" />
+    <BundleResource Include="Resources\iTunesArtwork%401x.png" />
+    <BundleResource Include="Resources\iTunesArtwork%403x.png" />
+    <ITunesArtwork Include="Resources\iTunesArtwork%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

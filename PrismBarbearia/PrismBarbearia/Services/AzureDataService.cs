@@ -95,23 +95,7 @@ namespace PrismBarbearia.Services
             return await scheduleTable.ToEnumerableAsync();
         }
 
-        public async Task<BarberSchedule> AddSchedule(string service, string name, string email, string birthday, DateTime dateTime)
-        {
-            await Initialize();
-            var schedule = new BarberSchedule
-            {
-                Service = service,
-                Name = name,
-                Email = email,
-                Birthday = birthday,
-                DateTime = dateTime.AddHours(-3)
-            };
-            await scheduleTable.InsertAsync(schedule);
-            await SyncSchedule();
-            return schedule;
-        }
-
-        public async Task<BarberSchedule> AddScheduleOut(string service, string name, string phoneNumber, DateTime dateTime)
+        public async Task<BarberSchedule> AddSchedule(string service, string name, string phoneNumber, string email, string birthday, DateTime dateTime)
         {
             await Initialize();
             var schedule = new BarberSchedule
@@ -119,6 +103,8 @@ namespace PrismBarbearia.Services
                 Service = service,
                 Name = name,
                 PhoneNumber = phoneNumber,
+                Email = email,
+                Birthday = birthday,                
                 DateTime = dateTime.AddHours(-3)
             };
             await scheduleTable.InsertAsync(schedule);

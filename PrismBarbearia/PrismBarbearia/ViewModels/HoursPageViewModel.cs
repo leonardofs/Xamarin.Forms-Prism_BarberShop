@@ -45,11 +45,20 @@ namespace PrismBarbearia.ViewModels
         async Task GetFacebookInfo()
         {
             var identity = await loginService.GetIdentityAsync();
-            name = identity.UserClaims[2].Value;
-            email = identity.UserClaims[1].Value;
-            birthdate = identity.UserClaims[7].Value;
-            DateTime birthday = DateTime.ParseExact(birthdate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            birthdate = birthday.ToString("dd/MM");
+
+            name = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")).Value;
+            email = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")).Value;
+            birthdate = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/dateofbirth")).Value;
+
+            if (name == null) name = "nome não informado";
+            if (email == null) email = "email não informado";
+            if (birthdate == null)
+                birthdate = "aniversário não informado";
+            else
+            {
+                DateTime birthday = DateTime.ParseExact(birthdate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                birthdate = birthday.ToString("dd/MM");
+            }
         }
 
         async void CallSync()
@@ -173,29 +182,31 @@ namespace PrismBarbearia.ViewModels
 
         public async void NewSchedule(object hourTapped)
         {
-            if (hourTapped != null)
+            if (hourTapped != null && !IsBusy)
             {
-
                 if (CrossConnectivity.Current.IsConnected)
                 {
-                    if (Settings.IsLoggedIn)
+                    IsBusy = true;
+
+                    BarberHour _hourTapped = hourTapped as BarberHour;
+
+                    DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + _hourTapped.Hour), "dd-MM-yyyy HH:mm",
+                                                           System.Globalization.CultureInfo.InvariantCulture);
+
+                    bool r = await _pageDialogService.DisplayAlertAsync("Agendamento", "Tem certeza que deseja realizar este agendamento?\n" +
+                                                               "\nServiço: " + serviceTapped.ServiceName +
+                                                               "\nData: " + dayTapped.Date + " " + _hourTapped.Hour, "Sim", "Não");
+                    if (r)
                     {
-                        BarberHour _hourTapped = hourTapped as BarberHour;
+                        await scheduleService.AddSchedule(serviceTapped.ServiceName, name, "celular não informado", email, birthdate, scheduleDate);
 
-                        DateTime scheduleDate = DateTime.ParseExact((dayTapped.Date + " " + _hourTapped.Hour), "dd-MM-yyyy HH:mm",
-                                                               System.Globalization.CultureInfo.InvariantCulture);
+                        await _pageDialogService.DisplayAlertAsync("Agendado", "Agendamento realizado com sucesso!", "OK");
 
-                        await scheduleService.AddSchedule(serviceTapped.ServiceName, name, email, birthdate, scheduleDate);
-
-                        await _pageDialogService.DisplayAlertAsync("Agendamento", "Agendado com sucesso:" +
-                                                                   "\nServiço: " + serviceTapped.ServiceName +
-                                                                   "\nData: " + scheduleDate, "OK");
                         await _navigationService.GoBackAsync(null, false);
                     }
-                    else
-                    {
-                        await _pageDialogService.DisplayAlertAsync("Faça o Login", "Para realizar o agendamento é preciso estar logado", "OK");
-                    }
+
+                    IsBusy = false;
+
                 }
                 else
                 {
