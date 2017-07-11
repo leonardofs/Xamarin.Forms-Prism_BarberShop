@@ -46,9 +46,9 @@ namespace PrismBarbearia.ViewModels
         {
             var identity = await loginService.GetIdentityAsync();
 
-            name = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"))?.Value;
-            email = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"))?.Value;
-            birthdate = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/dateofbirth"))?.Value;
+            name = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")).Value;
+            email = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")).Value;
+            birthdate = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/dateofbirth")).Value;
 
             if (name == null) name = "nome não informado";
             if (email == null) email = "email não informado";
@@ -199,6 +199,9 @@ namespace PrismBarbearia.ViewModels
                     if (r)
                     {
                         await scheduleService.AddSchedule(serviceTapped.ServiceName, name, "celular não informado", email, birthdate, scheduleDate);
+
+                        await _pageDialogService.DisplayAlertAsync("Agendado", "Agendamento realizado com sucesso!", "OK");
+
                         await _navigationService.GoBackAsync(null, false);
                     }
 

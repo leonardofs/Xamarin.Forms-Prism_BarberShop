@@ -80,11 +80,11 @@
 
         <Button Margin="6,0,3,6" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"
                 AbsoluteLayout.LayoutBounds="0,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
-                Command="{Binding CancelarButtonCommand}" />
+                Command="{Binding CancelarButtonCommand}" BorderRadius="4" />
         <!--x, y, width, height-->
         <Button Margin="3,0,6,6" Text="Agendar" TextColor="White" BackgroundColor="{DynamicResource StatusBarColor}"
                 AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
-                Command="{Binding AgendarButtonCommand}" IsEnabled="{Binding CanExecuteAgendarButton}"/>
+                Command="{Binding AgendarButtonCommand}" IsEnabled="{Binding CanExecuteAgendarButton}" BorderRadius="4"/>
 
     </AbsoluteLayout>
 

@@ -7,6 +7,7 @@ using PrismBarbearia.Services;
 using PrismBarbearia.Helpers;
 using System.Diagnostics;
 using System;
+using System.Linq;
 
 namespace PrismBarbearia.ViewModels
 {
@@ -96,7 +97,7 @@ namespace PrismBarbearia.ViewModels
         async Task GetFacebookInfo()
         {
             var identity = await loginService.GetIdentityAsync();
-            Privilegio = identity.UserClaims[2].Value;
+            Privilegio = identity.UserClaims.FirstOrDefault(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")).Value;
         }
 
         private async Task ExecuteEditServicesCommand()

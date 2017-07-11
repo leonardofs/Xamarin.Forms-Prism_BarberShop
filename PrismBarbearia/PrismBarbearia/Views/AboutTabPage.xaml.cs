@@ -6,8 +6,7 @@ namespace PrismBarbearia.Views
     {
         public AboutTabPage()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
     }
 }

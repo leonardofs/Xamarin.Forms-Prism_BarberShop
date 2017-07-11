@@ -109,6 +109,9 @@ namespace PrismBarbearia.ViewModels
                     if (r)
                     {
                         await scheduleService.AddSchedule(serviceTapped.ServiceName, NomeEntry, TelefoneEntry, "email não informado", "aniversário não informado", scheduleDate);
+
+                        await _pageDialogService.DisplayAlertAsync("Agendado", "Agendamento realizado com sucesso!", "OK");
+
                         await _navigationService.GoBackAsync(null, false);
                     }
 

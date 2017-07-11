@@ -1,7 +1,7 @@
 ﻿<resources>
   <color name="primary">#43a047</color>
   <color name="primaryDark">#1B5E20</color>
-  <color name="accent">#FFC107</color>
+  <color name="accent">#1B5E20</color>
   <color name="window_background">#F5F5F5</color>
   <color name="statusBar">#1B5E20</color>
 </resources>
