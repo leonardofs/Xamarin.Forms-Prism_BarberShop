@@ -35,7 +35,7 @@ namespace PrismBarbearia.ViewModels
             Schedules = new ObservableCollection<BarberSchedule>();
             HoursAvaliable = new ObservableCollection<BarberHour>();
             Temp = new ObservableCollection<BarberSchedule>();
-            Title = "HORÁRIOS";
+            Title = "ESCOLHA O HORÁRIO";
             dayTapped = new BarberDay();
             serviceTapped = new BarberService();
             scheduleTemp = new BarberSchedule();
