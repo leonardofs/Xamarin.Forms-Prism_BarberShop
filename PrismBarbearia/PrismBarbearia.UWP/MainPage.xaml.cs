@@ -25,7 +25,7 @@ namespace PrismBarbearia.UWP
             this.InitializeComponent();
 
             SfListViewRenderer.Init();
-
+            Xamarin.FormsMaps.Init("PMUCtHlcSNeLpp9FnbuT~1Ne08600EU_QjbTyPlOALQ~AjtycRCT3IZ16WZ79G9z16Wd7E8CCZeVyMWYrNMya7II2sPsBUhR7s8879BKV0OR");
             LoadApplication(new PrismBarbearia.App(new UwpInitializer()));            
         }
     }

@@ -16,7 +16,8 @@
     "Xam.Plugin.Connectivity": "2.3.0",
     "Xam.Plugin.ExternalMaps": "3.0.10",
     "Xam.Plugins.Settings": "2.5.8",
-    "Xamarin.Forms": "2.3.5.256-pre6"
+    "Xamarin.Forms": "2.3.5.256-pre6",
+    "Xamarin.Forms.Maps": "2.3.4.247"
   },
   "frameworks": {
     "uap10.0": {}
