@@ -19,7 +19,7 @@ namespace PrismBarbearia.ViewModels
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public DaysPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            Title = "Selecione um dia:";
+            Title = "ESCOLHA O DIA";
             Days = new ObservableCollection<BarberDay>();
             FillDaysCollection();
         }
