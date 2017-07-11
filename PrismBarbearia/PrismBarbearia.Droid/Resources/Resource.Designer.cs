@@ -3972,26 +3972,8 @@ namespace PrismBarbearia.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f02013c
-			public const int avd_hide_password_1 = 2130837820;
-			
-			// aapt resource value: 0x7f02013d
-			public const int avd_hide_password_2 = 2130837821;
-			
-			// aapt resource value: 0x7f02013e
-			public const int avd_hide_password_3 = 2130837822;
-			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
-			
-			// aapt resource value: 0x7f02013f
-			public const int avd_show_password_1 = 2130837823;
-			
-			// aapt resource value: 0x7f020140
-			public const int avd_show_password_2 = 2130837824;
-			
-			// aapt resource value: 0x7f020141
-			public const int avd_show_password_3 = 2130837825;
 			
 			// aapt resource value: 0x7f020055
 			public const int banner = 2130837589;
