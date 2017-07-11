@@ -18,21 +18,42 @@
 
       <!-- ESTILOS -->
 
+      <Style x:Key="StatusLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="BackgroundColor" Value="{DynamicResource StatusBarColor}"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+      </Style>
+
+      <Style x:Key="StatusRLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="Margin" Value="20,0,0,5"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+      </Style>
+
       <Style x:Key="Entrys" TargetType="Entry">
         <Setter Property="PlaceholderColor" Value="{DynamicResource TabBarColor}" />
         <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryColor}" />
+        <Setter Property="FontSize" Value="Small" />
+        
       </Style>
 
       <Style x:Key="TitleLabel" TargetType="Label">
-        <Setter Property="TextColor" Value="Black" />
-        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
+        <Setter Property="FontSize" Value="Small" />
         <Setter Property="FontFamily" Value="Arial" />
-        <Setter Property="HorizontalTextAlignment" Value="Center"/>    
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
       </Style>
 
       <Style x:Key="MainLabel" TargetType="Label">
-        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="TextColor" Value="{DynamicResource StatusBarColor}" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontFamily" Value="Arial" />
         <Setter Property="HorizontalOptions" Value="Center"/>

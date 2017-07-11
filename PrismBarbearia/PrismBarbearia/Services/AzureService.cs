@@ -57,15 +57,14 @@ namespace PrismBarbearia.Services
             }
 
         }
-        
+
         public async Task<AppServiceIdentity> GetIdentityAsync()
         {
             Initialize();
 
-            List<AppServiceIdentity>  identities = await Client.InvokeApiAsync<List<AppServiceIdentity>>("/.auth/me");
+            List<AppServiceIdentity> identities = await Client.InvokeApiAsync<List<AppServiceIdentity>>("/.auth/me");
 
             return identities[0];
         }
-
     }
 }

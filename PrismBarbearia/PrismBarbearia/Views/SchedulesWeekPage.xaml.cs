@@ -11,6 +11,21 @@ namespace PrismBarbearia.Views
         public SchedulesWeekPage()
         {
             InitializeComponent();
+
+            if (Device.OS != TargetPlatform.Android)
+            {
+                schedule.ScheduleView = ScheduleView.WorkWeekView;
+                //Create new instance of NonAccessibleBlock
+                NonAccessibleBlock nonAccessibleBlock = new NonAccessibleBlock();
+                //Create new instance of NonAccessibleBlocksCollection
+                NonAccessibleBlocksCollection nonAccessibleBlocksCollection = new NonAccessibleBlocksCollection();
+                nonAccessibleBlock.StartTime = 11;
+                nonAccessibleBlock.EndTime = 13;
+                nonAccessibleBlock.Text = "ALMOÇO";
+                nonAccessibleBlock.Color = Color.DarkGreen;
+                nonAccessibleBlocksCollection.Add(nonAccessibleBlock);
+                schedule.WorkWeekViewSettings.NonAccessibleBlocks = nonAccessibleBlocksCollection;
+            }
         }
 
         private async void CellTappedAsync(object sender, CellTappedEventArgs args)

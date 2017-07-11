@@ -40,7 +40,11 @@ namespace PrismBarbearia.ViewModels
         public BarberHour SelectedHour
         {
             get { return selectedHour; }
-            set { SetProperty(ref selectedHour, value); }
+            set
+            {
+                SetProperty(ref selectedHour, value);
+                canExecuteAgendarButtonChanged();
+            }
         }
 
         private bool canExecuteAgendarButton;

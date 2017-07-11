@@ -24,11 +24,11 @@
                 <Button Text="Agenda" Command="{Binding SchedulesWeekPageCommand}" IsVisible="{Binding IsVisibleAdminButtons}"
                         Style="{DynamicResource AdminButton}" />
 
-                <Button Text="Editar conceito" IsVisible="{Binding IsVisibleAdminButtons}"
+                <!--<Button Text="Editar conceito" IsVisible="{Binding IsVisibleAdminButtons}"
                         Style="{DynamicResource AdminButton}" />
 
                 <Button Text="Editar informações de contato" IsVisible="{Binding IsVisibleAdminButtons}"
-                        Style="{DynamicResource AdminButton}" />
+                        Style="{DynamicResource AdminButton}" />-->
 
                 <Button Text="Editar lista de serviços" Command="{Binding EditServicesCommand}" IsVisible="{Binding IsVisibleAdminButtons}"
                         Style="{DynamicResource AdminButton}" />

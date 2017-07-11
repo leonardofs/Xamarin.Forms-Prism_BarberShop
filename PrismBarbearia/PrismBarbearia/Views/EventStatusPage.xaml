@@ -3,37 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="PrismBarbearia.Views.EventStatusPage">
-    
+             x:Class="PrismBarbearia.Views.EventStatusPage"
+             Title="{Binding Title}">
+
     <AbsoluteLayout>
 
-        <StackLayout  AbsoluteLayout.LayoutBounds=".5,.05,.85,.95" AbsoluteLayout.LayoutFlags="All">
-            
-            <Label Text="Nome do cliente"/>
-            <Label Text="{Binding NomeCliente}"/>
+        <ScrollView AbsoluteLayout.LayoutBounds=".5,.05, 1,.9" AbsoluteLayout.LayoutFlags="All">            
+            <StackLayout >
 
-            <Label Text="Telefone do cliente"/>
-            <Label Text="{Binding TelefoneCliente}"/>
 
-            <Label Text="Email"/>
-            <Label Text="{Binding Email}"/>
+                <Label Text="Nome do cliente" Style="{DynamicResource StatusLabel}"/>
+                <Label Text="{Binding NomeCliente}" Style="{DynamicResource StatusRLabel}"/>
 
-            <Label Text="Data de aniversário"/>
-            <Label Text="{Binding Birthday}"/>
+                <Label Text="Telefone do cliente" Style="{DynamicResource StatusLabel}"/>
+                <Label Text="{Binding TelefoneCliente}" Style="{DynamicResource StatusRLabel}"/>
 
-            <Label Text="Serviço"/>
-            <Label Text="{Binding Serviço}"/>
-            
-        </StackLayout>
+                <Label Text="Email" Style="{DynamicResource StatusLabel}"/>
+                <Label Text="{Binding Email}" Style="{DynamicResource StatusRLabel}"/>
 
+                <Label Text="Data de aniversário" Style="{DynamicResource StatusLabel}"/>
+                <Label Text="{Binding Birthday}" Style="{DynamicResource StatusRLabel}"/>
+
+                <Label Text="Serviço" Style="{DynamicResource StatusLabel}"/>
+                <Label Text="{Binding Serviço}" Style="{DynamicResource StatusRLabel}"/>
+
+            </StackLayout>            
+        </ScrollView>
+        
         <Button Margin="6,0,3,6" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"
                 AbsoluteLayout.LayoutBounds="0,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
                 Command="{Binding CancelarButtonCommand}" />
         <!--x, y, width, height-->
-        <Button Margin="3,0,6,6" Text="Desmarcar" TextColor="White" BackgroundColor="Black"
+        <Button Margin="3,0,6,6" Text="Desmarcar" TextColor="White" BackgroundColor="{DynamicResource StatusBarColor}"
                 AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
                 Command="{Binding DesmarcarButtonCommand}"/>
-        
+
     </AbsoluteLayout>
-    
+
 </ContentPage>

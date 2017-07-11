@@ -16,6 +16,7 @@ namespace PrismBarbearia.Models
             }
             return services;
         }
+
         public async Task<List<BarberHour>> GetHours()
         {
             List<BarberHour> hours;
@@ -27,6 +28,7 @@ namespace PrismBarbearia.Models
             }
             return hours;
         }
+
         public async Task<List<BarberSchedule>> GetSchedule()
         {
             List<BarberSchedule> schedules;
@@ -39,5 +41,6 @@ namespace PrismBarbearia.Models
             }
             return schedules;
         }
+
     }
 }

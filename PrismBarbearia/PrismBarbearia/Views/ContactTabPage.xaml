@@ -7,17 +7,18 @@
              x:Class="PrismBarbearia.Views.ContactTabPage"
              Title="{Binding Title}">
 
-    <StackLayout>
-        <Label Style="{DynamicResource TitleLabel}" Text=" Faça-nos uma Ligação: (37) 3222-2222">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding CallBarberCommand}"/>
-                </Label.GestureRecognizers>
-            </Label>
-        <maps:Map WidthRequest="320" HeightRequest="400"
-                    x:Name="MyMap"
-                     VerticalOptions="Center"
-                       HorizontalOptions="Center"
-        />
-    </StackLayout>
+    <AbsoluteLayout>
+        <!--x, y, width, height-->
+
+        <Label Style="{DynamicResource TitleLabel}" Text="Faça-nos uma Ligação: (37) 3222-2222" 
+               AbsoluteLayout.LayoutBounds=".5,0,1,.1" AbsoluteLayout.LayoutFlags="All">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CallBarberCommand}"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <maps:Map AbsoluteLayout.LayoutBounds=".5,1,1,.9" AbsoluteLayout.LayoutFlags="All" x:Name="MyMap"/>
+
+    </AbsoluteLayout>
 
 </ContentPage>

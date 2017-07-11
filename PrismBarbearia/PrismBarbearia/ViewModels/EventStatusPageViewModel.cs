@@ -60,7 +60,7 @@ namespace PrismBarbearia.ViewModels
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public EventStatusPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            Title = "Informações do agendamento";
+            Title = "INFORMAÇÕES";
             azureDataService = Xamarin.Forms.DependencyService.Get<AzureDataService>();
             DesmarcarButtonCommand = new DelegateCommand(DesmarcarButtonCommandExecute);
             CancelarButtonCommand = new DelegateCommand(CancelarButtonCommandExecute);

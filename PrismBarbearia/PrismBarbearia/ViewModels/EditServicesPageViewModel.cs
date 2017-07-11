@@ -71,7 +71,7 @@ namespace PrismBarbearia.ViewModels
         //--------------------------------------------------CONSTRUTOR-------------------------------------------------//
         public EditServicesPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            Title = "EDIÇÃO DA LISTA DE SERVIÇOS";
+            Title = "EDIÇÃO DOS SERVIÇOS";
             BarberServicesList = new ObservableCollection<BarberService>();
 
             azureDataService = Xamarin.Forms.DependencyService.Get<AzureDataService>();
@@ -82,6 +82,7 @@ namespace PrismBarbearia.ViewModels
             EditarButtonCommand = new DelegateCommand(async () => await ExecuteEditarButtonCommand());
             DeletarButtonCommand = new DelegateCommand(async () => await ExecuteDeletarButtonCommand());
         }
+
 
         private void CanExecuteAdicionarButtonChanged()
         {
