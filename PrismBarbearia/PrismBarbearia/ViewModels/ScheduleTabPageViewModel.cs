@@ -21,7 +21,8 @@ namespace PrismBarbearia.ViewModels
         {
             Title = "AGENDAR";
             BarberServicesList = new ObservableCollection<BarberService>();
-            SyncServices();
+            if (CrossConnectivity.Current.IsConnected)
+                SyncServices();
         }
 
         async void SyncServices()
