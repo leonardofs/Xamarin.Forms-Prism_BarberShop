@@ -7,7 +7,7 @@
              x:Class="PrismBarbearia.Views.SchedulesWeekPage"
              Title="{Binding Title}">
 
-    <ContentPage.Content>
+    <AbsoluteLayout>
 
         <schedule:SfSchedule x:Name="schedule" ScheduleView ="WorkWeekView" CellTapped="CellTappedAsync" ViewHeaderHeight="50" TimeInterval="30" FirstDayOfWeek="2" 
                              DataSource="{Binding EventsCollection}" >
@@ -86,6 +86,11 @@
 
         </schedule:SfSchedule>
 
-    </ContentPage.Content>
+        <ActivityIndicator x:Name="actInd"
+                           IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}" Color="Red"
+                           AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="All" />
+
+    </AbsoluteLayout>
 
 </ContentPage>

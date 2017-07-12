@@ -9,9 +9,9 @@
 
     <AbsoluteLayout>
 
-        <syncfusion:SfListView x:Name="listView" 
+        <syncfusion:SfListView x:Name="listView"
                            ItemsSource="{Binding BarberServicesList}"
-                           ItemSize="50"                           
+                           ItemSize="50"            
                            ItemSpacing="0,0,0,0"
                            SelectionMode="Single"
                            SelectionGesture="Tap"
@@ -19,9 +19,9 @@
                            Orientation="Vertical"
                            AutoFitMode="None"
                            SelectedItem="{Binding SelectedService}"
-                           HeaderSize="30" 
+                           HeaderSize="30"
                            FooterSize="30"
-                           IsStickyHeader="True" 
+                           IsStickyHeader="True"
                            IsStickyFooter="True"
                            AbsoluteLayout.LayoutBounds=".5,.01,1,.73" AbsoluteLayout.LayoutFlags="All">
 
@@ -84,6 +84,10 @@
                 AbsoluteLayout.LayoutBounds=".5,1,.33,.1" AbsoluteLayout.LayoutFlags="All" 
                 Command="{Binding EditarButtonCommand}" IsEnabled="{Binding CanExecuteEditarButton}" />
 
+        <ActivityIndicator x:Name="actInd"
+                           IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}" Color="Red"
+                           AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="All" />
 
     </AbsoluteLayout>
 

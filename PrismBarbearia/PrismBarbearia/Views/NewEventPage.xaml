@@ -86,6 +86,11 @@
                 AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
                 Command="{Binding AgendarButtonCommand}" IsEnabled="{Binding CanExecuteAgendarButton}" BorderRadius="4"/>
 
+        <ActivityIndicator x:Name="actInd"
+                           IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}" Color="Red"
+                           AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="All" />
+
     </AbsoluteLayout>
 
 </ContentPage>

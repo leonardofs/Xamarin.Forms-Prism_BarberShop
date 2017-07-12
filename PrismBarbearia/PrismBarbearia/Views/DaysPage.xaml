@@ -7,7 +7,9 @@
              x:Class="PrismBarbearia.Views.DaysPage"
              Title="{Binding Title}">
 
-    <syncfusion:SfListView x:Name="listView" 
+    <AbsoluteLayout>
+
+        <syncfusion:SfListView x:Name="listView" 
                            ItemsSource="{Binding Days}"
                            ItemSize="50"                           
                            ItemSpacing="0,0,0,0"
@@ -16,20 +18,28 @@
                            SelectionBackgroundColor="{DynamicResource SecondaryColor}"
                            Orientation="Vertical"
                            AutoFitMode="None"
-                           ItemTapped="DayTapped">
+                           ItemTapped="DayTapped"
+                           AbsoluteLayout.LayoutBounds=".5,.5,1,1" AbsoluteLayout.LayoutFlags="All">
 
-        <syncfusion:SfListView.ItemTemplate>
-            <DataTemplate>
-                <Grid Padding="5">
-                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Date}" TextColor="White" BackgroundColor="{DynamicResource StatusBarColor}" Font="Large" 
-                          HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>                    
-                </Grid>
-            </DataTemplate>
-        </syncfusion:SfListView.ItemTemplate>
-        <syncfusion:SfListView.LayoutManager>
-            <syncfusion:GridLayout SpanCount="1" />
-        </syncfusion:SfListView.LayoutManager>
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5">
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Date}" TextColor="White" BackgroundColor="{DynamicResource StatusBarColor}" Font="Large" 
+                          HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+            <syncfusion:SfListView.LayoutManager>
+                <syncfusion:GridLayout SpanCount="1" />
+            </syncfusion:SfListView.LayoutManager>
 
-    </syncfusion:SfListView>
-    
+        </syncfusion:SfListView>
+
+        <ActivityIndicator x:Name="actInd"
+                             IsRunning="{Binding IsBusy}"
+                             IsVisible="{Binding IsBusy}" Color="Red"
+                             AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="All" />
+
+    </AbsoluteLayout>
+
 </ContentPage>

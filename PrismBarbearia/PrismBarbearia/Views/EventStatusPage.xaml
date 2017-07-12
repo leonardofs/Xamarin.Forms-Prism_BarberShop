@@ -8,7 +8,7 @@
 
     <AbsoluteLayout>
 
-        <ScrollView AbsoluteLayout.LayoutBounds=".5,.05, 1,.9" AbsoluteLayout.LayoutFlags="All">            
+        <ScrollView AbsoluteLayout.LayoutBounds=".5,.05, 1,.9" AbsoluteLayout.LayoutFlags="All">
             <StackLayout >
 
 
@@ -27,9 +27,9 @@
                 <Label Text="Serviço" Style="{DynamicResource StatusLabel}"/>
                 <Label Text="{Binding Serviço}" Style="{DynamicResource StatusRLabel}"/>
 
-            </StackLayout>            
+            </StackLayout>
         </ScrollView>
-        
+
         <Button Margin="6,0,3,6" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"
                 AbsoluteLayout.LayoutBounds="0,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
                 Command="{Binding CancelarButtonCommand}" />
@@ -37,6 +37,11 @@
         <Button Margin="3,0,6,6" Text="Desmarcar" TextColor="White" BackgroundColor="{DynamicResource StatusBarColor}"
                 AbsoluteLayout.LayoutBounds="1,1,.5,.1" AbsoluteLayout.LayoutFlags="All" 
                 Command="{Binding DesmarcarButtonCommand}"/>
+
+        <ActivityIndicator x:Name="actInd"
+                           IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}" Color="Red"
+                           AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="All" />
 
     </AbsoluteLayout>
 
