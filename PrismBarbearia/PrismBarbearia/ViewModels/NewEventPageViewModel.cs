@@ -84,7 +84,7 @@ namespace PrismBarbearia.ViewModels
 
         public async Task ExecuteAgendarButtonCommand()
         {
-            await azureDataService.AddSchedule(SelectedService.ServiceName, TelefoneEntry, NomeEntry, "email não informado", "aniversário não informado", Schedule.DateTime);
+            await azureDataService.AddSchedule(SelectedService.ServiceName, NomeEntry, TelefoneEntry, "email não informado", "aniversário não informado", Schedule.DateTime);
 
             await _navigationService.GoBackAsync();
         }

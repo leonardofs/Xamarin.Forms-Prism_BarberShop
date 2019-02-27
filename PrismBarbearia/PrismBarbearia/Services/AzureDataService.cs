@@ -21,6 +21,7 @@ namespace PrismBarbearia.Services
     {
 
         public MobileServiceClient Client { get; set; } = null;
+        public int TimerZone { get; set; }
         IMobileServiceSyncTable<BarberSchedule> scheduleTable;
         IMobileServiceSyncTable<BarberService> serviceTable;
 
@@ -98,14 +99,25 @@ namespace PrismBarbearia.Services
         public async Task<BarberSchedule> AddSchedule(string service, string name, string phoneNumber, string email, string birthday, DateTime dateTime)
         {
             await Initialize();
+            DateTime inicioHorarioVerao = new DateTime(DateTime.Now.Year, 11, 4, 0, 0, 0);
+            DateTime terminoHorarioVerao = new DateTime(DateTime.Now.Year + 1, 2, 16, 23, 59, 59);
+
+            int depoisinicioHorarioDeVerao = DateTime.Compare(dateTime, inicioHorarioVerao);
+            int antesTerminoHorarioDeVerao = DateTime.Compare(terminoHorarioVerao, dateTime);
+
+            if (depoisinicioHorarioDeVerao > 0 && antesTerminoHorarioDeVerao > 0)
+                TimerZone = -2;
+            else
+                TimerZone = -3;
+
             var schedule = new BarberSchedule
             {
                 Service = service,
                 Name = name,
                 PhoneNumber = phoneNumber,
                 Email = email,
-                Birthday = birthday,                
-                DateTime = dateTime.AddHours(-3)
+                Birthday = birthday,
+                DateTime = dateTime.AddHours(TimerZone)
             };
             await scheduleTable.InsertAsync(schedule);
             await SyncSchedule();
